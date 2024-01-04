@@ -1,24 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Layout from './components/shared/Layout';
+import Page_Account_Transactions from './pages/Page_Account_Transactions/Page_Account_Transactions';
+import Page_Account_Transfer from './pages/Page_Account_Transfer/Page_Account_Transfer'
+import Page_Account_Deposit from './pages/Page_Account_Deposit/Page_Account_Deposit';
+import Page_Account_Withdraw from './pages/Page_Account_Withdraw/Page_Account_Withdraw';
+import Page_Account_Exchange from './pages/Page_Account_Exchange/Page_Account_Exchange';
+import Page_Account_MerchantAPI from './pages/Page_Account_MerchantAPI/Page_Account_MerchantAPI';
+import Page_Account_Orders from './pages/Page_Account_Orders/Page_Account_Orders';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/account' element={<Layout />}>
+          <Route index path='transactions' element={<Page_Account_Transactions />}></Route>
+          <Route path='transfer' element={<Page_Account_Transfer />}></Route>
+          <Route path='deposit' element={<Page_Account_Deposit />}></Route>
+          <Route path='withdraw' element={<Page_Account_Withdraw />}></Route>
+          <Route path='exchange' element={<Page_Account_Exchange />}></Route>
+          <Route path='merchantapi' element={<Page_Account_MerchantAPI />}></Route>
+          <Route path='orders' element={<Page_Account_Orders />}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
