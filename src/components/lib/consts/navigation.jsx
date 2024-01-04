@@ -8,50 +8,59 @@ import {
   HiOutlineQuestionMarkCircle,
   HiOutlineCog,
   HiQuestionMarkCircle,
+  HiSwitchHorizontal,
 } from "react-icons/hi";
+
+import {
+  HiArrowPath,
+  HiArrowsRightLeft,
+  HiOutlineBanknotes,
+  HiOutlineBriefcase,
+  HiOutlineBuildingLibrary,
+} from "react-icons/hi2";
 
 export const DASHBOARD_SIDEBAR_LINKS = [
   {
     key: "transactions",
     label: "Transactions",
     path: "/account/transactions",
-    icon: <HiOutlineViewGrid />,
+    icon: <HiOutlineDocumentText />,
   },
   {
     key: "transfer",
     label: "Transfer",
     path: "/account/transfer",
-    icon: <HiOutlineCube />,
+    icon: <HiArrowsRightLeft />,
   },
   {
     key: "deposit",
     label: "Deposit",
     path: "/account/deposit",
-    icon: <HiOutlineShoppingCart />,
+    icon: <HiOutlineBuildingLibrary />,
   },
   {
     key: "withdraw",
     label: "Withdraw",
     path: "/account/withdraw",
-    icon: <HiOutlineUsers />,
+    icon: <HiOutlineBanknotes />,
   },
   {
     key: "exchange",
     label: "Exchange",
     path: "/account/exchange",
-    icon: <HiOutlineDocumentText />,
+    icon: <HiArrowPath />,
   },
   {
     key: "merchantapi",
     label: "Merchant API",
     path: "/account/merchantapi",
-    icon: <HiOutlineAnnotation />,
+    icon: <HiOutlineBriefcase />,
   },
   {
     key: "orders",
     label: "Orders",
     path: "/account/orders",
-    icon: <HiQuestionMarkCircle />,
+    icon: <HiOutlineShoppingCart />,
   },
 ];
 

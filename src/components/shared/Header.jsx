@@ -2,13 +2,14 @@ import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
+import { HiOutlineCog, HiOutlineLogout, HiOutlineUser } from "react-icons/hi";
 
 export default function Header() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white h-16 px-4 flex justify-end items-center">
-      <div>
+    <div className="bg-white h-16 px-4 flex justify-end items-center gap-4">
+      <div className="avatar">
         <Menu as="div" className="relative">
           <div>
             <Menu.Button className="inline-flex rounded-full focus:outline-none focus:ring-2 focus:ring-neutral-400">
@@ -40,9 +41,13 @@ export default function Header() {
                     onClick={() => navigate("/account/profile")}
                     className={classNames(
                       active && "bg-gray-100",
-                      "active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200"
+                      "active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200",
+                      "flex items-center gap-2"
                     )}
                   >
+                    <span className="text-xl">
+                      <HiOutlineUser />
+                    </span>
                     Profile
                   </div>
                 )}
@@ -53,9 +58,13 @@ export default function Header() {
                     onClick={() => navigate("/account/settings")}
                     className={classNames(
                       active && "bg-gray-100",
-                      "active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200"
+                      "active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200",
+                      "flex items-center gap-2"
                     )}
                   >
+                    <span className="text-xl">
+                      <HiOutlineCog />
+                    </span>
                     Settings
                   </div>
                 )}
@@ -66,9 +75,13 @@ export default function Header() {
                     onClick={() => navigate("/home")}
                     className={classNames(
                       active && "bg-gray-100",
-                      "active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200"
+                      "active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200",
+                      "flex items-center gap-2"
                     )}
                   >
+                    <span className="text-xl">
+                      <HiOutlineLogout />
+                    </span>
                     Logout
                   </div>
                 )}
@@ -76,6 +89,10 @@ export default function Header() {
             </Menu.Items>
           </Transition>
         </Menu>
+      </div>
+      <div className="information">
+        <p style={{ fontSize: "17px", color: "rgb(2 132 199" }}>John Doe</p>
+        <p style={{ fontSize: "15px" }}>johndoe@gmail.com</p>
       </div>
     </div>
   );
