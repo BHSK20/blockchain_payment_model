@@ -8,7 +8,7 @@ export default function Header() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white h-16 px-4 flex justify-end items-center gap-4">
+    <div className="bg-white h-16 px-4 flex justify-end items-center gap-3">
       <div className="avatar">
         <Menu as="div" className="relative">
           <div>

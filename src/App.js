@@ -9,11 +9,14 @@ import Page_Account_Withdraw from './pages/Page_Account_Withdraw/Page_Account_Wi
 import Page_Account_Exchange from './pages/Page_Account_Exchange/Page_Account_Exchange';
 import Page_Account_MerchantAPI from './pages/Page_Account_MerchantAPI/Page_Account_MerchantAPI';
 import Page_Account_Orders from './pages/Page_Account_Orders/Page_Account_Orders';
+import Page_Home from './pages/Page_Home/Page_Home';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path='/' element={<Page_Home />}></Route>
+        <Route path='/home' element={<Page_Home />}></Route>
         <Route path='/account' element={<Layout />}>
           <Route index path='transactions' element={<Page_Account_Transactions />}></Route>
           <Route path='transfer' element={<Page_Account_Transfer />}></Route>

@@ -20,8 +20,15 @@
   th {
     @apply font-semibold;
   }
-  a {
+  /* a {
     @apply text-sky-500 hover:underline;
+  } */
+  li {
+    @apply p-4;
+  }
+  button {
+    @apply text-white border bg-sky-600 border-sky-600
+    hover:bg-transparent hover:text-sky-600 rounded-md;
   }
 }
 

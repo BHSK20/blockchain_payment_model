@@ -12,7 +12,7 @@ export default function Sidebar() {
     <div className="bg-neutral-900 w-60 p-3 text-white">
       <div className="flex items-center gap-2 px-1 py-3 justify-center">
         <FcBullish fontSize={24} />
-        <span className="text-neutral-100 text-2xl">BKpay</span>
+        <span className="text-neutral-100 text-2xl font-bold">BKpay</span>
       </div>
       <div className="flex-1 py-8 flex flex-col gap-0.5">
         {DASHBOARD_SIDEBAR_LINKS.map((item) => (
