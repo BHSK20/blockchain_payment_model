@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FcBullish } from "react-icons/fc";
+// import { FcBullish } from "react-icons/fc";
+import { FcMindMap } from "react-icons/fc";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
@@ -12,17 +13,18 @@ export default function Navbar() {
   return (
     <div className="w-screen h-[80px] z-10 bg-zinc-200 fixed drop-shadow-lg">
       <div className="px-2 flex justify-between items-center w-full h-full">
-        <div className="flex items-center gap-3">
-          <FcBullish className="text-3xl sm:text-4xl" />
+        <div className="flex items-center gap-2">
+          {/* <FcBullish className="text-3xl sm:text-4xl" /> */}
+          <FcMindMap className="text-3xl sm:text-4xl" />
           <h1 className="text-3xl font-bold mr-4 sm:text-4xl">BKpay</h1>
           <ul className="hidden md:flex">
             <li>
-              <Link to="home" smooth={true} duration={500}>
+              <Link to="/" smooth={true} duration={500}>
                 Home
               </Link>
             </li>
             <li>
-              <Link to="about" smooth={true} offset={-200} duration={500}>
+              <Link to="/about" smooth={true} offset={-200} duration={500}>
                 About
               </Link>
             </li>

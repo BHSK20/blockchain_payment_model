@@ -1,5 +1,6 @@
 import React from "react";
-import { FcBullish } from "react-icons/fc";
+// import { FcBullish } from "react-icons/fc";
+import { FcMindMap } from "react-icons/fc";
 import { DASHBOARD_SIDEBAR_LINKS } from "../lib/consts/navigation";
 import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
@@ -11,7 +12,8 @@ export default function Sidebar() {
   return (
     <div className="bg-neutral-900 w-60 p-3 text-white">
       <div className="flex items-center gap-2 px-1 py-3 justify-center">
-        <FcBullish fontSize={24} />
+        {/* <FcBullish fontSize={24} /> */}
+        <FcMindMap fontSize={24} />
         <span className="text-neutral-100 text-2xl font-bold">BKpay</span>
       </div>
       <div className="flex-1 py-8 flex flex-col gap-0.5">
