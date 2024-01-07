@@ -11,6 +11,9 @@ import Page_Account_MerchantAPI from './pages/Page_Account_MerchantAPI/Page_Acco
 import Page_Account_Orders from './pages/Page_Account_Orders/Page_Account_Orders';
 import Page_Home from './pages/Page_Home/Page_Home';
 import Page_About from './pages/Page_About/Page_About';
+import Page_Login from './pages/Page_Login/Page_Login';
+import Page_Signup from './pages/Page_Signup/Page_Signup';
+import Page_Missing from './pages/Page_Missing/Page_Missing';
 
 function App() {
   return (
@@ -18,6 +21,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Page_Home />}></Route>
         <Route path='/about' element={<Page_About />}></Route>
+        <Route path='/login' element={<Page_Login />}></Route>
+        <Route path='/signup' element={<Page_Signup />}></Route>
         <Route path='/account' element={<Layout />}>
           <Route index path='transactions' element={<Page_Account_Transactions />}></Route>
           <Route path='transfer' element={<Page_Account_Transfer />}></Route>
@@ -27,6 +32,7 @@ function App() {
           <Route path='merchantapi' element={<Page_Account_MerchantAPI />}></Route>
           <Route path='orders' element={<Page_Account_Orders />}></Route>
         </Route>
+        <Route path='/*' element={<Page_Missing />}></Route>
       </Routes>
     </BrowserRouter>
   );

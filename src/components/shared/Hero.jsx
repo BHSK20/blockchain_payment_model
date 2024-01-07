@@ -1,7 +1,9 @@
 import React from "react";
 import bgImg from "../../assets/blockchain-veed-remove-background.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const navigate = useNavigate();
   return (
     <div
       name="home"

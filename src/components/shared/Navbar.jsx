@@ -2,9 +2,10 @@ import React, { useState } from "react";
 // import { FcBullish } from "react-icons/fc";
 import { FcMindMap } from "react-icons/fc";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [nav, setNav] = useState(false);
   const handleClick = () => {
     setNav(!nav);
@@ -46,23 +47,37 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="hidden md:flex pr-4 xl:-translate-x-36 translate-x-0">
-          <button className="border-none bg-transparent text-black mr-4">
+          <button
+            className="border-none bg-transparent text-black mr-4"
+            onClick={() => navigate("/login")}
+          >
             Log In
           </button>
-          <button className="px-8 py-3">Sign Up</button>
+          <button className="px-8 py-3" onClick={() => navigate("/signup")}>
+            Sign Up
+          </button>
         </div>
         <div className="md:hidden" onClick={handleClick}>
           {nav ? <HiX className="w-5" /> : <HiOutlineMenu className="w-5" />}
         </div>
       </div>
       <ul className={nav ? "absolute bg-zinc-200 w-full px-8" : "hidden"}>
-        <li className="border-b-2 border-zinc-300 w-full">Home</li>
-        <li className="border-b-2 border-zinc-300 w-full">About</li>
+        <li className="border-b-2 border-zinc-300 w-full">
+          <Link to="/">Home</Link>
+        </li>
+        <li className="border-b-2 border-zinc-300 w-full">
+          <Link to="/about">About</Link>
+        </li>
         <div className="flex flex-col my-4">
-          <button className="bg-transparent text-sky-600 px-8 py-3 mb-4">
+          <button
+            className="bg-transparent text-sky-600 px-8 py-3 mb-4"
+            onClick={() => navigate("/login")}
+          >
             Log In
           </button>
-          <button className="px-8 py-3">Sign Up</button>
+          <button className="px-8 py-3" onClick={() => navigate("/signup")}>
+            Sign Up
+          </button>
         </div>
       </ul>
     </div>
