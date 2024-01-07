@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <div className="w-screen h-[80px] z-10 bg-zinc-200 fixed drop-shadow-lg">
       <div className="px-2 flex justify-between items-center w-full h-full">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 xl:translate-x-36 translate-x-0">
           {/* <FcBullish className="text-3xl sm:text-4xl" /> */}
           <FcMindMap className="text-3xl sm:text-4xl" />
           <h1 className="text-3xl font-bold mr-4 sm:text-4xl">BKpay</h1>
@@ -45,7 +45,7 @@ export default function Navbar() {
             </li> */}
           </ul>
         </div>
-        <div className="hidden md:flex pr-4">
+        <div className="hidden md:flex pr-4 xl:-translate-x-36 translate-x-0">
           <button className="border-none bg-transparent text-black mr-4">
             Log In
           </button>

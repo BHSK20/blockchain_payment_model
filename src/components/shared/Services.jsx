@@ -12,7 +12,7 @@ export default function Services() {
   return (
     <div
       name="services"
-      className="md:px-14 px-4 py-10 max-w-sceen-2xl mx-auto"
+      className="md:px-10 px-4 py-10 max-w-sceen-2xl mx-auto"
     >
       {/* services introduction */}
       <div className="mt-10 md:w-1/2 mx-auto text-center">

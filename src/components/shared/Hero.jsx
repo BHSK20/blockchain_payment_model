@@ -10,13 +10,13 @@ export default function Hero() {
       <div className="grid md:grid-cols-2 max-w-[1240px] m-auto">
         {/* items-center md:items-start */}
         <div className="flex flex-col justify-center md:items-start w-full px-2 py-20 items-center">
-          <p className="text-lg lg:text-xl xl:text-2xl">
+          <p className="text-base md:text-lg lg:text-xl xl:text-2xl text-center md:text-left">
             Secure and Easy to Use
           </p>
-          <h1 className="py-3 text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold">
+          <h1 className="py-3 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center md:text-left">
             Blockchain Payment System
           </h1>
-          <p className="text-lg lg:text-xl xl:text-2xl">
+          <p className="text-base md:text-lg lg:text-xl xl:text-2xl text-center md:text-left">
             Crypto Transfer API, Crypto Payment Gateway
           </p>
           <button className="py-3 px-6 w-full md:w-[60%] my-4">
@@ -25,7 +25,7 @@ export default function Hero() {
         </div>
         <div>
           <img
-            className="translate-x-24 w-[60%] md:w-full md:translate-x-0"
+            className="translate-x-24 -translate-y-10 w-[60%] md:w-full md:translate-x-0 md:translate-y-6"
             src={bgImg}
             alt="/"
           />
