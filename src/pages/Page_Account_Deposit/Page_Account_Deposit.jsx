@@ -1,8 +1,10 @@
-import React from 'react'
+import React from "react";
+import Cryptos from "../../components/shared/Cryptos";
 
 export default function Page_Account_Deposit() {
   return (
-    <div>Page_Account_Deposit</div>
-  )
+    <div style={{ marginTop: "15px" }}>
+      <Cryptos />
+    </div>
+  );
 }
-
