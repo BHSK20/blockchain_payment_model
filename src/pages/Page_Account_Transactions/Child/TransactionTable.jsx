@@ -1,6 +1,7 @@
 import { Box, Divider } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import React from "react";
+import React, { useMemo } from "react";
+import { Fail, Success } from "../../../components/label/TransactionLabel";
 
 export default function TransactionTable() {
   const rows = [
@@ -53,49 +54,68 @@ export default function TransactionTable() {
       status: "Success",
     },
   ];
-  const columns = [
+  const columns = useMemo(() => [
     {
       field: "type",
       type: "string",
-      headerName: "Type",
-      width: 250,
       headerAlign: "center",
       align: "center",
+      width: 250,
+      renderHeader: () => <span>Type</span>,
+      renderCell: (params) => {
+        return <span style={{ color: "rgb(2 132 199)" }}>{params.value}</span>;
+      },
     },
     {
       field: "date",
       type: "string",
-      headerName: "Date",
-      width: 250,
       headerAlign: "center",
       align: "center",
+      width: 250,
+      renderHeader: () => <span>Date</span>,
+      renderCell: (params) => {
+        return <span>{params.value}</span>;
+      },
     },
     {
       field: "amount",
       type: "number",
-      headerName: "Amount",
-      width: 250,
       headerAlign: "center",
       align: "center",
+      width: 250,
+      renderHeader: () => <span>Amount</span>,
+      renderCell: (params) => {
+        return <span>{params.value}</span>;
+      },
     },
     {
       field: "currency",
       type: "string",
-      headerName: "Currency",
-      width: 250,
       headerAlign: "center",
       align: "center",
+      width: 250,
+      renderHeader: () => <span>Currency</span>,
+      renderCell: (params) => {
+        return <span>{params.value}</span>;
+      },
     },
     {
       field: "status",
-      type: "string",
-      headerName: "Status",
-      width: 250,
       headerAlign: "center",
       align: "center",
+      width: 250,
       flex: 1,
+      renderHeader: () => <span>Status</span>,
+      renderCell: (params) => {
+        switch (params.value) {
+          case "Success":
+            return <Success />;
+          case "Fail":
+            return <Fail />;
+        }
+      },
     },
-  ];
+  ]);
   return (
     <div className="container px-10 py-5">
       <Box
