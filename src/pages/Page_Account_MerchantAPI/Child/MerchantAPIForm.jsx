@@ -4,18 +4,6 @@ import React from "react";
 export default function MerchantAPIForm() {
   return (
     <div className="container px-10 py-5">
-      <Box
-        sx={{
-          fontSize: "2.6vw",
-          fontWeight: 600,
-          color: "black",
-          display: "inline-flex",
-          justifyContent: "start",
-        }}
-      >
-        MerchantAPI
-      </Box>
-      <Divider sx={{ borderColor: "lightgray" }} />
       <Box sx={{ marginTop: "10px" }}>
         <Paper
           sx={{
@@ -28,9 +16,23 @@ export default function MerchantAPIForm() {
             padding: "25px",
           }}
         >
+          <Box
+            sx={{
+              fontSize: "3vw",
+              fontWeight: 600,
+              color: "black",
+              display: "inline-flex",
+              justifyContent: "start",
+            }}
+          >
+            MerchantAPI
+          </Box>
+          <Divider sx={{ borderColor: "gray", borderBottomWidth: 1 }} />
           <Box className="row">
-            <Box className="col-6">
-              <h4 style={{ marginBottom: 5, fontWeight: 600 }}>Company Name</h4>
+            <Box className="col-12 col-md-6">
+              <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
+                Company Name
+              </h4>
               <TextField
                 label="Enter the company name"
                 variant="outlined"
@@ -41,8 +43,10 @@ export default function MerchantAPIForm() {
                 autoComplete="new-text"
               ></TextField>
             </Box>
-            <Box className="col-6">
-              <h4 style={{ marginBottom: 5, fontWeight: 600 }}>Country</h4>
+            <Box className="col-12 col-md-6">
+              <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
+                Country
+              </h4>
               <TextField
                 label="Enter the country"
                 variant="outlined"
@@ -53,7 +57,7 @@ export default function MerchantAPIForm() {
                 autoComplete="new-text"
               ></TextField>
             </Box>
-            <Box className="col-6">
+            <Box className="col-12 col-md-6">
               <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
                 ZIP Code/Postal Code
               </h4>
@@ -67,7 +71,7 @@ export default function MerchantAPIForm() {
                 autoComplete="new-text"
               ></TextField>
             </Box>
-            <Box className="col-6">
+            <Box className="col-12 col-md-6">
               <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
                 City
               </h4>
@@ -95,7 +99,7 @@ export default function MerchantAPIForm() {
                 autoComplete="new-text"
               ></TextField>
             </Box>
-            <Box className="col-6">
+            <Box className="col-12 col-md-6">
               <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
                 Address Line 2
               </h4>
@@ -109,7 +113,7 @@ export default function MerchantAPIForm() {
                 autoComplete="new-text"
               ></TextField>
             </Box>
-            <Box className="col-6">
+            <Box className="col-12 col-md-6">
               <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
                 Phone
               </h4>

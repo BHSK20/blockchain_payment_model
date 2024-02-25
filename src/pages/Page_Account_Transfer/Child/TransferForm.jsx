@@ -14,18 +14,6 @@ import React from "react";
 export default function TransferForm() {
   return (
     <div className="container px-10 py-5">
-      <Box
-        sx={{
-          fontSize: "2.6vw",
-          fontWeight: 600,
-          color: "black",
-          display: "inline-flex",
-          justifyContent: "start",
-        }}
-      >
-        Transfer
-      </Box>
-      <Divider sx={{ borderColor: "lightgray" }} />
       <Box sx={{ marginTop: "10px" }}>
         <Paper
           sx={{
@@ -38,9 +26,23 @@ export default function TransferForm() {
             padding: "25px",
           }}
         >
+          <Box
+            sx={{
+              fontSize: "3vw",
+              fontWeight: 600,
+              color: "black",
+              display: "inline-flex",
+              justifyContent: "start",
+            }}
+          >
+            Transfer
+          </Box>
+          <Divider sx={{ borderColor: "gray", borderBottomWidth: 1 }} />
           <Box className="row">
-            <Box className="col-9">
-              <h4 style={{ marginBottom: 5, fontWeight: 600 }}>Amount</h4>
+            <Box className="col-12 col-sm-6 col-md-9">
+              <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
+                Amount
+              </h4>
               <TextField
                 label="Enter the amount"
                 variant="outlined"
@@ -51,8 +53,10 @@ export default function TransferForm() {
                 autoComplete="new-text"
               ></TextField>
             </Box>
-            <Box className="col-3">
-              <h4 style={{ marginBottom: 5, fontWeight: 600 }}>Currency</h4>
+            <Box className="col-12 col-sm-6 col-md-3">
+              <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
+                Currency
+              </h4>
               <FormControl size="small" fullWidth>
                 <InputLabel id="demo-simple-select-label">Currency</InputLabel>
                 <Select

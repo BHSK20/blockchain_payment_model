@@ -14,6 +14,7 @@ import Page_About from './pages/Page_About/Page_About';
 import Page_Login from './pages/Page_Login/Page_Login';
 import Page_Signup from './pages/Page_Signup/Page_Signup';
 import Page_Missing from './pages/Page_Missing/Page_Missing';
+import Page_Account_Profile from './pages/Page_Account_Profile/Page_Account_Profile';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path='exchange' element={<Page_Account_Exchange />}></Route>
           <Route path='merchantapi' element={<Page_Account_MerchantAPI />}></Route>
           <Route path='orders' element={<Page_Account_Orders />}></Route>
+          <Route path='profile' element={<Page_Account_Profile />}></Route>
         </Route>
         <Route path='/*' element={<Page_Missing />}></Route>
       </Routes>
