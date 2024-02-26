@@ -3,6 +3,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import { HiOutlineCog, HiOutlineLogout, HiOutlineUser } from "react-icons/hi";
+import { MdOutlineLockReset } from "react-icons/md";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -41,18 +42,19 @@ export default function Header() {
                     onClick={() => navigate("/account/profile")}
                     className={classNames(
                       active && "bg-gray-100",
-                      "active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200",
+                      "active:bg-gray-200 rounded-sm px-2 py-2 text-gray-700 cursor-pointer focus:bg-gray-200",
                       "flex items-center gap-2"
+                      // "justify-center"
                     )}
                   >
                     <span className="text-xl">
                       <HiOutlineUser />
                     </span>
-                    Profile
+                    <span>Profile</span>
                   </div>
                 )}
               </Menu.Item>
-              <Menu.Item>
+              {/* <Menu.Item>
                 {({ active }) => (
                   <div
                     onClick={() => navigate("/account/settings")}
@@ -68,6 +70,24 @@ export default function Header() {
                     Settings
                   </div>
                 )}
+              </Menu.Item> */}
+              <Menu.Item>
+                {({ active }) => (
+                  <div
+                    onClick={() => navigate("/account/resetpassword")}
+                    className={classNames(
+                      active && "bg-gray-100",
+                      "active:bg-gray-200 rounded-sm px-2 py-2 text-gray-700 cursor-pointer focus:bg-gray-200",
+                      "flex items-center gap-2"
+                      // "justify-center"
+                    )}
+                  >
+                    <span className="text-xl">
+                      <MdOutlineLockReset />
+                    </span>
+                    <span>Reset Password</span>
+                  </div>
+                )}
               </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
@@ -75,14 +95,15 @@ export default function Header() {
                     onClick={() => navigate("/")}
                     className={classNames(
                       active && "bg-gray-100",
-                      "active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200",
+                      "active:bg-gray-200 rounded-sm px-2 py-2 text-gray-700 cursor-pointer focus:bg-gray-200",
                       "flex items-center gap-2"
+                      // "justify-center"
                     )}
                   >
                     <span className="text-xl">
                       <HiOutlineLogout />
                     </span>
-                    Logout
+                    <span>Logout</span>
                   </div>
                 )}
               </Menu.Item>

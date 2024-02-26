@@ -1,4 +1,4 @@
-import { Box, Divider } from "@mui/material";
+import { Box, Divider, Paper } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import React, { useMemo } from "react";
 import { Fail, Success } from "../../../components/label/TransactionLabel";
@@ -60,7 +60,7 @@ export default function TransactionTable() {
       type: "string",
       headerAlign: "center",
       align: "center",
-      width: 250,
+      width: 220,
       renderHeader: () => <span>Type</span>,
       renderCell: (params) => {
         return <span style={{ color: "rgb(2 132 199)" }}>{params.value}</span>;
@@ -71,7 +71,7 @@ export default function TransactionTable() {
       type: "string",
       headerAlign: "center",
       align: "center",
-      width: 250,
+      width: 220,
       renderHeader: () => <span>Date</span>,
       renderCell: (params) => {
         return <span>{params.value}</span>;
@@ -82,7 +82,7 @@ export default function TransactionTable() {
       type: "number",
       headerAlign: "center",
       align: "center",
-      width: 250,
+      width: 220,
       renderHeader: () => <span>Amount</span>,
       renderCell: (params) => {
         return <span>{params.value}</span>;
@@ -93,7 +93,7 @@ export default function TransactionTable() {
       type: "string",
       headerAlign: "center",
       align: "center",
-      width: 250,
+      width: 220,
       renderHeader: () => <span>Currency</span>,
       renderCell: (params) => {
         return <span>{params.value}</span>;
@@ -103,7 +103,7 @@ export default function TransactionTable() {
       field: "status",
       headerAlign: "center",
       align: "center",
-      width: 250,
+      width: 220,
       flex: 1,
       renderHeader: () => <span>Status</span>,
       renderCell: (params) => {
@@ -118,81 +118,95 @@ export default function TransactionTable() {
   ]);
   return (
     <div className="container px-10 py-5">
-      <Box
-        sx={{
-          fontSize: "2.6vw",
-          fontWeight: 600,
-          color: "black",
-          display: "inline-flex",
-          justifyContent: "start",
-        }}
-      >
-        Transactions
-      </Box>
-      <Divider sx={{ borderColor: "lightgray" }} />
-      <Box sx={{ minHeight: 400, marginTop: "10px" }}>
-        <DataGrid
-          autoHeight
-          rows={rows}
-          columns={columns}
+      <Box sx={{ marginTop: "10px" }}>
+        <Paper
           sx={{
-            "&.MuiDataGrid-root": {
-              borderRadius: 2,
-            },
-            "&.MuiDataGrid-root .MuiDataGrid-cell:focus-within": {
-              outline: "none",
-            },
-            "&.MuiDataGrid-root .MuiDataGrid-columnHeader:focus-within": {
-              outline: "none",
-            },
-            "&.MuiDataGrid-root .MuiDataGrid-columnHeader": {
-              backgroundColor: "rgb(23 23 23)",
-              color: "white",
-              fontWeight: 700,
-            },
-            "&.MuiDataGrid-root .MuiDataGrid-columnSeparator": {
-              display: "none",
-            },
-            "&.MuiDataGrid-root .MuiDataGrid-sortIcon": {
-              color: "white",
-            },
-            "&.MuiDataGrid-root .MuiCircularProgress-root": {
-              color: "black",
-            },
-            "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-              color: "black",
-            },
+            boxShadow: 10,
+            borderRadius: 2,
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            padding: "25px",
           }}
-          slots={{
-            toolbar: GridToolbar,
-          }}
-          slotProps={{
-            toolbar: {
-              showQuickFilter: true,
-              quickFilterProps: {
-                debounceMs: 500,
-                placeholder: "Search...",
-                sx: {
-                  width: 300,
-                  marginBottom: 1,
+        >
+          <Box
+            sx={{
+              fontSize: "3vw",
+              fontWeight: 600,
+              color: "black",
+              display: "inline-flex",
+              justifyContent: "start",
+            }}
+          >
+            Transactions
+          </Box>
+          {/* <Divider sx={{ borderColor: "gray", borderBottomWidth: 1 }} /> */}
+          <Box sx={{ minHeight: 400, marginTop: "25px" }}>
+            <DataGrid
+              autoHeight
+              rows={rows}
+              columns={columns}
+              sx={{
+                "&.MuiDataGrid-root": {
+                  borderRadius: 2,
                 },
-              },
-            },
-          }}
-          disableColumnFilter
-          disableColumnSelector
-          pagination
-          pageSizeOptions={[5, 10, 25, 50, 100]}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 25,
-              },
-            },
-          }}
-          getRowId={(row) => row.id}
-          disableRowSelectionOnClick
-        />
+                "&.MuiDataGrid-root .MuiDataGrid-cell:focus-within": {
+                  outline: "none",
+                },
+                "&.MuiDataGrid-root .MuiDataGrid-columnHeader:focus-within": {
+                  outline: "none",
+                },
+                "&.MuiDataGrid-root .MuiDataGrid-columnHeader": {
+                  backgroundColor: "rgb(23 23 23)",
+                  color: "white",
+                  fontWeight: 700,
+                },
+                "&.MuiDataGrid-root .MuiDataGrid-columnSeparator": {
+                  display: "none",
+                },
+                "&.MuiDataGrid-root .MuiDataGrid-sortIcon": {
+                  color: "white",
+                },
+                "&.MuiDataGrid-root .MuiCircularProgress-root": {
+                  color: "black",
+                },
+                "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                  color: "black",
+                },
+              }}
+              slots={{
+                toolbar: GridToolbar,
+              }}
+              slotProps={{
+                toolbar: {
+                  showQuickFilter: true,
+                  quickFilterProps: {
+                    debounceMs: 500,
+                    placeholder: "Search...",
+                    sx: {
+                      width: 300,
+                      marginBottom: 1,
+                    },
+                  },
+                },
+              }}
+              disableColumnFilter
+              disableColumnSelector
+              pagination
+              pageSizeOptions={[5, 10, 25, 50, 100]}
+              initialState={{
+                pagination: {
+                  paginationModel: {
+                    pageSize: 25,
+                  },
+                },
+              }}
+              getRowId={(row) => row.id}
+              disableRowSelectionOnClick
+            />
+          </Box>
+        </Paper>
       </Box>
     </div>
   );

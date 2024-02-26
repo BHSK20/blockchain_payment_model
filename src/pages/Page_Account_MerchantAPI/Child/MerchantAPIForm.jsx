@@ -27,7 +27,7 @@ export default function MerchantAPIForm() {
           >
             MerchantAPI
           </Box>
-          <Divider sx={{ borderColor: "gray", borderBottomWidth: 1 }} />
+          {/* <Divider sx={{ borderColor: "gray", borderBottomWidth: 1 }} /> */}
           <Box className="row">
             <Box className="col-12 col-md-6">
               <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>

@@ -37,7 +37,7 @@ export default function TransferForm() {
           >
             Transfer
           </Box>
-          <Divider sx={{ borderColor: "gray", borderBottomWidth: 1 }} />
+          {/* <Divider sx={{ borderColor: "gray", borderBottomWidth: 1 }} /> */}
           <Box className="row">
             <Box className="col-12 col-sm-6 col-md-9">
               <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
