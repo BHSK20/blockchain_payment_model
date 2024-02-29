@@ -4,8 +4,10 @@ import TransactionTable from "./Child/TransactionTable";
 
 export default function Page_Account_Transactions() {
   return (
-    <div style={{ marginTop: "15px" }}>
-      <Cryptos />
+    <div
+    // Changed: Remove style={{ marginTop: "15px" }}
+    >
+      {/* <Cryptos /> */}
       <TransactionTable />
     </div>
   );

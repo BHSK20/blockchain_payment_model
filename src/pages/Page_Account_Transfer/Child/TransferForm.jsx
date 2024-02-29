@@ -13,8 +13,8 @@ import React from "react";
 
 export default function TransferForm() {
   return (
-    <div className="container px-10 py-5">
-      <Box sx={{ marginTop: "10px" }}>
+    <div className="container px-10 py-3">
+      <Box sx={{ marginTop: "10px", minHeight: 600 }}>
         <Paper
           sx={{
             boxShadow: 10,
@@ -28,7 +28,8 @@ export default function TransferForm() {
         >
           <Box
             sx={{
-              fontSize: "3vw",
+              // fontSize: "3vw",
+              fontSize: "45px",
               fontWeight: 600,
               color: "black",
               display: "inline-flex",
@@ -39,8 +40,8 @@ export default function TransferForm() {
           </Box>
           {/* <Divider sx={{ borderColor: "gray", borderBottomWidth: 1 }} /> */}
           <Box className="row">
-            <Box className="col-12 col-sm-6 col-md-9">
-              <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
+            <Box className="col-12 col-sm-6 col-md-8">
+              <h4 style={{ marginTop: 35, marginBottom: 10, fontWeight: 600 }}>
                 Amount
               </h4>
               <TextField
@@ -53,8 +54,8 @@ export default function TransferForm() {
                 autoComplete="new-text"
               ></TextField>
             </Box>
-            <Box className="col-12 col-sm-6 col-md-3">
-              <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
+            <Box className="col-12 col-sm-6 col-md-4">
+              <h4 style={{ marginTop: 35, marginBottom: 10, fontWeight: 600 }}>
                 Currency
               </h4>
               <FormControl size="small" fullWidth>
@@ -78,7 +79,7 @@ export default function TransferForm() {
               </FormControl>
             </Box>
             <Box className="col-12">
-              <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
+              <h4 style={{ marginTop: 35, marginBottom: 10, fontWeight: 600 }}>
                 Email of the recipient
               </h4>
               <TextField
@@ -92,7 +93,7 @@ export default function TransferForm() {
               ></TextField>
             </Box>
             <Box className="col-12">
-              <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
+              <h4 style={{ marginTop: 35, marginBottom: 10, fontWeight: 600 }}>
                 Note for recipient (Optional)
               </h4>
               <TextField
@@ -108,7 +109,7 @@ export default function TransferForm() {
               ></TextField>
             </Box>
           </Box>
-          <Box sx={{ textAlign: "right" }}>
+          <Box sx={{ textAlign: "right", marginTop: 3 }}>
             <Button
               className="px-8"
               type="submit"

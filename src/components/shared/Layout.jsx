@@ -10,7 +10,7 @@ export default function Layout() {
       <Sidebar />
       <div className="flex-1">
         <Header />
-        <div className="p-4">
+        <div className="p-4" style={{ backgroundColor: "#dddddd" }}>
           <Outlet />
         </div>
       </div>

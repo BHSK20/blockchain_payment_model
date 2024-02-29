@@ -3,8 +3,8 @@ import React from "react";
 
 export default function MerchantAPIForm() {
   return (
-    <div className="container px-10 py-5">
-      <Box sx={{ marginTop: "10px" }}>
+    <div className="container px-10 py-3">
+      <Box sx={{ marginTop: "10px", minHeight: 600 }}>
         <Paper
           sx={{
             boxShadow: 10,
@@ -18,7 +18,8 @@ export default function MerchantAPIForm() {
         >
           <Box
             sx={{
-              fontSize: "3vw",
+              // fontSize: "3vw",
+              fontSize: "45px",
               fontWeight: 600,
               color: "black",
               display: "inline-flex",
@@ -30,7 +31,7 @@ export default function MerchantAPIForm() {
           {/* <Divider sx={{ borderColor: "gray", borderBottomWidth: 1 }} /> */}
           <Box className="row">
             <Box className="col-12 col-md-6">
-              <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
+              <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
                 Company Name
               </h4>
               <TextField
@@ -44,7 +45,7 @@ export default function MerchantAPIForm() {
               ></TextField>
             </Box>
             <Box className="col-12 col-md-6">
-              <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
+              <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
                 Country
               </h4>
               <TextField
@@ -58,7 +59,7 @@ export default function MerchantAPIForm() {
               ></TextField>
             </Box>
             <Box className="col-12 col-md-6">
-              <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
+              <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
                 ZIP Code/Postal Code
               </h4>
               <TextField
@@ -72,7 +73,7 @@ export default function MerchantAPIForm() {
               ></TextField>
             </Box>
             <Box className="col-12 col-md-6">
-              <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
+              <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
                 City
               </h4>
               <TextField
@@ -86,7 +87,7 @@ export default function MerchantAPIForm() {
               ></TextField>
             </Box>
             <Box className="col-12">
-              <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
+              <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
                 Address Line 1
               </h4>
               <TextField
@@ -100,7 +101,7 @@ export default function MerchantAPIForm() {
               ></TextField>
             </Box>
             <Box className="col-12 col-md-6">
-              <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
+              <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
                 Address Line 2
               </h4>
               <TextField
@@ -114,7 +115,7 @@ export default function MerchantAPIForm() {
               ></TextField>
             </Box>
             <Box className="col-12 col-md-6">
-              <h4 style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}>
+              <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
                 Phone
               </h4>
               <TextField
@@ -129,7 +130,7 @@ export default function MerchantAPIForm() {
             </Box>
           </Box>
           <Box sx={{ textAlign: "center", marginTop: 3 }}>
-            <h4 className="fs-5" style={{ marginBottom: 5, fontWeight: 700 }}>
+            <h4 className="fs-5" style={{ marginBottom: 8, fontWeight: 700 }}>
               I hereby confirm that all the provided information is CORRECT and
               TRUE.
             </h4>

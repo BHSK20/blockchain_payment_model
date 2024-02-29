@@ -117,7 +117,7 @@ export default function TransactionTable() {
     },
   ]);
   return (
-    <div className="container px-10 py-5">
+    <div className="container px-10 py-3">
       <Box sx={{ marginTop: "10px" }}>
         <Paper
           sx={{
@@ -132,7 +132,8 @@ export default function TransactionTable() {
         >
           <Box
             sx={{
-              fontSize: "3vw",
+              // fontSize: "3vw",
+              fontSize: "45px",
               fontWeight: 600,
               color: "black",
               display: "inline-flex",

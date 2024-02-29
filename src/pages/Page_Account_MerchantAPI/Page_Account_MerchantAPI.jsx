@@ -4,8 +4,10 @@ import MerchantAPIForm from "./Child/MerchantAPIForm";
 
 export default function Page_Account_MerchantAPI() {
   return (
-    <div style={{ marginTop: "15px" }}>
-      <Cryptos />
+    <div
+    // Changed: Remove style={{ marginTop: "15px" }}
+    >
+      {/* <Cryptos /> */}
       <MerchantAPIForm />
     </div>
   );
