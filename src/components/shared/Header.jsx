@@ -4,15 +4,24 @@ import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import { HiOutlineCog, HiOutlineLogout, HiOutlineUser } from "react-icons/hi";
 import { MdOutlineLockReset } from "react-icons/md";
+import { RiMoneyDollarCircleFill } from "react-icons/ri";
 
 export default function Header() {
   const navigate = useNavigate();
 
   return (
     <div className="bg-white h-16 flex justify-center sm:px-16 sm:justify-between items-center space-x-3">
-      <div className="account-balance">Account Balance</div>
+      <div
+        className="account-balance flex justify-center items-center gap-1"
+        style={{ color: "#ffbb11" }}
+      >
+        <RiMoneyDollarCircleFill className="text-4xl" />
+        <span className="text-xl" style={{ fontWeight: 500 }}>
+          100000
+        </span>
+      </div>
       {/* Changed: Replace gap-3 by space-x-3 */}
-      <div className="account-details flex justify-center items-center space-x-1 md:space-x-3">
+      <div className="account-details flex justify-center items-center space-x-1 md:space-x-2">
         <div className="avatar">
           <Menu as="div" className="relative">
             <div>
@@ -115,7 +124,15 @@ export default function Header() {
           </Menu>
         </div>
         <div className="information">
-          <p style={{ fontSize: "17px", color: "rgb(2 132 199" }}>John Doe</p>
+          <p
+            style={{
+              fontSize: "17px",
+              color: "rgb(2 132 199",
+              fontWeight: 500,
+            }}
+          >
+            John Doe
+          </p>
           <p style={{ fontSize: "15px" }}>johndoe@gmail.com</p>
         </div>
       </div>
