@@ -3,155 +3,154 @@ import React from "react";
 
 export default function MerchantAPIForm() {
   return (
-    <div className="container px-10 py-3">
-      <Box sx={{ marginTop: "10px", minHeight: 600 }}>
-        <Paper
+    <Box sx={{ marginTop: "10px", minHeight: 600 }}>
+      <Paper
+        sx={{
+          boxShadow: 10,
+          borderRadius: 2,
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          padding: "25px",
+          minHeight: "600px",
+        }}
+      >
+        <Box
           sx={{
-            boxShadow: 10,
-            borderRadius: 2,
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            padding: "25px",
+            // fontSize: "3vw",
+            fontSize: "45px",
+            fontWeight: 600,
+            color: "black",
+            display: "inline-flex",
+            justifyContent: "start",
           }}
         >
-          <Box
+          MerchantAPI
+        </Box>
+        {/* <Divider sx={{ borderColor: "gray", borderBottomWidth: 1 }} /> */}
+        <Box className="row">
+          <Box className="col-12 col-md-6">
+            <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
+              Company Name
+            </h4>
+            <TextField
+              label="Enter the company name"
+              variant="outlined"
+              type="text"
+              size="small"
+              fullWidth
+              required
+              autoComplete="new-text"
+            ></TextField>
+          </Box>
+          <Box className="col-12 col-md-6">
+            <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
+              Country
+            </h4>
+            <TextField
+              label="Enter the country"
+              variant="outlined"
+              type="text"
+              size="small"
+              fullWidth
+              required
+              autoComplete="new-text"
+            ></TextField>
+          </Box>
+          <Box className="col-12 col-md-6">
+            <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
+              ZIP Code/Postal Code
+            </h4>
+            <TextField
+              label="Enter the code"
+              variant="outlined"
+              type="text"
+              size="small"
+              fullWidth
+              required
+              autoComplete="new-text"
+            ></TextField>
+          </Box>
+          <Box className="col-12 col-md-6">
+            <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
+              City
+            </h4>
+            <TextField
+              label="Enter the city"
+              variant="outlined"
+              type="text"
+              size="small"
+              fullWidth
+              required
+              autoComplete="new-text"
+            ></TextField>
+          </Box>
+          <Box className="col-12">
+            <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
+              Address Line 1
+            </h4>
+            <TextField
+              label="Enter the address line 1"
+              variant="outlined"
+              type="text"
+              size="small"
+              fullWidth
+              required
+              autoComplete="new-text"
+            ></TextField>
+          </Box>
+          <Box className="col-12 col-md-6">
+            <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
+              Address Line 2
+            </h4>
+            <TextField
+              label="Enter the address line 2"
+              variant="outlined"
+              type="text"
+              size="small"
+              fullWidth
+              required
+              autoComplete="new-text"
+            ></TextField>
+          </Box>
+          <Box className="col-12 col-md-6">
+            <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
+              Phone
+            </h4>
+            <TextField
+              label="Enter the phone"
+              variant="outlined"
+              type="text"
+              size="small"
+              fullWidth
+              required
+              autoComplete="new-text"
+            ></TextField>
+          </Box>
+        </Box>
+        <Box sx={{ textAlign: "center", marginTop: 3 }}>
+          <h4 className="fs-5" style={{ marginBottom: 8, fontWeight: 700 }}>
+            I hereby confirm that all the provided information is CORRECT and
+            TRUE.
+          </h4>
+          <Button
+            className="px-8"
+            type="submit"
+            variant="contained"
+            size="large"
             sx={{
-              // fontSize: "3vw",
-              fontSize: "45px",
-              fontWeight: 600,
-              color: "black",
-              display: "inline-flex",
-              justifyContent: "start",
+              borderRadius: "4px",
+              marginTop: 1,
+              textTransform: "none",
+              backgroundColor: "#0284c7",
+              fontSize: "16px",
             }}
           >
-            MerchantAPI
-          </Box>
-          {/* <Divider sx={{ borderColor: "gray", borderBottomWidth: 1 }} /> */}
-          <Box className="row">
-            <Box className="col-12 col-md-6">
-              <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
-                Company Name
-              </h4>
-              <TextField
-                label="Enter the company name"
-                variant="outlined"
-                type="text"
-                size="small"
-                fullWidth
-                required
-                autoComplete="new-text"
-              ></TextField>
-            </Box>
-            <Box className="col-12 col-md-6">
-              <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
-                Country
-              </h4>
-              <TextField
-                label="Enter the country"
-                variant="outlined"
-                type="text"
-                size="small"
-                fullWidth
-                required
-                autoComplete="new-text"
-              ></TextField>
-            </Box>
-            <Box className="col-12 col-md-6">
-              <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
-                ZIP Code/Postal Code
-              </h4>
-              <TextField
-                label="Enter the code"
-                variant="outlined"
-                type="text"
-                size="small"
-                fullWidth
-                required
-                autoComplete="new-text"
-              ></TextField>
-            </Box>
-            <Box className="col-12 col-md-6">
-              <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
-                City
-              </h4>
-              <TextField
-                label="Enter the city"
-                variant="outlined"
-                type="text"
-                size="small"
-                fullWidth
-                required
-                autoComplete="new-text"
-              ></TextField>
-            </Box>
-            <Box className="col-12">
-              <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
-                Address Line 1
-              </h4>
-              <TextField
-                label="Enter the address line 1"
-                variant="outlined"
-                type="text"
-                size="small"
-                fullWidth
-                required
-                autoComplete="new-text"
-              ></TextField>
-            </Box>
-            <Box className="col-12 col-md-6">
-              <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
-                Address Line 2
-              </h4>
-              <TextField
-                label="Enter the address line 2"
-                variant="outlined"
-                type="text"
-                size="small"
-                fullWidth
-                required
-                autoComplete="new-text"
-              ></TextField>
-            </Box>
-            <Box className="col-12 col-md-6">
-              <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
-                Phone
-              </h4>
-              <TextField
-                label="Enter the phone"
-                variant="outlined"
-                type="text"
-                size="small"
-                fullWidth
-                required
-                autoComplete="new-text"
-              ></TextField>
-            </Box>
-          </Box>
-          <Box sx={{ textAlign: "center", marginTop: 3 }}>
-            <h4 className="fs-5" style={{ marginBottom: 8, fontWeight: 700 }}>
-              I hereby confirm that all the provided information is CORRECT and
-              TRUE.
-            </h4>
-            <Button
-              className="px-8"
-              type="submit"
-              variant="contained"
-              size="large"
-              sx={{
-                borderRadius: "4px",
-                marginTop: 1,
-                textTransform: "none",
-                backgroundColor: "#0284c7",
-                fontSize: "16px",
-              }}
-            >
-              Save
-            </Button>
-          </Box>
-        </Paper>
-      </Box>
-    </div>
+            Save
+          </Button>
+        </Box>
+      </Paper>
+    </Box>
   );
 }

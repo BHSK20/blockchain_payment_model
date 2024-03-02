@@ -117,98 +117,97 @@ export default function TransactionTable() {
     },
   ]);
   return (
-    <div className="container px-10 py-3">
-      <Box sx={{ marginTop: "10px" }}>
-        <Paper
+    <Box sx={{ marginTop: "10px", minHeight: 600 }}>
+      <Paper
+        sx={{
+          boxShadow: 10,
+          borderRadius: 2,
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          padding: "25px",
+          minHeight: "600px",
+        }}
+      >
+        <Box
           sx={{
-            boxShadow: 10,
-            borderRadius: 2,
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            padding: "25px",
+            // fontSize: "3vw",
+            fontSize: "45px",
+            fontWeight: 600,
+            color: "black",
+            display: "inline-flex",
+            justifyContent: "start",
           }}
         >
-          <Box
+          Transactions
+        </Box>
+        {/* <Divider sx={{ borderColor: "gray", borderBottomWidth: 1 }} /> */}
+        <Box sx={{ minHeight: 400, marginTop: "25px" }}>
+          <DataGrid
+            autoHeight
+            rows={rows}
+            columns={columns}
             sx={{
-              // fontSize: "3vw",
-              fontSize: "45px",
-              fontWeight: 600,
-              color: "black",
-              display: "inline-flex",
-              justifyContent: "start",
+              "&.MuiDataGrid-root": {
+                borderRadius: 2,
+              },
+              "&.MuiDataGrid-root .MuiDataGrid-cell:focus-within": {
+                outline: "none",
+              },
+              "&.MuiDataGrid-root .MuiDataGrid-columnHeader:focus-within": {
+                outline: "none",
+              },
+              "&.MuiDataGrid-root .MuiDataGrid-columnHeader": {
+                backgroundColor: "rgb(23 23 23)",
+                color: "white",
+                fontWeight: 700,
+              },
+              "&.MuiDataGrid-root .MuiDataGrid-columnSeparator": {
+                display: "none",
+              },
+              "&.MuiDataGrid-root .MuiDataGrid-sortIcon": {
+                color: "white",
+              },
+              "&.MuiDataGrid-root .MuiCircularProgress-root": {
+                color: "black",
+              },
+              "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                color: "black",
+              },
             }}
-          >
-            Transactions
-          </Box>
-          {/* <Divider sx={{ borderColor: "gray", borderBottomWidth: 1 }} /> */}
-          <Box sx={{ minHeight: 400, marginTop: "25px" }}>
-            <DataGrid
-              autoHeight
-              rows={rows}
-              columns={columns}
-              sx={{
-                "&.MuiDataGrid-root": {
-                  borderRadius: 2,
-                },
-                "&.MuiDataGrid-root .MuiDataGrid-cell:focus-within": {
-                  outline: "none",
-                },
-                "&.MuiDataGrid-root .MuiDataGrid-columnHeader:focus-within": {
-                  outline: "none",
-                },
-                "&.MuiDataGrid-root .MuiDataGrid-columnHeader": {
-                  backgroundColor: "rgb(23 23 23)",
-                  color: "white",
-                  fontWeight: 700,
-                },
-                "&.MuiDataGrid-root .MuiDataGrid-columnSeparator": {
-                  display: "none",
-                },
-                "&.MuiDataGrid-root .MuiDataGrid-sortIcon": {
-                  color: "white",
-                },
-                "&.MuiDataGrid-root .MuiCircularProgress-root": {
-                  color: "black",
-                },
-                "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-                  color: "black",
-                },
-              }}
-              slots={{
-                toolbar: GridToolbar,
-              }}
-              slotProps={{
-                toolbar: {
-                  showQuickFilter: true,
-                  quickFilterProps: {
-                    debounceMs: 500,
-                    placeholder: "Search...",
-                    sx: {
-                      width: 300,
-                      marginBottom: 1,
-                    },
+            slots={{
+              toolbar: GridToolbar,
+            }}
+            slotProps={{
+              toolbar: {
+                showQuickFilter: true,
+                quickFilterProps: {
+                  debounceMs: 500,
+                  placeholder: "Search...",
+                  sx: {
+                    width: 300,
+                    marginBottom: 1,
                   },
                 },
-              }}
-              disableColumnFilter
-              disableColumnSelector
-              pagination
-              pageSizeOptions={[5, 10, 25, 50, 100]}
-              initialState={{
-                pagination: {
-                  paginationModel: {
-                    pageSize: 25,
-                  },
+              },
+            }}
+            disableColumnFilter
+            disableColumnSelector
+            pagination
+            pageSizeOptions={[5, 10, 25, 50, 100]}
+            initialState={{
+              pagination: {
+                paginationModel: {
+                  pageSize: 25,
                 },
-              }}
-              getRowId={(row) => row.id}
-              disableRowSelectionOnClick
-            />
-          </Box>
-        </Paper>
-      </Box>
-    </div>
+              },
+            }}
+            getRowId={(row) => row.id}
+            disableRowSelectionOnClick
+          />
+        </Box>
+      </Paper>
+    </Box>
   );
 }
