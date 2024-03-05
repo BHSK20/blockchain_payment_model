@@ -56,7 +56,7 @@ export default function Page_Account_Profile() {
                     value="1"
                     sx={{
                       textTransform: "none",
-                      fontSize: 17,
+                      fontSize: 18,
                       fontWeight: 500,
                       marginRight: 4,
                       color: "rgba(0, 0, 0, 0.85)",
@@ -75,7 +75,7 @@ export default function Page_Account_Profile() {
                     value="2"
                     sx={{
                       textTransform: "none",
-                      fontSize: 17,
+                      fontSize: 18,
                       fontWeight: 500,
                       color: "rgba(0, 0, 0, 0.85)",
                       "&:hover": {
