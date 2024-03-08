@@ -19,7 +19,10 @@ export default function Page_Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    navigate("/account/transactions");
+    if (!emailError) {
+      navigate("/account/transactions");
+    }
+    return;
   };
 
   const [showPassword, setShowPassword] = useState(false);
@@ -27,6 +30,21 @@ export default function Page_Login() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  // ----------------------------------------------------------------------
+  // Email Validation
+  const [emailError, setEmailError] = useState(false);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+    const regexEmail =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (regexEmail.test(event.target.value) || event.target.value === "") {
+      setEmailError(false);
+    } else {
+      setEmailError(true);
+    }
+  };
+  // ----------------------------------------------------------------------
 
   return (
     <>
@@ -93,7 +111,13 @@ export default function Page_Login() {
                     fullWidth
                     required
                     autoComplete="new-text"
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => handleEmailChange(e)}
+                    error={emailError}
+                    helperText={emailError ? "Invalid email format" : ""}
+                    onInvalid={(e) =>
+                      e.target.setCustomValidity("Please fill out this field.")
+                    }
+                    onInput={(e) => e.target.setCustomValidity("")}
                   ></TextField>
                   <h4
                     style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}
@@ -106,6 +130,10 @@ export default function Page_Login() {
                     fullWidth
                     required
                     onChange={(e) => setPassword(e.target.value)}
+                    onInvalid={(e) =>
+                      e.target.setCustomValidity("Please fill out this field.")
+                    }
+                    onInput={(e) => e.target.setCustomValidity("")}
                   >
                     <InputLabel htmlFor="outlined-adornment-password">
                       Enter your password
