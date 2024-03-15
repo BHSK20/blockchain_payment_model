@@ -10,20 +10,48 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signupUser } from "../../redux/apiRequest";
+import Swal from "sweetalert2";
 
 export default function Page_Signup() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    if (!emailError) {
-      navigate("/login");
+    if (emailError) {
+      Swal.fire({
+        title: "The form cannot be submitted",
+        text: "Please use a valid email address.",
+        icon: "error",
+        confirmButtonColor: "#5a67d8",
+      });
+      return;
     }
-    return;
+    // -------------------- FIX LATER --------------------
+    // const newUser = {
+    //   name: name,
+    //   email: email,
+    //   password: password,
+    // };
+    // try {
+    //   await dispatch({ type: "saga/signupUser", payload: newUser }).unwrap();
+    //   navigate("/login");
+    // } catch (error) {
+    //   console.log("signup error");
+    // }
+    // ---------------------------------------------------
+    const newUser = {
+      name: name,
+      email: email,
+      password: password,
+    };
+    signupUser(newUser, dispatch, navigate);
   };
 
   const [showPassword, setShowPassword] = useState(false);

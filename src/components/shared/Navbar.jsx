@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import { FcBullish } from "react-icons/fc";
 import { FcMindMap } from "react-icons/fc";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
@@ -10,6 +11,8 @@ export default function Navbar() {
   const handleClick = () => {
     setNav(!nav);
   };
+
+  const user = useSelector((state) => state.auth.login.currentUser);
 
   return (
     <div className="w-screen h-[80px] z-10 bg-zinc-200 fixed drop-shadow-lg">
@@ -20,12 +23,12 @@ export default function Navbar() {
           <h1 className="text-3xl font-bold mr-4 sm:text-4xl">BKpay</h1>
           <ul className="hidden md:flex">
             <li>
-              <Link to="/" smooth={true} duration={500}>
+              <Link to="/" smooth="true" duration={500}>
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/about" smooth={true} offset={-200} duration={500}>
+              <Link to="/about" smooth="true" offset={-200} duration={500}>
                 About
               </Link>
             </li>
@@ -47,7 +50,7 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="hidden md:flex pr-4 xl:-translate-x-36 translate-x-0">
-          <button
+          {/* <button
             className="border-none bg-transparent text-black mr-4"
             onClick={() => navigate("/login")}
           >
@@ -55,7 +58,7 @@ export default function Navbar() {
           </button>
           <button className="px-8 py-3" onClick={() => navigate("/signup")}>
             Sign Up
-          </button>
+          </button> */}
         </div>
         <div className="md:hidden" onClick={handleClick}>
           {nav ? <HiX className="w-5" /> : <HiOutlineMenu className="w-5" />}
