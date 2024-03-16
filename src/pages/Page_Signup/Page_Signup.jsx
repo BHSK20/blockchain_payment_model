@@ -10,9 +10,10 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signupUser } from "../../redux/apiRequest";
 import Swal from "sweetalert2";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Page_Signup() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ export default function Page_Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const signupStatus = useSelector((state) => state.auth.signup);
   const handleSignup = async (e) => {
     e.preventDefault();
     if (emailError) {
@@ -237,6 +239,24 @@ export default function Page_Signup() {
                   </Box>
                 </Box>
               </form>
+              {signupStatus.isFetching && (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "rgba(255, 255, 255, 0.5)",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    zIndex: 9999,
+                  }}
+                >
+                  <CircularProgress />
+                </div>
+              )}
             </Container>
           </Paper>
         </Container>

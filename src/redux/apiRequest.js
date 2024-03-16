@@ -17,6 +17,7 @@ export const signupUser = async (user, dispatch, navigate) => {
     try {
         await axios.post("https://on-shop-blockchain.onrender.com/register", user)
         dispatch(signupSuccess())
+        localStorage.setItem("signupSuccess", "true")
         navigate("/login")
     } catch (err) {
         dispatch(signupFailed())

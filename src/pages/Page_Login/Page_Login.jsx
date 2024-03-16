@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/shared/Navbar";
 import Footer from "../../components/shared/Footer";
 import { Box, Button, Container, Paper, TextField } from "@mui/material";
@@ -10,9 +10,10 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/apiRequest";
 import Swal from "sweetalert2";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Page_Login() {
   const navigate = useNavigate();
@@ -21,6 +22,20 @@ export default function Page_Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    const signupSuccess = localStorage.getItem("signupSuccess");
+    if (signupSuccess) {
+      Swal.fire({
+        title: "You have signed up successfully",
+        text: "Please check your email to verify your account.",
+        icon: "success",
+        confirmButtonColor: "#5a67d8",
+      });
+      localStorage.removeItem("signupSuccess");
+    }
+  }, []);
+
+  const loginStatus = useSelector((state) => state.auth.login);
   const handleLogin = async (e) => {
     e.preventDefault();
     if (emailError) {
@@ -230,6 +245,24 @@ export default function Page_Login() {
                   </Box>
                 </Box>
               </form>
+              {loginStatus.isFetching && (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "rgba(255, 255, 255, 0.5)",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    zIndex: 9999,
+                  }}
+                >
+                  <CircularProgress />
+                </div>
+              )}
             </Container>
           </Paper>
         </Container>

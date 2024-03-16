@@ -11,7 +11,8 @@ const authSlice = createSlice({
         signup: {
             isFetching: false,
             error: false,
-            success: false
+            success: false,
+            alertShown: false
         }
     },
     reducers: {
