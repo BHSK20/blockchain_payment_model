@@ -1,13 +1,18 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import { HiOutlineCog, HiOutlineLogout, HiOutlineUser } from "react-icons/hi";
 import { MdOutlineLockReset } from "react-icons/md";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../redux/apiRequest";
 
 export default function Header() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // const userInformation = useSelector((state) => state.auth.login.currentUser);
+  const userInformation = JSON.parse(localStorage.getItem("user"));
   return (
     <div className="bg-white h-16 flex justify-center sm:px-16 sm:justify-between items-center space-x-3">
       <div
@@ -103,7 +108,7 @@ export default function Header() {
                 <Menu.Item>
                   {({ active }) => (
                     <div
-                      onClick={() => navigate("/")}
+                      onClick={() => logoutUser(dispatch, navigate)}
                       className={classNames(
                         active && "bg-gray-100",
                         "active:bg-gray-200 rounded-sm px-2 py-2 text-gray-700 cursor-pointer focus:bg-gray-200",
@@ -130,9 +135,9 @@ export default function Header() {
               fontWeight: 500,
             }}
           >
-            John Doe
+            {userInformation.name}
           </p>
-          <p style={{ fontSize: "15px" }}>johndoe@gmail.com</p>
+          <p style={{ fontSize: "15px" }}>{userInformation.email}</p>
         </div>
       </div>
     </div>

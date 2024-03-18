@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/shared/Navbar";
 import Footer from "../../components/shared/Footer";
 import { Box, Button, Container, Paper, TextField } from "@mui/material";
@@ -22,6 +22,12 @@ export default function Page_Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("token") != null) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   const signupStatus = useSelector((state) => state.auth.signup);
   const handleSignup = async (e) => {

@@ -1,9 +1,14 @@
 import React from "react";
 import bgImg from "../../assets/blockchain-veed-remove-background.png";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Hero() {
   const navigate = useNavigate();
+
+  // const userInformation = useSelector((state) => state.auth.login.currentUser);
+  const userInformation = JSON.parse(localStorage.getItem("user"));
+
   return (
     <div
       name="home"
@@ -21,7 +26,16 @@ export default function Hero() {
           <p className="text-base md:text-lg lg:text-xl xl:text-2xl text-center md:text-left">
             Crypto Transfer API, Crypto Payment Gateway
           </p>
-          <button className="py-3 px-6 w-full md:w-[60%] my-4">
+          <button
+            className="py-3 px-6 w-full md:w-[60%] my-4"
+            onClick={() => {
+              if (userInformation) {
+                navigate("/account/transactions");
+              } else {
+                navigate("/login");
+              }
+            }}
+          >
             Get Started
           </button>
         </div>

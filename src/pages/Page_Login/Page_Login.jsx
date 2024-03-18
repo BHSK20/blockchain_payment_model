@@ -23,6 +23,12 @@ export default function Page_Login() {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
+    if (localStorage.getItem("token") != null) {
+      navigate("/");
+    }
+  }, [navigate]);
+
+  useEffect(() => {
     const signupSuccess = localStorage.getItem("signupSuccess");
     if (signupSuccess) {
       Swal.fire({

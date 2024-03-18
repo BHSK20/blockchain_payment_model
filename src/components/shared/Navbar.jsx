@@ -2,17 +2,20 @@ import React, { useState } from "react";
 // import { FcBullish } from "react-icons/fc";
 import { FcMindMap } from "react-icons/fc";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { logoutUser } from "../../redux/apiRequest";
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [nav, setNav] = useState(false);
   const handleClick = () => {
     setNav(!nav);
   };
 
-  const user = useSelector((state) => state.auth.login.currentUser);
+  // const userInformation = useSelector((state) => state.auth.login.currentUser);
+  const userInformation = JSON.parse(localStorage.getItem("user"));
 
   return (
     <div className="w-screen h-[80px] z-10 bg-zinc-200 fixed drop-shadow-lg">
@@ -50,17 +53,38 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="hidden md:flex pr-4 xl:-translate-x-36 translate-x-0">
-          {/* TO DO */}
-          <button
-            className="border-none bg-transparent text-black mr-4"
-            onClick={() => navigate("/login")}
-          >
-            Log In
-          </button>
-          <button className="px-8 py-3" onClick={() => navigate("/signup")}>
-            Sign Up
-          </button>
-          {/* TO DO */}
+          {userInformation ? (
+            <>
+              <div
+                className="mr-4"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                Hi, {userInformation.email}
+              </div>
+              <button
+                className="px-8 py-3"
+                onClick={() => logoutUser(dispatch, navigate)}
+              >
+                Log Out
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                className="border-none bg-transparent text-black mr-4"
+                onClick={() => navigate("/login")}
+              >
+                Log In
+              </button>
+              <button className="px-8 py-3" onClick={() => navigate("/signup")}>
+                Sign Up
+              </button>
+            </>
+          )}
         </div>
         <div className="md:hidden" onClick={handleClick}>
           {nav ? <HiX className="w-5" /> : <HiOutlineMenu className="w-5" />}
@@ -74,15 +98,38 @@ export default function Navbar() {
           <Link to="/about">About</Link>
         </li>
         <div className="flex flex-col my-4">
-          <button
-            className="bg-transparent text-sky-600 px-8 py-3 mb-4"
-            onClick={() => navigate("/login")}
-          >
-            Log In
-          </button>
-          <button className="px-8 py-3" onClick={() => navigate("/signup")}>
-            Sign Up
-          </button>
+          {userInformation ? (
+            <>
+              <div
+                className="mb-4"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                Hi, {userInformation.email}
+              </div>
+              <button
+                className="px-8 py-3"
+                onClick={() => logoutUser(dispatch, navigate)}
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                className="bg-transparent text-sky-600 px-8 py-3 mb-4"
+                onClick={() => navigate("/login")}
+              >
+                Log In
+              </button>
+              <button className="px-8 py-3" onClick={() => navigate("/signup")}>
+                Sign Up
+              </button>
+            </>
+          )}
         </div>
       </ul>
     </div>
