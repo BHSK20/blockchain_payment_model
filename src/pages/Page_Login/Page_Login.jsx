@@ -63,7 +63,19 @@ export default function Page_Login() {
       email: email,
       password: password,
     };
+    // ---------------------------------------------------
     loginUser(newUser, dispatch, navigate);
+    // try {
+    //   loginUser(newUser, dispatch, navigate);
+    // } catch (err) {
+    //   Swal.fire({
+    //     title: "You have signed up successfully",
+    //     text: "Please check your email to verify your account.",
+    //     icon: "success",
+    //     confirmButtonColor: "#5a67d8",
+    //   });
+    // }
+    // ---------------------------------------------------
   };
 
   const [showPassword, setShowPassword] = useState(false);

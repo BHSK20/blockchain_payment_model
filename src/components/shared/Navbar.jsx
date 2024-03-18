@@ -50,7 +50,8 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="hidden md:flex pr-4 xl:-translate-x-36 translate-x-0">
-          {/* <button
+          {/* TO DO */}
+          <button
             className="border-none bg-transparent text-black mr-4"
             onClick={() => navigate("/login")}
           >
@@ -58,7 +59,8 @@ export default function Navbar() {
           </button>
           <button className="px-8 py-3" onClick={() => navigate("/signup")}>
             Sign Up
-          </button> */}
+          </button>
+          {/* TO DO */}
         </div>
         <div className="md:hidden" onClick={handleClick}>
           {nav ? <HiX className="w-5" /> : <HiOutlineMenu className="w-5" />}

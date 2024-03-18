@@ -8,7 +8,6 @@ import { RiMoneyDollarCircleFill } from "react-icons/ri";
 
 export default function Header() {
   const navigate = useNavigate();
-
   return (
     <div className="bg-white h-16 flex justify-center sm:px-16 sm:justify-between items-center space-x-3">
       <div

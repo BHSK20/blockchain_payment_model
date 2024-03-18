@@ -15,6 +15,7 @@ import Page_Login from './pages/Page_Login/Page_Login';
 import Page_Signup from './pages/Page_Signup/Page_Signup';
 import Page_Missing from './pages/Page_Missing/Page_Missing';
 import Page_Account_Profile from './pages/Page_Account_Profile/Page_Account_Profile';
+import Page_Email_Verification_Id from './pages/Page_Email_Verification_Id/Page_Email_Verification_Id';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/about' element={<Page_About />}></Route>
         <Route path='/login' element={<Page_Login />}></Route>
         <Route path='/signup' element={<Page_Signup />}></Route>
+        <Route path='/email-verification/:emailid' element={<Page_Email_Verification_Id />}></Route>
         <Route path='/account' element={<Layout />}>
           <Route index path='transactions' element={<Page_Account_Transactions />}></Route>
           <Route path='transfer' element={<Page_Account_Transfer />}></Route>

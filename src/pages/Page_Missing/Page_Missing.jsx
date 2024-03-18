@@ -6,7 +6,7 @@ import Footer from "../../components/shared/Footer";
 export default function Page_Missing() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Box
         sx={{
           height: "78vh",
@@ -53,7 +53,7 @@ export default function Page_Missing() {
           We are sorry, but the page you requested was not found
         </Typography>
       </Box>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
