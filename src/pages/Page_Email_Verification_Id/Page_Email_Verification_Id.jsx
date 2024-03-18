@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import Navbar from "../../components/shared/Navbar";
 import Footer from "../../components/shared/Footer";
 import axios from "axios";
+import VerifiedIcon from "@mui/icons-material/Verified";
+import WarningIcon from "@mui/icons-material/Warning";
 
 export default function Page_Email_Verification_Id() {
   const { emailid } = useParams();
@@ -11,9 +13,9 @@ export default function Page_Email_Verification_Id() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // CHANGE TO LINK TO emailid
+        // CHANGE THE API LINK TO emailid
         const response = await axios.get(
-          "https://on-shop-blockchain.onrender.com/register?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoie1wiZW1haWxcIjogXCJnaWFiYW81MTUxNTFAZ21haWwuY29tXCIsIFwibmFtZVwiOiBcInJlY3J1aXRlcjFcIiwgXCJwYXNzd29yZFwiOiBcIiQyYiQxMiRTQzlpODFJNzlnT2hmMW1WZFRFdDEuSklXU2hoMmM1ZWZDMDM3RGxwYm9nV2dkNjNNZWhOV1wifSIsImV4cCI6MTcxMDY2MTgwNH0.QclLlKP5Gx73MgjKwQA34OF8-e5nUl9ib7Mp_Dw7L5w"
+          "https://on-shop-blockchain.onrender.com/register?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoie1wiZW1haWxcIjogXCJnaWFiYW81MTUxNTFAZ21haWwuY29tXCIsIFwibmFtZVwiOiBcImFiY2RoZ1wiLCBcInBhc3N3b3JkXCI6IFwiJDJiJDEyJGhqOXovZnFpWC9zbjZvcTdiQjM5U2VXLzdlVlNKcUs3YjJ4SzNIc1IuWXcyQ3llR0dBckhlXCJ9IiwiZXhwIjoxNzEwNzM1MzU0fQ.g3qD2kJ0BDN_A9EgT9-1lYejpoqStnPZnjEwn5-IjJ4"
         );
         console.log("response", response);
         setVerificationStatus(response.data);
@@ -38,11 +40,61 @@ export default function Page_Email_Verification_Id() {
         }}
       >
         {verificationStatus && verificationStatus.data.public_key ? (
-          // FIX UI HERE
-          <div>Success</div>
+          <Box>
+            <Box sx={{ fontSize: "100px" }}>
+              <VerifiedIcon fontSize="inherit" sx={{ color: "#5cb85c" }} />
+            </Box>
+            <Box
+              sx={{
+                // fontSize: "3vw",
+                fontSize: "75px",
+                fontWeight: 600,
+                color: "black",
+                // display: "inline-flex",
+                // justifyContent: "start",
+              }}
+            >
+              Success
+            </Box>
+            <Typography
+              variant="h1"
+              sx={{
+                fontSize: "25px",
+                marginTop: "10px",
+                color: "black",
+              }}
+            >
+              Your email address was successfully verified.
+            </Typography>
+          </Box>
         ) : (
-          // FIX UI HERE
-          <div>Error</div>
+          <Box>
+            <Box sx={{ fontSize: "100px" }}>
+              <WarningIcon fontSize="inherit" sx={{ color: "#ff0033" }} />
+            </Box>
+            <Box
+              sx={{
+                // fontSize: "3vw",
+                fontSize: "75px",
+                fontWeight: 600,
+                color: "black",
+                // display: "inline-flex",
+                // justifyContent: "start",
+              }}
+            >
+              Error
+            </Box>
+            <Typography
+              variant="h1"
+              sx={{
+                fontSize: "25px",
+                marginTop: "10px",
+                color: "black",
+              }}
+            >
+              Your email address could not be verified.
+            </Typography>
+          </Box>
         )}
       </Box>
       {/* <Footer /> */}
