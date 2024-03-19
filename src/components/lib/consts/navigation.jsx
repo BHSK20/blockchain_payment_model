@@ -9,6 +9,7 @@ import {
   HiOutlineCog,
   HiQuestionMarkCircle,
   HiSwitchHorizontal,
+  HiOutlineIdentification,
 } from "react-icons/hi";
 
 import {
@@ -38,22 +39,22 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     path: "/account/deposit",
     icon: <HiOutlineBuildingLibrary />,
   },
-  {
-    key: "withdraw",
-    label: "Withdraw",
-    path: "/account/withdraw",
-    icon: <HiOutlineBanknotes />,
-  },
-  {
-    key: "exchange",
-    label: "Exchange",
-    path: "/account/exchange",
-    icon: <HiArrowPath />,
-  },
+  // {
+  //   key: "withdraw",
+  //   label: "Withdraw",
+  //   path: "/account/withdraw",
+  //   icon: <HiOutlineBanknotes />,
+  // },
+  // {
+  //   key: "exchange",
+  //   label: "Exchange",
+  //   path: "/account/exchange",
+  //   icon: <HiArrowPath />,
+  // },
   {
     key: "merchantapi",
     label: "Merchant API",
-    path: "/account/merchantapi",
+    path: "/account/merchant-api",
     icon: <HiOutlineBriefcase />,
   },
   {
@@ -61,6 +62,12 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     label: "Orders",
     path: "/account/orders",
     icon: <HiOutlineShoppingCart />,
+  },
+  {
+    key: "kycverification",
+    label: "KYC Verification",
+    path: "/account/kyc-verification",
+    icon: <HiOutlineIdentification />,
   },
 ];
 

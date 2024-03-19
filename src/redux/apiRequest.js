@@ -1,6 +1,7 @@
 import axios from "axios";
 import { loginFailed, loginStart, loginSuccess, logoutSuccess, signupFailed, signupStart, signupSuccess } from "./reducer/authReducer";
 import Swal from "sweetalert2";
+import { registerMerchantFailed, registerMerchantStart, registerMerchantSuccess } from "./reducer/merchantReducer";
 
 export const loginUser = async (user, dispatch, navigate) => {
     dispatch(loginStart())
@@ -49,5 +50,28 @@ export const logoutUser = async (dispatch, navigate) => {
         navigate("/")
     } catch (err) {
         console.log("logout error", err)
+    }
+}
+
+export const registerMerchant = async (merchant, dispatch) => {
+    dispatch(registerMerchantStart())
+    try {
+        const response = await axios.post("https://on-shop-blockchain.onrender.com/merchant_register", merchant, { headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}` } })
+        console.log("response", response.data.data)
+        dispatch(registerMerchantSuccess(response.data.data))
+        Swal.fire({
+            title: "Registration successful",
+            html: `<p><b class="text-success">API Key: </b></p><p>${response.data.data.api_key}</p><br><hr><br><p><b class="text-success">Partner Code: </b></p><p>${response.data.data.partner_code}</p>`,
+            icon: "success",
+            confirmButtonColor: "#5a67d8",
+        });
+    } catch (err) {
+        dispatch(registerMerchantFailed())
+        Swal.fire({
+            title: "Registration failed",
+            text: "Customer is already a merchant.",
+            icon: "error",
+            confirmButtonColor: "#5a67d8",
+        });
     }
 }

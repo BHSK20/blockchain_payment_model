@@ -16,6 +16,7 @@ import Page_Signup from './pages/Page_Signup/Page_Signup';
 import Page_Missing from './pages/Page_Missing/Page_Missing';
 import Page_Account_Profile from './pages/Page_Account_Profile/Page_Account_Profile';
 import Page_Email_Verification_Id from './pages/Page_Email_Verification_Id/Page_Email_Verification_Id';
+import Page_Account_KYCVerification from './pages/Page_Account_KYCVerification/Page_Account_KYCVerification';
 
 function App() {
   return (
@@ -32,9 +33,10 @@ function App() {
           <Route path='deposit' element={<Page_Account_Deposit />}></Route>
           <Route path='withdraw' element={<Page_Account_Withdraw />}></Route>
           <Route path='exchange' element={<Page_Account_Exchange />}></Route>
-          <Route path='merchantapi' element={<Page_Account_MerchantAPI />}></Route>
+          <Route path='merchant-api' element={<Page_Account_MerchantAPI />}></Route>
           <Route path='orders' element={<Page_Account_Orders />}></Route>
           <Route path='profile' element={<Page_Account_Profile />}></Route>
+          <Route path='kyc-verification' element={<Page_Account_KYCVerification />}></Route>
         </Route>
         <Route path='/*' element={<Page_Missing />}></Route>
       </Routes>

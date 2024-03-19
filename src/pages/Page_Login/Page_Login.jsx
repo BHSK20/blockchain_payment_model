@@ -173,10 +173,10 @@ export default function Page_Login() {
                     onChange={(e) => handleEmailChange(e)}
                     error={emailError}
                     helperText={emailError ? "Invalid email format" : ""}
-                    onInvalid={(e) =>
-                      e.target.setCustomValidity("Please fill out this field.")
-                    }
-                    onInput={(e) => e.target.setCustomValidity("")}
+                    // onInvalid={(e) =>
+                    //   e.target.setCustomValidity("Please fill out this field.")
+                    // }
+                    // onInput={(e) => e.target.setCustomValidity("")}
                   ></TextField>
                   <h4
                     style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}
@@ -189,10 +189,10 @@ export default function Page_Login() {
                     fullWidth
                     required
                     onChange={(e) => setPassword(e.target.value)}
-                    onInvalid={(e) =>
-                      e.target.setCustomValidity("Please fill out this field.")
-                    }
-                    onInput={(e) => e.target.setCustomValidity("")}
+                    // onInvalid={(e) =>
+                    //   e.target.setCustomValidity("Please fill out this field.")
+                    // }
+                    // onInput={(e) => e.target.setCustomValidity("")}
                   >
                     <InputLabel htmlFor="outlined-adornment-password">
                       Enter your password
