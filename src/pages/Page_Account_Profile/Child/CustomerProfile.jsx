@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import avatar from "../../../assets/avatar.png";
 import { Box, Button, TextField } from "@mui/material";
 
-export default function CustomerProfile() {
+export default function CustomerProfile({ customerData }) {
   const inputRef = useRef(null);
   const [image, setImage] = useState("");
   const handleImageClick = () => {
@@ -74,7 +74,8 @@ export default function CustomerProfile() {
             fullWidth
             required
             autoComplete="new-text"
-            value={"kaka"} // FOR TEMPORARY DEMO
+            value={customerData?.name}
+            InputLabelProps={{ shrink: true }}
           ></TextField>
         </Box>
         <Box className="col-12 col-sm-8 col-md-6 col-lg-4">
@@ -89,7 +90,8 @@ export default function CustomerProfile() {
             fullWidth
             required
             autoComplete="new-text"
-            value={"giabao515151@gmail.com"} // FOR TEMPORARY DEMO
+            value={customerData?.email}
+            InputLabelProps={{ shrink: true }}
           ></TextField>
         </Box>
       </Box>

@@ -117,10 +117,10 @@ export default function Page_Account_Profile() {
                 />
               </Box>
               <TabPanel value="1">
-                <CustomerProfile />
+                <CustomerProfile customerData={userInformation} />
               </TabPanel>
               <TabPanel value="2">
-                <MerchantProfile />
+                <MerchantProfile merchantData={merchantData} />
               </TabPanel>
             </TabContext>
           </Box>

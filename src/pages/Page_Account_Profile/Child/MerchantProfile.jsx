@@ -1,7 +1,7 @@
 import { Box, Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 
-export default function MerchantProfile() {
+export default function MerchantProfile({ merchantData }) {
   const [merchantName, setMerchantName] = useState(null);
   const [country, setCountry] = useState(null);
   const [zipCode, setZipCode] = useState(null);
@@ -10,10 +10,26 @@ export default function MerchantProfile() {
   const [address2, setAddress2] = useState(null);
   const [phone, setPhone] = useState(null);
 
+  console.log("ABCD", merchantData);
+
   return (
     <Box>
       <Box>
-        <h4
+        <div className="table-responsive">
+          <table className="table">
+            <tbody>
+              <tr>
+                <th className="col-4 text-success text-xl">API Key</th>
+                <td className="col-8 text-lg">{merchantData.api_key}</td>
+              </tr>
+              <tr>
+                <th className="col-4 text-success text-xl">Partner Code</th>
+                <td className="col-8 text-lg">{merchantData.partner_code}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        {/* <h4
           style={{
             marginBottom: 8,
             fontWeight: 600,
@@ -21,7 +37,7 @@ export default function MerchantProfile() {
             color: "rgb(2 132 199)",
           }}
         >
-          API Key:
+          API Key: {merchantData.api_key}
         </h4>
         <h4
           style={{
@@ -32,8 +48,8 @@ export default function MerchantProfile() {
             color: "rgb(2 132 199)",
           }}
         >
-          Partner Code:
-        </h4>
+          Partner Code: {merchantData.partner_code}
+        </h4> */}
       </Box>
       <Box className="row">
         <Box className="col-12 col-md-6">
@@ -41,7 +57,7 @@ export default function MerchantProfile() {
             Merchant Name
           </h4>
           <TextField
-            label="Enter the company name"
+            label="Enter the merchant name"
             variant="outlined"
             type="text"
             size="small"
@@ -49,6 +65,8 @@ export default function MerchantProfile() {
             required
             autoComplete="new-text"
             // onChange={(e) => setMerchantName(e.target.value)}
+            value={merchantData?.merchant_name}
+            InputLabelProps={{ shrink: true }}
           ></TextField>
         </Box>
         <Box className="col-12 col-md-6">
@@ -64,6 +82,8 @@ export default function MerchantProfile() {
             required
             autoComplete="new-text"
             // onChange={(e) => setCountry(e.target.value)}
+            value={merchantData?.country}
+            InputLabelProps={{ shrink: true }}
           ></TextField>
         </Box>
         <Box className="col-12 col-md-6">
@@ -79,6 +99,8 @@ export default function MerchantProfile() {
             required
             autoComplete="new-text"
             // onChange={(e) => setZipCode(e.target.value)}
+            value={merchantData?.zipcode}
+            InputLabelProps={{ shrink: true }}
           ></TextField>
         </Box>
         <Box className="col-12 col-md-6">
@@ -94,6 +116,8 @@ export default function MerchantProfile() {
             required
             autoComplete="new-text"
             // onChange={(e) => setCity(e.target.value)}
+            value={merchantData?.city}
+            InputLabelProps={{ shrink: true }}
           ></TextField>
         </Box>
         <Box className="col-12">
@@ -109,6 +133,8 @@ export default function MerchantProfile() {
             required
             autoComplete="new-text"
             // onChange={(e) => setAddress1(e.target.value)}
+            value={merchantData?.address1}
+            InputLabelProps={{ shrink: true }}
           ></TextField>
         </Box>
         <Box className="col-12 col-md-6">
@@ -124,6 +150,8 @@ export default function MerchantProfile() {
             required
             autoComplete="new-text"
             // onChange={(e) => setAddress2(e.target.value)}
+            value={merchantData?.address2}
+            InputLabelProps={{ shrink: true }}
           ></TextField>
         </Box>
         <Box className="col-12 col-md-6">
@@ -139,6 +167,8 @@ export default function MerchantProfile() {
             required
             autoComplete="new-text"
             // onChange={(e) => setPhone(e.target.value)}
+            value={merchantData?.phone}
+            InputLabelProps={{ shrink: true }}
           ></TextField>
         </Box>
       </Box>
