@@ -11,8 +11,10 @@ import { logoutUser } from "../../redux/apiRequest";
 export default function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   // const userInformation = useSelector((state) => state.auth.login.currentUser);
   const userInformation = JSON.parse(localStorage.getItem("user"));
+
   return (
     <div className="bg-white h-16 flex justify-center sm:px-16 sm:justify-between items-center space-x-3">
       <div

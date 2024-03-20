@@ -1,13 +1,36 @@
 import { Box, Divider, Paper, Tab } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomerProfile from "./Child/CustomerProfile";
 import MerchantProfile from "./Child/MerchantProfile";
 import PortraitIcon from "@mui/icons-material/Portrait";
 import StoreIcon from "@mui/icons-material/Store";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 export default function Page_Account_Profile() {
   const [value, setValue] = useState("1");
+
+  // const userInformation = useSelector((state) => state.auth.login.currentUser);
+  const userInformation = JSON.parse(localStorage.getItem("user"));
+  const [merchantData, setMerchantData] = useState(null);
+  useEffect(() => {
+    const fetchMerchantData = async (email) => {
+      try {
+        const merchantResponse = await axios.get(
+          `https://on-shop-blockchain.onrender.com/merchant?email=${email}`
+        );
+        console.log("merchantResponse", merchantResponse);
+        setMerchantData(merchantResponse.data.data);
+      } catch (merchantError) {
+        console.log("merchantError", merchantError);
+      }
+    };
+    if (userInformation && userInformation.role === "MERCHANT") {
+      fetchMerchantData(userInformation.email);
+    }
+  }, [userInformation]);
+
   return (
     <div className="container px-10 py-3">
       <Box sx={{ marginTop: "10px", minHeight: 600 }}>

@@ -74,6 +74,7 @@ export default function CustomerProfile() {
             fullWidth
             required
             autoComplete="new-text"
+            value={"kaka"} // FOR TEMPORARY DEMO
           ></TextField>
         </Box>
         <Box className="col-12 col-sm-8 col-md-6 col-lg-4">
@@ -88,6 +89,7 @@ export default function CustomerProfile() {
             fullWidth
             required
             autoComplete="new-text"
+            value={"giabao515151@gmail.com"} // FOR TEMPORARY DEMO
           ></TextField>
         </Box>
       </Box>
