@@ -59,6 +59,16 @@ export const registerMerchant = async (merchant, dispatch) => {
         const response = await axios.post("https://on-shop-blockchain.onrender.com/merchant_register", merchant, { headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}` } })
         console.log("response", response.data.data)
         dispatch(registerMerchantSuccess(response.data.data))
+        // ----------------------------------------------------
+        // Update the the role of "user" object in localStorage
+        const userString = localStorage.getItem("user");
+        let user = {};
+        if (userString) {
+            user = JSON.parse(userString);
+        }
+        user.role = "MERCHANT";
+        localStorage.setItem("user", JSON.stringify(user));
+        // ----------------------------------------------------
         Swal.fire({
             title: "Registration successful",
             html: `<p><b class="text-success">API Key: </b></p><p>${response.data.data.api_key}</p><br><hr><br><p><b class="text-success">Partner Code: </b></p><p>${response.data.data.partner_code}</p>`,

@@ -10,8 +10,6 @@ export default function MerchantProfile({ merchantData }) {
   const [address2, setAddress2] = useState(null);
   const [phone, setPhone] = useState(null);
 
-  console.log("ABCD", merchantData);
-
   return (
     <Box>
       <Box>
@@ -20,11 +18,11 @@ export default function MerchantProfile({ merchantData }) {
             <tbody>
               <tr>
                 <th className="col-4 text-success text-xl">API Key</th>
-                <td className="col-8 text-lg">{merchantData.api_key}</td>
+                <td className="col-8 text-lg">{merchantData?.api_key}</td>
               </tr>
               <tr>
                 <th className="col-4 text-success text-xl">Partner Code</th>
-                <td className="col-8 text-lg">{merchantData.partner_code}</td>
+                <td className="col-8 text-lg">{merchantData?.partner_code}</td>
               </tr>
             </tbody>
           </table>

@@ -15,7 +15,7 @@ export default function Page_Email_Verification_Id() {
       try {
         // CHANGE THE API LINK TO emailid
         const response = await axios.get(
-          "https://on-shop-blockchain.onrender.com/register?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoie1wiZW1haWxcIjogXCJnaWFiYW81MTUxNTFAZ21haWwuY29tXCIsIFwibmFtZVwiOiBcImFiY2RoZ1wiLCBcInBhc3N3b3JkXCI6IFwiJDJiJDEyJGhqOXovZnFpWC9zbjZvcTdiQjM5U2VXLzdlVlNKcUs3YjJ4SzNIc1IuWXcyQ3llR0dBckhlXCJ9IiwiZXhwIjoxNzEwNzM1MzU0fQ.g3qD2kJ0BDN_A9EgT9-1lYejpoqStnPZnjEwn5-IjJ4"
+          "https://on-shop-blockchain.onrender.com/register?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoie1wiZW1haWxcIjogXCJnaWFiYW81MTUxNTFAZ21haWwuY29tXCIsIFwibmFtZVwiOiBcIkJTSHRlYW1cIiwgXCJwYXNzd29yZFwiOiBcIiQyYiQxMiRiLk5sekZ4Li9GcmZXVS9Bc2FLMURPQThJVUVkZlJCdXBuOTEwSjdoQmJHMFRBUTVXdnRoQ1wifSIsImV4cCI6MTcxMTIxMzkxMX0.4pwsmQiMrQ6bcSTTDXy13anmldk2WByWR6QyisbYRkA"
         );
         console.log("response", response);
         setVerificationStatus(response.data);
