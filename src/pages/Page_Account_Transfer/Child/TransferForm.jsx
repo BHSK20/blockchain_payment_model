@@ -11,8 +11,12 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import { transferCurrency } from "../../../redux/apiRequest";
+import { useDispatch } from "react-redux";
 
 export default function TransferForm() {
+  const dispatch = useDispatch();
+
   const [amount, setAmount] = useState(null);
   const [currency, setCurrency] = useState(null);
   const [email, setEmail] = useState(null);
@@ -33,6 +37,12 @@ export default function TransferForm() {
     console.log("currency", currency);
     console.log("email", email);
     console.log("note", note);
+    const data = {
+      amount: amount,
+      currency: currency,
+      email: email,
+    };
+    transferCurrency(data, dispatch);
   };
 
   // ----------------------------------------------------------------------
@@ -145,7 +155,7 @@ export default function TransferForm() {
                 type="text"
                 size="small"
                 fullWidth
-                required
+                // required
                 autoComplete="new-text"
                 multiline
                 rows={4}

@@ -53,6 +53,12 @@ export default function CustomerProfile({ customerData }) {
           {image ? image.name : "Upload your avatar"}
         </label>
       </Box>
+      <Box sx={{ marginTop: "15px", textAlign: "center" }}>
+        <span className="text-danger text-xl" style={{ fontWeight: 600 }}>
+          Wallet Address:{" "}
+        </span>
+        <span className="text-lg">{customerData?.public_key}</span>
+      </Box>
       <Box
         className="row"
         style={{

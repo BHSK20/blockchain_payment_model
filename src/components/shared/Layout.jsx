@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import { useDispatch } from "react-redux";
+import TokenManager from "../TokenManager";
 
 export default function Layout() {
   // CODE FOR REFERENCE
@@ -15,6 +16,7 @@ export default function Layout() {
   //     dispatch({ type: "profile/setProfile", payload: null });
   //   };
   // }, []);
+  <TokenManager />;
   return (
     // REMOVE h-screen w-screen overflow-hidden
     <div className="flex flex-row bg-neutral-100">

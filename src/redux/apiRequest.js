@@ -2,6 +2,7 @@ import axios from "axios";
 import { loginFailed, loginStart, loginSuccess, logoutSuccess, signupFailed, signupStart, signupSuccess } from "./reducer/authReducer";
 import Swal from "sweetalert2";
 import { registerMerchantFailed, registerMerchantStart, registerMerchantSuccess } from "./reducer/merchantReducer";
+import { transferCurrencyFailed, transferCurrencyStart, transferCurrencySuccess } from "./reducer/transferReducer";
 
 export const loginUser = async (user, dispatch, navigate) => {
     dispatch(loginStart())
@@ -80,6 +81,38 @@ export const registerMerchant = async (merchant, dispatch) => {
         Swal.fire({
             title: "Registration failed",
             text: "Customer is already a merchant.",
+            icon: "error",
+            confirmButtonColor: "#5a67d8",
+        });
+    }
+}
+
+export const transferCurrency = async (data, dispatch) => {
+    dispatch(transferCurrencyStart())
+    try {
+        const response = await axios.post("https://on-shop-blockchain.onrender.com/transfer", data, { headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}` } })
+        console.log("response", response.data.data)
+        dispatch(transferCurrencySuccess(response.data.data))
+        // ----------------------------------------------------
+        localStorage.setItem("token", response.data.data[1])
+        const userInformationResponse = await axios.get("https://on-shop-blockchain.onrender.com/user/payload", { headers: { Authorization: `Bearer ${response.data.data[1]}` } })
+        console.log("userInformationResponse", userInformationResponse.data.data)
+        if (userInformationResponse && userInformationResponse.data.data) {
+            localStorage.setItem("user", JSON.stringify(userInformationResponse.data.data))
+        }
+        // ----------------------------------------------------
+        Swal.fire({
+            title: "Transfer successful",
+            html: `<p>You have successfully transferred <b class="text-primary">${data.amount} ${data.currency.toUpperCase()}</b> to <b class="text-primary">${data.email}</b>.</p>`,
+            icon: "success",
+            confirmButtonColor: "#5a67d8",
+        });
+    }
+    catch (err) {
+        dispatch(transferCurrencyFailed())
+        Swal.fire({
+            title: "Transfer failed",
+            text: "Something went wrong while sending your transfer. Please try again.",
             icon: "error",
             confirmButtonColor: "#5a67d8",
         });

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
@@ -13,7 +13,24 @@ export default function Header() {
   const dispatch = useDispatch();
 
   // const userInformation = useSelector((state) => state.auth.login.currentUser);
-  const userInformation = JSON.parse(localStorage.getItem("user"));
+  const [userInformation, setUserInformation] = useState(
+    JSON.parse(localStorage.getItem("user"))
+  );
+
+  useEffect(() => {
+    // Function to update userInformation from localStorage
+    const updateUserInformation = () => {
+      setUserInformation(JSON.parse(localStorage.getItem("user")));
+    };
+
+    // Listen for changes to localStorage
+    window.addEventListener("storage", updateUserInformation);
+
+    // Clean up the event listener when component unmounts
+    return () => {
+      window.removeEventListener("storage", updateUserInformation);
+    };
+  }, []);
 
   return (
     <div className="bg-white h-16 flex justify-center sm:px-16 sm:justify-between items-center space-x-3">
@@ -23,7 +40,7 @@ export default function Header() {
       >
         <RiMoneyDollarCircleFill className="text-4xl" />
         <span className="text-xl" style={{ fontWeight: 500 }}>
-          100000
+          {userInformation.balance}
         </span>
       </div>
       {/* Changed: Replace gap-3 by space-x-3 */}

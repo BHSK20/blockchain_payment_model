@@ -56,14 +56,33 @@ export default function TransactionTable() {
   ];
   const columns = useMemo(() => [
     {
+      field: "id",
+      type: "string",
+      headerAlign: "center",
+      align: "center",
+      width: 180,
+      renderHeader: () => <span>ID</span>,
+      renderCell: (params) => {
+        return <span style={{ color: "rgb(2 132 199)" }}>{params.value}</span>;
+      },
+    },
+    {
       field: "type",
       type: "string",
       headerAlign: "center",
       align: "center",
-      width: 220,
+      width: 180,
       renderHeader: () => <span>Type</span>,
       renderCell: (params) => {
-        return <span style={{ color: "rgb(2 132 199)" }}>{params.value}</span>;
+        return (
+          <span
+            style={{
+              color: params.value === "Transfer" ? "#ff9100" : "#3949AB",
+            }}
+          >
+            {params.value}
+          </span>
+        );
       },
     },
     {
@@ -71,7 +90,7 @@ export default function TransactionTable() {
       type: "string",
       headerAlign: "center",
       align: "center",
-      width: 220,
+      width: 180,
       renderHeader: () => <span>Date</span>,
       renderCell: (params) => {
         return <span>{params.value}</span>;
@@ -82,7 +101,7 @@ export default function TransactionTable() {
       type: "number",
       headerAlign: "center",
       align: "center",
-      width: 220,
+      width: 180,
       renderHeader: () => <span>Amount</span>,
       renderCell: (params) => {
         return <span>{params.value}</span>;
@@ -93,7 +112,7 @@ export default function TransactionTable() {
       type: "string",
       headerAlign: "center",
       align: "center",
-      width: 220,
+      width: 180,
       renderHeader: () => <span>Currency</span>,
       renderCell: (params) => {
         return <span>{params.value}</span>;
@@ -103,7 +122,7 @@ export default function TransactionTable() {
       field: "status",
       headerAlign: "center",
       align: "center",
-      width: 220,
+      width: 180,
       flex: 1,
       renderHeader: () => <span>Status</span>,
       renderCell: (params) => {
