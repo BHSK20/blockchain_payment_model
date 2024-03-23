@@ -7,30 +7,58 @@ import { MdOutlineLockReset } from "react-icons/md";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../redux/apiRequest";
+import axios from "axios";
 
 export default function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const userInformation = useSelector((state) => state.auth.login.currentUser);
-  const [userInformation, setUserInformation] = useState(
-    JSON.parse(localStorage.getItem("user"))
-  );
+  // // const userInformation = useSelector((state) => state.auth.login.currentUser);
+  // const [userInformation, setUserInformation] = useState(
+  //   JSON.parse(localStorage.getItem("user"))
+  // );
+  const userInformation = JSON.parse(localStorage.getItem("user"));
 
-  useEffect(() => {
-    // Function to update userInformation from localStorage
-    const updateUserInformation = () => {
-      setUserInformation(JSON.parse(localStorage.getItem("user")));
-    };
+  // // useEffect(() => {
+  // //   // Function to update userInformation from localStorage
+  // //   const updateUserInformation = () => {
+  // //     setUserInformation(JSON.parse(localStorage.getItem("user")));
+  // //   };
 
-    // Listen for changes to localStorage
-    window.addEventListener("storage", updateUserInformation);
+  // //   // Listen for changes to localStorage
+  // //   window.addEventListener("storage", updateUserInformation);
 
-    // Clean up the event listener when component unmounts
-    return () => {
-      window.removeEventListener("storage", updateUserInformation);
-    };
-  }, []);
+  // //   // Clean up the event listener when component unmounts
+  // //   return () => {
+  // //     window.removeEventListener("storage", updateUserInformation);
+  // //   };
+  // // }, []);
+
+  // const userToken = localStorage.getItem("token");
+  // const [userData, setUserData] = useState(
+  //   JSON.parse(localStorage.getItem("user"))
+  // );
+  // useEffect(() => {
+  //   const fetchUserData = async (token) => {
+  //     try {
+  //       const userResponse = await axios.get(
+  //         "https://on-shop-blockchain.onrender.com/user/payload",
+  //         { headers: { Authorization: `Bearer ${token}` } }
+  //       );
+  //       if (userResponse.headers["content-type"] === "application/json") {
+  //         setUserData(userResponse.data.data);
+  //       } else {
+  //         console.error(
+  //           "Invalid Content-Type. Expected application/json but received:",
+  //           userResponse.headers["content-type"]
+  //         );
+  //       }
+  //     } catch (userError) {
+  //       console.log("userError", userError);
+  //     }
+  //   };
+  //   fetchUserData(userToken);
+  // }, [userToken]);
 
   return (
     <div className="bg-white h-16 flex justify-center sm:px-16 sm:justify-between items-center space-x-3">

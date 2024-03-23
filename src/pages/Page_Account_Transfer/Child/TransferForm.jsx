@@ -12,7 +12,8 @@ import {
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { transferCurrency } from "../../../redux/apiRequest";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function TransferForm() {
   const dispatch = useDispatch();
@@ -22,6 +23,9 @@ export default function TransferForm() {
   const [email, setEmail] = useState(null);
   const [note, setNote] = useState(null);
 
+  const transferCurrencyStatus = useSelector(
+    (state) => state.transfer?.isFetching
+  );
   const handleTransfer = (e) => {
     e.preventDefault();
     if (emailError) {
@@ -181,6 +185,24 @@ export default function TransferForm() {
             </Button>
           </Box>
         </form>
+        {transferCurrencyStatus && (
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 9999,
+            }}
+          >
+            <CircularProgress />
+          </div>
+        )}
       </Paper>
     </Box>
   );
