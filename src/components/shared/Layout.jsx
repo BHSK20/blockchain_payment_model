@@ -16,7 +16,8 @@ export default function Layout() {
   //     dispatch({ type: "profile/setProfile", payload: null });
   //   };
   // }, []);
-  <TokenManager />;
+
+  // <TokenManager />;
   return (
     // REMOVE h-screen w-screen overflow-hidden
     <div className="flex flex-row bg-neutral-100">

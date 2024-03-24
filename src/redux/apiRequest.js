@@ -94,12 +94,12 @@ export const transferCurrency = async (data, dispatch) => {
         console.log("response", response.data.data)
         dispatch(transferCurrencySuccess(response.data.data))
         // ----------------------------------------------------
-        localStorage.setItem("token", response.data.data[1])
-        const userInformationResponse = await axios.get("https://on-shop-blockchain.onrender.com/user/payload", { headers: { Authorization: `Bearer ${response.data.data[1]}` } })
-        console.log("userInformationResponse", userInformationResponse.data.data)
-        if (userInformationResponse && userInformationResponse.data.data) {
-            localStorage.setItem("user", JSON.stringify(userInformationResponse.data.data))
-        }
+        // localStorage.setItem("token", response.data.data[1])
+        // const userInformationResponse = await axios.get("https://on-shop-blockchain.onrender.com/user/payload", { headers: { Authorization: `Bearer ${response.data.data[1]}` } })
+        // console.log("userInformationResponse", userInformationResponse.data.data)
+        // if (userInformationResponse && userInformationResponse.data.data) {
+        //     localStorage.setItem("user", JSON.stringify(userInformationResponse.data.data))
+        // }
         // ----------------------------------------------------
         Swal.fire({
             title: "Transfer successful",

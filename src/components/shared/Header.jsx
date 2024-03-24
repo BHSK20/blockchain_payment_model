@@ -13,26 +13,26 @@ export default function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // // const userInformation = useSelector((state) => state.auth.login.currentUser);
+  // const userInformation = useSelector((state) => state.auth.login.currentUser);
   // const [userInformation, setUserInformation] = useState(
   //   JSON.parse(localStorage.getItem("user"))
   // );
   const userInformation = JSON.parse(localStorage.getItem("user"));
 
-  // // useEffect(() => {
-  // //   // Function to update userInformation from localStorage
-  // //   const updateUserInformation = () => {
-  // //     setUserInformation(JSON.parse(localStorage.getItem("user")));
-  // //   };
+  // useEffect(() => {
+  //   // Function to update userInformation from localStorage
+  //   const updateUserInformation = () => {
+  //     setUserInformation(JSON.parse(localStorage.getItem("user")));
+  //   };
 
-  // //   // Listen for changes to localStorage
-  // //   window.addEventListener("storage", updateUserInformation);
+  //   // Listen for changes to localStorage
+  //   window.addEventListener("storage", updateUserInformation);
 
-  // //   // Clean up the event listener when component unmounts
-  // //   return () => {
-  // //     window.removeEventListener("storage", updateUserInformation);
-  // //   };
-  // // }, []);
+  //   // Clean up the event listener when component unmounts
+  //   return () => {
+  //     window.removeEventListener("storage", updateUserInformation);
+  //   };
+  // }, []);
 
   // const userToken = localStorage.getItem("token");
   // const [userData, setUserData] = useState(
@@ -60,6 +60,33 @@ export default function Header() {
   //   fetchUserData(userToken);
   // }, [userToken]);
 
+  // ---------------------------------------------------------
+  // IMPORTANT: GET USER BALANCE
+  const [userBalance, setUserBalance] = useState(null);
+  const transferStatus = useSelector((state) => state.transfer.isFetching);
+  useEffect(() => {
+    const fetchUserBalance = async () => {
+      try {
+        const balanceResponse = await axios.get(
+          "https://on-shop-blockchain.onrender.com/balance",
+          {
+            headers: {
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("token")).token
+              }`,
+            },
+          }
+        );
+        console.log("balanceResponse", balanceResponse);
+        setUserBalance(balanceResponse.data.data);
+      } catch (balanceError) {
+        console.log("balanceError", balanceError);
+      }
+    };
+    fetchUserBalance();
+  }, [transferStatus]);
+  // ---------------------------------------------------------
+
   return (
     <div className="bg-white h-16 flex justify-center sm:px-16 sm:justify-between items-center space-x-3">
       <div
@@ -68,7 +95,7 @@ export default function Header() {
       >
         <RiMoneyDollarCircleFill className="text-4xl" />
         <span className="text-xl" style={{ fontWeight: 500 }}>
-          {userInformation.balance}
+          {userBalance}
         </span>
       </div>
       {/* Changed: Replace gap-3 by space-x-3 */}
