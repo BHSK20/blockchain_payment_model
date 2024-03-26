@@ -8,6 +8,8 @@ import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../redux/apiRequest";
 import axios from "axios";
+import { Box, Button } from "@mui/material";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -64,27 +66,32 @@ export default function Header() {
   // IMPORTANT: GET USER BALANCE
   const [userBalance, setUserBalance] = useState(null);
   const transferStatus = useSelector((state) => state.transfer.isFetching);
+  const fetchUserBalance = async () => {
+    try {
+      const balanceResponse = await axios.get(
+        "https://on-shop-blockchain.onrender.com/balance",
+        {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("token")).token
+            }`,
+          },
+        }
+      );
+      console.log("balanceResponse", balanceResponse);
+      setUserBalance(balanceResponse.data.data);
+    } catch (balanceError) {
+      console.log("balanceError", balanceError);
+    }
+  };
+
   useEffect(() => {
-    const fetchUserBalance = async () => {
-      try {
-        const balanceResponse = await axios.get(
-          "https://on-shop-blockchain.onrender.com/balance",
-          {
-            headers: {
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("token")).token
-              }`,
-            },
-          }
-        );
-        console.log("balanceResponse", balanceResponse);
-        setUserBalance(balanceResponse.data.data);
-      } catch (balanceError) {
-        console.log("balanceError", balanceError);
-      }
-    };
     fetchUserBalance();
   }, [transferStatus]);
+
+  const handleUpdateBalance = () => {
+    fetchUserBalance();
+  };
   // ---------------------------------------------------------
 
   return (
@@ -97,6 +104,27 @@ export default function Header() {
         <span className="text-xl" style={{ fontWeight: 500 }}>
           {userBalance}
         </span>
+        {/* ---------------------------------------------- */}
+        {/* MODIFIED CODE */}
+        <Box className="ml-1 mr-1 sm:ml-6 sm:mr-6">
+          <Button
+            className="px-3"
+            type="button"
+            variant="outlined"
+            size="large"
+            sx={{
+              borderRadius: "4px",
+              textTransform: "none",
+              color: "#0284c7",
+              fontSize: "16px",
+            }}
+            startIcon={<AutorenewIcon />}
+            onClick={handleUpdateBalance}
+          >
+            Update
+          </Button>
+        </Box>
+        {/* ---------------------------------------------- */}
       </div>
       {/* Changed: Replace gap-3 by space-x-3 */}
       <div className="account-details flex justify-center items-center space-x-1 md:space-x-2">
