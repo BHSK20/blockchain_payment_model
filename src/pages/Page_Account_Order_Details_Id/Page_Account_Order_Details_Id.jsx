@@ -65,22 +65,22 @@ export default function Page_Account_Order_Details_Id() {
                   <tr>
                     <th className="col-6 text-primary text-4xl">Products</th>
                     <td className="col-6 text-4xl">
-                      {orderDetails.order_name}
+                      {orderDetails?.order_name}
                     </td>
                   </tr>
                   <tr>
                     <th className="col-6 text-primary text-4xl">
                       Merchant Name
                     </th>
-                    <td className="col-6 text-4xl">{orderDetails.merchant}</td>
+                    <td className="col-6 text-4xl">{orderDetails?.merchant}</td>
                   </tr>
                   <tr>
                     <th className="col-6 text-primary text-4xl">Amount</th>
-                    <td className="col-6 text-4xl">{orderDetails.amount}</td>
+                    <td className="col-6 text-4xl">{orderDetails?.amount}</td>
                   </tr>
                   <tr>
                     <th className="col-6 text-primary text-4xl">Currency</th>
-                    <td className="col-6 text-4xl">{orderDetails.currency}</td>
+                    <td className="col-6 text-4xl">{orderDetails?.currency}</td>
                   </tr>
                 </tbody>
               </table>
