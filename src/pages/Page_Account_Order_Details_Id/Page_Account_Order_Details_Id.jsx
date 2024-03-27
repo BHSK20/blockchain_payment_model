@@ -10,7 +10,7 @@ export default function Page_Account_Order_Details_Id() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://on-shop-blockchain.onrender.com/transfer/295640073894c4627d8c9ed4`,
+          `https://on-shop-blockchain.onrender.com/transfer/${orderid}`,
           {
             headers: {
               Authorization: `Bearer ${
