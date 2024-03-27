@@ -1,9 +1,32 @@
 import { Box, Button, Paper, Typography } from "@mui/material";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function Page_Account_Order_Details_Id() {
   const { orderid } = useParams();
+  const [orderDetails, setOrderDetails] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://on-shop-blockchain.onrender.com/transfer/295640073894c4627d8c9ed4`,
+          {
+            headers: {
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("token")).token
+              }`,
+            },
+          }
+        );
+        console.log("response", response);
+        setOrderDetails(response.data.data);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    fetchData();
+  }, [orderid]);
   return (
     <div className="container px-10 py-3">
       <Box sx={{ marginTop: "10px", minHeight: 600 }}>
@@ -37,25 +60,27 @@ export default function Page_Account_Order_Details_Id() {
                 <tbody>
                   <tr>
                     <th className="col-6 text-primary text-4xl">ID</th>
-                    <td className="col-6 text-4xl">20052024</td>
+                    <td className="col-6 text-4xl">{orderid}</td>
+                  </tr>
+                  <tr>
+                    <th className="col-6 text-primary text-4xl">Products</th>
+                    <td className="col-6 text-4xl">
+                      {orderDetails.order_name}
+                    </td>
                   </tr>
                   <tr>
                     <th className="col-6 text-primary text-4xl">
                       Merchant Name
                     </th>
-                    <td className="col-6 text-4xl">Shopee</td>
-                  </tr>
-                  <tr>
-                    <th className="col-6 text-primary text-4xl">Date</th>
-                    <td className="col-6 text-4xl">02/04/2024</td>
+                    <td className="col-6 text-4xl">{orderDetails.merchant}</td>
                   </tr>
                   <tr>
                     <th className="col-6 text-primary text-4xl">Amount</th>
-                    <td className="col-6 text-4xl">1000</td>
+                    <td className="col-6 text-4xl">{orderDetails.amount}</td>
                   </tr>
                   <tr>
                     <th className="col-6 text-primary text-4xl">Currency</th>
-                    <td className="col-6 text-4xl">USDT</td>
+                    <td className="col-6 text-4xl">{orderDetails.currency}</td>
                   </tr>
                 </tbody>
               </table>
