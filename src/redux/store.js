@@ -6,6 +6,7 @@ import authReducer from "./reducer/authReducer";
 import merchantReducer from "./reducer/merchantReducer";
 import transferReducer from "./reducer/transferReducer";
 import paymentReducer from "./reducer/paymentReducer";
+import verifyReducer from "./reducer/verifyReducer";
 
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware()
@@ -17,7 +18,8 @@ export const store = configureStore({
         auth: authReducer,
         merchant: merchantReducer,
         transfer: transferReducer,
-        payment: paymentReducer
+        payment: paymentReducer,
+        verify: verifyReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 })
