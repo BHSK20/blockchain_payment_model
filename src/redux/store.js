@@ -5,6 +5,7 @@ import { userSlice } from "./reducer/userReducer";
 import authReducer from "./reducer/authReducer";
 import merchantReducer from "./reducer/merchantReducer";
 import transferReducer from "./reducer/transferReducer";
+import paymentReducer from "./reducer/paymentReducer";
 
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware()
@@ -15,7 +16,8 @@ export const store = configureStore({
         // user: userSlice.reducer
         auth: authReducer,
         merchant: merchantReducer,
-        transfer: transferReducer
+        transfer: transferReducer,
+        payment: paymentReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 })

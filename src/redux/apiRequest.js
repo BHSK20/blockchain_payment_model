@@ -3,6 +3,7 @@ import { loginFailed, loginStart, loginSuccess, logoutSuccess, signupFailed, sig
 import Swal from "sweetalert2";
 import { registerMerchantFailed, registerMerchantStart, registerMerchantSuccess } from "./reducer/merchantReducer";
 import { transferCurrencyFailed, transferCurrencyStart, transferCurrencySuccess } from "./reducer/transferReducer";
+import { makePaymentStart, makePaymentSuccess, makePaymentFailed } from "./reducer/paymentReducer"
 
 export const loginUser = async (user, dispatch, navigate) => {
     dispatch(loginStart())
@@ -113,6 +114,28 @@ export const transferCurrency = async (data, dispatch) => {
         Swal.fire({
             title: "Transfer failed",
             text: "Something went wrong while sending your transfer. Please try again.",
+            icon: "error",
+            confirmButtonColor: "#5a67d8",
+        });
+    }
+}
+
+export const makePayment = async (orderid, dispatch) => {
+    dispatch(makePaymentStart())
+    try {
+        const paymentResponse = await axios.post(`https://on-shop-blockchain.onrender.com/transfer/${orderid}`, { headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}` } })
+        console.log("paymentResponse", paymentResponse.data.data)
+        dispatch(makePaymentSuccess(paymentResponse.data.data))
+        Swal.fire({
+            title: "Make payment successful",
+            icon: "success",
+            confirmButtonColor: "#5a67d8",
+        });
+    }
+    catch (err) {
+        dispatch(makePaymentFailed())
+        Swal.fire({
+            title: "Make payment failed",
             icon: "error",
             confirmButtonColor: "#5a67d8",
         });
