@@ -1,14 +1,19 @@
 import { Box, Button, Paper, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { makePayment } from "../../redux/apiRequest";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Page_Account_Order_Details_Id() {
   const dispatch = useDispatch();
   const { orderid } = useParams();
+
   const [orderDetails, setOrderDetails] = useState(null);
+
+  const makePaymentStatus = useSelector((state) => state.payment?.isFetching);
+  const isPaid = useSelector((state) => state.payment?.transactionHash);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -102,23 +107,47 @@ export default function Page_Account_Order_Details_Id() {
               </div>
             </Box>
             <Box sx={{ textAlign: "left", marginTop: 1 }}>
-              <Button
-                className="px-8"
-                type="submit"
-                variant="contained"
-                size="large"
-                sx={{
-                  borderRadius: "4px",
-                  marginTop: 4,
-                  textTransform: "none",
-                  backgroundColor: "#0284c7",
-                  fontSize: "16px",
-                }}
-              >
-                Make Payment
-              </Button>
+              {isPaid === null ? (
+                <Button
+                  className="px-8"
+                  type="submit"
+                  variant="contained"
+                  size="large"
+                  sx={{
+                    borderRadius: "4px",
+                    marginTop: 4,
+                    textTransform: "none",
+                    backgroundColor: "#0284c7",
+                    fontSize: "16px",
+                  }}
+                >
+                  Make Payment
+                </Button>
+              ) : (
+                <h4 className="text-success text-3xl">
+                  Your order has been paid
+                </h4>
+              )}
             </Box>
           </form>
+          {makePaymentStatus && (
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                backgroundColor: "rgba(255, 255, 255, 0.5)",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                zIndex: 9999,
+              }}
+            >
+              <CircularProgress />
+            </div>
+          )}
         </Paper>
       </Box>
     </div>

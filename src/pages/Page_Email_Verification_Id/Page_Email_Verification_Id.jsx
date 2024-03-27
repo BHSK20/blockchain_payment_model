@@ -13,9 +13,8 @@ export default function Page_Email_Verification_Id() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // CHANGE THE API LINK TO emailid
         const response = await axios.get(
-          "https://on-shop-blockchain.onrender.com/register?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoie1wiZW1haWxcIjogXCJnaWFiYW81MTUxNTFAZ21haWwuY29tXCIsIFwibmFtZVwiOiBcIkJTSHRlYW1cIiwgXCJwYXNzd29yZFwiOiBcIiQyYiQxMiRiLk5sekZ4Li9GcmZXVS9Bc2FLMURPQThJVUVkZlJCdXBuOTEwSjdoQmJHMFRBUTVXdnRoQ1wifSIsImV4cCI6MTcxMTIxMzkxMX0.4pwsmQiMrQ6bcSTTDXy13anmldk2WByWR6QyisbYRkA"
+          `https://on-shop-blockchain.onrender.com/register?token=${emailid}`
         );
         console.log("response", response);
         setVerificationStatus(response.data);

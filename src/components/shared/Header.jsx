@@ -66,6 +66,7 @@ export default function Header() {
   // IMPORTANT: GET USER BALANCE
   const [userBalance, setUserBalance] = useState(null);
   const transferStatus = useSelector((state) => state.transfer.isFetching);
+  const paymentStatus = useSelector((state) => state.payment.isFetching);
   const fetchUserBalance = async () => {
     try {
       const balanceResponse = await axios.get(
@@ -87,7 +88,7 @@ export default function Header() {
 
   useEffect(() => {
     fetchUserBalance();
-  }, [transferStatus]);
+  }, [transferStatus, paymentStatus]);
 
   const handleUpdateBalance = () => {
     fetchUserBalance();

@@ -123,7 +123,7 @@ export const transferCurrency = async (data, dispatch) => {
 export const makePayment = async (orderid, dispatch) => {
     dispatch(makePaymentStart())
     try {
-        const paymentResponse = await axios.post(`https://on-shop-blockchain.onrender.com/transfer/${orderid}`, { headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}` } })
+        const paymentResponse = await axios.post(`https://on-shop-blockchain.onrender.com/transfer/${orderid}`, {}, { headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}` } })
         console.log("paymentResponse", paymentResponse.data.data)
         dispatch(makePaymentSuccess(paymentResponse.data.data))
         Swal.fire({
