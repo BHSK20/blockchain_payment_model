@@ -1,59 +1,90 @@
 import { Box, Divider, Paper } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import React, { useMemo } from "react";
-import { Fail, Success } from "../../../components/label/TransactionLabel";
+import React, { useEffect, useMemo, useState } from "react";
+import {
+  Fail,
+  Pending,
+  Success,
+} from "../../../components/label/TransactionLabel";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 export default function TransactionTable() {
-  const rows = [
-    {
-      id: "1812001",
-      type: "Transfer",
-      date: "27/11/2023",
-      amount: 1000,
-      currency: "BTC",
-      status: "Success",
-    },
-    {
-      id: "1812002",
-      type: "Deposit",
-      date: "25/11/2023",
-      amount: 2000,
-      currency: "ETH",
-      status: "Success",
-    },
-    {
-      id: "1812003",
-      type: "Transfer",
-      date: "26/11/2023",
-      amount: 3000,
-      currency: "USDT",
-      status: "Fail",
-    },
-    {
-      id: "1812004",
-      type: "Transfer",
-      date: "26/12/2023",
-      amount: 1500,
-      currency: "LTC",
-      status: "Success",
-    },
-    {
-      id: "1812005",
-      type: "Transfer",
-      date: "22/12/2023",
-      amount: 500,
-      currency: "USDC",
-      status: "Fail",
-    },
-    {
-      id: "1812006",
-      type: "Deposit",
-      date: "16/01/2024",
-      amount: 2500,
-      currency: "TRX",
-      status: "Success",
-    },
-  ];
+  const [rows, setRows] = useState([]);
+  const transferStatus = useSelector((state) => state.transfer.isFetching);
+  const fetchUserTransactions = async () => {
+    try {
+      const transactionsResponse = await axios.get(
+        "https://on-shop-blockchain.onrender.com/transactions",
+        {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("token")).token
+            }`,
+          },
+        }
+      );
+      console.log("transactionsResponse", transactionsResponse);
+      setRows(transactionsResponse.data.data);
+    } catch (transactionsError) {
+      console.log("transactionsError", transactionsError);
+    }
+  };
+  useEffect(() => {
+    fetchUserTransactions();
+  }, [transferStatus]);
+
+  // const rows = [
+  //   {
+  //     id: "1812001",
+  //     type: "Transfer",
+  //     date: "27/11/2023",
+  //     amount: 1000,
+  //     currency: "BTC",
+  //     status: "Success",
+  //   },
+  //   {
+  //     id: "1812002",
+  //     type: "Deposit",
+  //     date: "25/11/2023",
+  //     amount: 2000,
+  //     currency: "ETH",
+  //     status: "Success",
+  //   },
+  //   {
+  //     id: "1812003",
+  //     type: "Transfer",
+  //     date: "26/11/2023",
+  //     amount: 3000,
+  //     currency: "USDT",
+  //     status: "Fail",
+  //   },
+  //   {
+  //     id: "1812004",
+  //     type: "Transfer",
+  //     date: "26/12/2023",
+  //     amount: 1500,
+  //     currency: "LTC",
+  //     status: "Success",
+  //   },
+  //   {
+  //     id: "1812005",
+  //     type: "Transfer",
+  //     date: "22/12/2023",
+  //     amount: 500,
+  //     currency: "USDC",
+  //     status: "Fail",
+  //   },
+  //   {
+  //     id: "1812006",
+  //     type: "Deposit",
+  //     date: "16/01/2024",
+  //     amount: 2500,
+  //     currency: "TRX",
+  //     status: "Pending",
+  //   },
+  // ];
+
   const columns = useMemo(() => [
     {
       field: "id",
@@ -131,6 +162,8 @@ export default function TransactionTable() {
             return <Success />;
           case "Fail":
             return <Fail />;
+          case "Pending":
+            return <Pending />;
         }
       },
     },
