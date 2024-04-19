@@ -1,4 +1,4 @@
-import { Box, Divider, Paper } from "@mui/material";
+import { Box, Divider, Paper, Tooltip } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import React, { useEffect, useMemo, useState } from "react";
 import {
@@ -8,6 +8,7 @@ import {
 } from "../../../components/label/TransactionLabel";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { formatDateTime } from "../../../utils/formatDateTime";
 
 export default function TransactionTable() {
   const [rows, setRows] = useState([]);
@@ -91,10 +92,24 @@ export default function TransactionTable() {
       type: "string",
       headerAlign: "center",
       align: "center",
-      width: 180,
+      minWidth: 180,
       renderHeader: () => <span>ID</span>,
       renderCell: (params) => {
-        return <span style={{ color: "rgb(2 132 199)" }}>{params.value}</span>;
+        return (
+          <Tooltip title={params.value} arrow>
+            <Box
+              sx={{
+                // "&:hover": {
+                //   cursor: "pointer",
+                //   textDecoration: "underline",
+                // },
+                color: "rgb(2 132 199)",
+              }}
+            >
+              {params.value.slice(0, 12) + "..."}
+            </Box>
+          </Tooltip>
+        );
       },
     },
     {
@@ -102,17 +117,21 @@ export default function TransactionTable() {
       type: "string",
       headerAlign: "center",
       align: "center",
-      width: 180,
+      minWidth: 180,
       renderHeader: () => <span>Type</span>,
       renderCell: (params) => {
         return (
-          <span
-            style={{
+          <Box
+            sx={{
+              // "&:hover": {
+              //   cursor: "pointer",
+              //   textDecoration: "underline",
+              // },
               color: params.value === "Transfer" ? "#ff9100" : "#3949AB",
             }}
           >
             {params.value}
-          </span>
+          </Box>
         );
       },
     },
@@ -121,10 +140,23 @@ export default function TransactionTable() {
       type: "string",
       headerAlign: "center",
       align: "center",
-      width: 180,
+      minWidth: 180,
       renderHeader: () => <span>Date</span>,
       renderCell: (params) => {
-        return <span>{params.value}</span>;
+        return (
+          <Box
+            sx={
+              {
+                // "&:hover": {
+                //   cursor: "pointer",
+                //   textDecoration: "underline",
+                // },
+              }
+            }
+          >
+            {formatDateTime(params.value)}
+          </Box>
+        );
       },
     },
     {
@@ -132,10 +164,23 @@ export default function TransactionTable() {
       type: "number",
       headerAlign: "center",
       align: "center",
-      width: 180,
+      minWidth: 180,
       renderHeader: () => <span>Amount</span>,
       renderCell: (params) => {
-        return <span>{params.value}</span>;
+        return (
+          <Box
+            sx={
+              {
+                // "&:hover": {
+                //   cursor: "pointer",
+                //   textDecoration: "underline",
+                // },
+              }
+            }
+          >
+            {params.value}
+          </Box>
+        );
       },
     },
     {
@@ -143,17 +188,30 @@ export default function TransactionTable() {
       type: "string",
       headerAlign: "center",
       align: "center",
-      width: 180,
+      minWidth: 180,
       renderHeader: () => <span>Currency</span>,
       renderCell: (params) => {
-        return <span>{params.value}</span>;
+        return (
+          <Box
+            sx={
+              {
+                // "&:hover": {
+                //   cursor: "pointer",
+                //   textDecoration: "underline",
+                // },
+              }
+            }
+          >
+            {params.value}
+          </Box>
+        );
       },
     },
     {
       field: "status",
       headerAlign: "center",
       align: "center",
-      width: 180,
+      minWidth: 180,
       flex: 1,
       renderHeader: () => <span>Status</span>,
       renderCell: (params) => {
@@ -251,7 +309,7 @@ export default function TransactionTable() {
             initialState={{
               pagination: {
                 paginationModel: {
-                  pageSize: 25,
+                  pageSize: 10,
                 },
               },
             }}

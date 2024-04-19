@@ -168,7 +168,7 @@ export default function CustomerOrders() {
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: 25,
+              pageSize: 10,
             },
           },
         }}
