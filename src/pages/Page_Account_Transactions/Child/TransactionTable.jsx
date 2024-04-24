@@ -1,4 +1,11 @@
-import { Box, Divider, Paper, Tooltip } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  Divider,
+  LinearProgress,
+  Paper,
+  Tooltip,
+} from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import React, { useEffect, useMemo, useState } from "react";
 import {
@@ -11,9 +18,11 @@ import { useSelector } from "react-redux";
 import { formatDateTime } from "../../../utils/formatDateTime";
 
 export default function TransactionTable() {
+  const [loading, setLoading] = useState(false);
   const [rows, setRows] = useState([]);
   const transferStatus = useSelector((state) => state.transfer.isFetching);
   const fetchUserTransactions = async () => {
+    setLoading(true);
     try {
       const transactionsResponse = await axios.get(
         "https://on-shop-blockchain.onrender.com/transactions",
@@ -27,8 +36,10 @@ export default function TransactionTable() {
       );
       console.log("transactionsResponse", transactionsResponse);
       setRows(transactionsResponse.data.data);
+      setLoading(false);
     } catch (transactionsError) {
       console.log("transactionsError", transactionsError);
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -127,7 +138,8 @@ export default function TransactionTable() {
               //   cursor: "pointer",
               //   textDecoration: "underline",
               // },
-              color: params.value === "Transfer" ? "#ff9100" : "#3949AB",
+              // color: params.value === "Transfer" ? "#3949AB" : "#ff9100",
+              color: params.value === "Transfer" ? "#0c3c90" : "#f7743c",
             }}
           >
             {params.value}
@@ -202,7 +214,7 @@ export default function TransactionTable() {
               }
             }
           >
-            {params.value}
+            {params.value.toUpperCase()}
           </Box>
         );
       },
@@ -254,68 +266,83 @@ export default function TransactionTable() {
         </Box>
         {/* <Divider sx={{ borderColor: "gray", borderBottomWidth: 1 }} /> */}
         <Box sx={{ minHeight: 400, marginTop: "25px" }}>
-          <DataGrid
-            autoHeight
-            rows={rows}
-            columns={columns}
-            sx={{
-              "&.MuiDataGrid-root": {
-                borderRadius: 2,
-              },
-              "&.MuiDataGrid-root .MuiDataGrid-cell:focus-within": {
-                outline: "none",
-              },
-              "&.MuiDataGrid-root .MuiDataGrid-columnHeader:focus-within": {
-                outline: "none",
-              },
-              "&.MuiDataGrid-root .MuiDataGrid-columnHeader": {
-                backgroundColor: "rgb(23 23 23)",
-                color: "white",
-                fontWeight: 700,
-              },
-              "&.MuiDataGrid-root .MuiDataGrid-columnSeparator": {
-                display: "none",
-              },
-              "&.MuiDataGrid-root .MuiDataGrid-sortIcon": {
-                color: "white",
-              },
-              "&.MuiDataGrid-root .MuiCircularProgress-root": {
-                color: "black",
-              },
-              "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-                color: "black",
-              },
-            }}
-            slots={{
-              toolbar: GridToolbar,
-            }}
-            slotProps={{
-              toolbar: {
-                showQuickFilter: true,
-                quickFilterProps: {
-                  debounceMs: 500,
-                  placeholder: "Search...",
-                  sx: {
-                    width: 300,
-                    marginBottom: 1,
+          {loading ? (
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                minHeight: 400,
+              }}
+            >
+              <CircularProgress />
+            </div>
+          ) : (
+            <DataGrid
+              autoHeight
+              rows={rows}
+              columns={columns}
+              sx={{
+                "&.MuiDataGrid-root": {
+                  borderRadius: 2,
+                },
+                "&.MuiDataGrid-root .MuiDataGrid-cell:focus-within": {
+                  outline: "none",
+                },
+                "&.MuiDataGrid-root .MuiDataGrid-columnHeader:focus-within": {
+                  outline: "none",
+                },
+                "&.MuiDataGrid-root .MuiDataGrid-columnHeader": {
+                  backgroundColor: "rgb(23 23 23)",
+                  color: "white",
+                  fontWeight: 700,
+                },
+                "&.MuiDataGrid-root .MuiDataGrid-columnSeparator": {
+                  display: "none",
+                },
+                "&.MuiDataGrid-root .MuiDataGrid-sortIcon": {
+                  color: "white",
+                },
+                "&.MuiDataGrid-root .MuiCircularProgress-root": {
+                  color: "black",
+                },
+                "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                  color: "black",
+                },
+              }}
+              slots={{
+                toolbar: GridToolbar,
+              }}
+              slotProps={{
+                toolbar: {
+                  showQuickFilter: true,
+                  quickFilterProps: {
+                    debounceMs: 500,
+                    placeholder: "Search...",
+                    sx: {
+                      width: 300,
+                      marginBottom: 1,
+                    },
                   },
                 },
-              },
-            }}
-            disableColumnFilter
-            disableColumnSelector
-            pagination
-            pageSizeOptions={[5, 10, 25, 50, 100]}
-            initialState={{
-              pagination: {
-                paginationModel: {
-                  pageSize: 10,
+              }}
+              disableColumnFilter
+              disableColumnSelector
+              pagination
+              pageSizeOptions={[5, 10, 25, 50, 100]}
+              initialState={{
+                pagination: {
+                  paginationModel: {
+                    pageSize: 10,
+                  },
                 },
-              },
-            }}
-            getRowId={(row) => row.id}
-            disableRowSelectionOnClick
-          />
+              }}
+              getRowId={(row) => row.id}
+              disableRowSelectionOnClick
+            />
+          )}
         </Box>
       </Paper>
     </Box>

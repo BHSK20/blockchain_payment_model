@@ -176,13 +176,15 @@ export default function DepositForm() {
                 </div>
                 <div className="flex justify-center items-center gap-0.5">
                   <span
-                    className="text-lg text-indigo-600"
+                    // className="text-lg text-indigo-600"
+                    className="text-lg"
                     style={{ fontWeight: 500 }}
                   >
                     {calculatedPrice}
                   </span>
                   <span
-                    className="text-lg text-indigo-600"
+                    // className="text-lg text-indigo-600"
+                    className="text-lg"
                     style={{ fontWeight: 500 }}
                   >
                     VND
