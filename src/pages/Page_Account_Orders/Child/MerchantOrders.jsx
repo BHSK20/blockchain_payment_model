@@ -54,7 +54,7 @@ export default function MerchantOrders() {
       type: "string",
       headerAlign: "center",
       align: "center",
-      width: 220,
+      width: 180,
       renderHeader: () => <span>ID</span>,
       renderCell: (params) => {
         return <span style={{ color: "rgb(2 132 199)" }}>{params.value}</span>;
@@ -87,7 +87,18 @@ export default function MerchantOrders() {
       type: "string",
       headerAlign: "center",
       align: "center",
-      width: 220,
+      width: 150,
+      renderHeader: () => <span>Currency</span>,
+      renderCell: (params) => {
+        return <span>{params.value}</span>;
+      },
+    },
+    {
+      field: "curr",
+      type: "string",
+      headerAlign: "center",
+      align: "center",
+      width: 150,
       renderHeader: () => <span>Currency</span>,
       renderCell: (params) => {
         return <span>{params.value}</span>;
@@ -97,7 +108,7 @@ export default function MerchantOrders() {
       field: "status",
       headerAlign: "center",
       align: "center",
-      width: 220,
+      width: 150,
       flex: 1,
       renderHeader: () => <span>Status</span>,
       renderCell: (params) => {
