@@ -142,7 +142,7 @@ export default function MerchantOrders() {
       headerAlign: "left",
       align: "left",
       minWidth: 250,
-      renderHeader: () => <span>Customer Name</span>,
+      renderHeader: () => <span>Customer Email</span>,
       renderCell: (params) => {
         return (
           <Box
