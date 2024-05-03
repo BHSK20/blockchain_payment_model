@@ -11,16 +11,23 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import QRCode from "react-qr-code";
 
 export default function DepositForm() {
   const [amount, setAmount] = useState(0);
   const [currency, setCurrency] = useState(null);
   const [calculatedAmount, setCalculatedAmount] = useState(0);
   const [calculatedPrice, setCalculatedPrice] = useState(0);
+  const [qrCodeData, setQrCodeData] = useState(""); // State for QR Code data
 
   const calculateDepositDetails = () => {
     setCalculatedAmount(amount);
     setCalculatedPrice(amount);
+  };
+
+  const generateQRCodeData = () => {
+    const randomData = Math.random().toString(36).substring(7); // Generate some random data for the QR code
+    setQrCodeData(randomData);
   };
 
   const handleDeposit = (e) => {
@@ -29,6 +36,7 @@ export default function DepositForm() {
     console.log("currency", currency);
     if (amount && currency) {
       calculateDepositDetails();
+      generateQRCodeData(); // Call the function to generate QR code data
     }
   };
 
@@ -192,6 +200,17 @@ export default function DepositForm() {
                 </div>
               </Box>
               <Divider sx={{ borderColor: "black", borderBottomWidth: 2 }} />
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: "30px",
+                }}
+              >
+                {/* Render QR Code here */}
+                {qrCodeData && <QRCode value={qrCodeData} />}
+              </Box>
               <Button
                 className="px-8"
                 type="submit"
