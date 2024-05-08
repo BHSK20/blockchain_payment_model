@@ -209,6 +209,7 @@ export default function MerchantAPIForm() {
               justifyContent: "center",
               alignItems: "center",
               zIndex: 9999,
+              minHeight: "800px",
             }}
           >
             <CircularProgress />

@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  CircularProgress,
   Divider,
   FormControl,
   InputLabel,
@@ -12,8 +13,11 @@ import {
 import React, { useState } from "react";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import QRCode from "react-qr-code";
+import { depositCurrency } from "../../../redux/apiRequest";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function DepositForm() {
+  const dispatch = useDispatch();
   const [amount, setAmount] = useState(0);
   const [currency, setCurrency] = useState(null);
   const [calculatedAmount, setCalculatedAmount] = useState(0);
@@ -40,10 +44,14 @@ export default function DepositForm() {
     }
   };
 
+  const depositCurrencyStatus = useSelector(
+    (state) => state.deposit?.isFetching
+  );
   const handleAcceptDeposit = (e) => {
     e.preventDefault();
     console.log("calculatedAmount", calculatedAmount);
     console.log("calculatedPrice", calculatedPrice);
+    depositCurrency({ amount: calculatedAmount, currency: currency }, dispatch);
   };
 
   return (
@@ -230,6 +238,25 @@ export default function DepositForm() {
             </Box>
           </Box>
         </form>
+        {depositCurrencyStatus && (
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 9999,
+              minHeight: "800px",
+            }}
+          >
+            <CircularProgress />
+          </div>
+        )}
       </Paper>
     </Box>
   );

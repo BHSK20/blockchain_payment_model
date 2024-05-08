@@ -143,6 +143,7 @@ export default function Page_Account_Order_Details_Id() {
                 justifyContent: "center",
                 alignItems: "center",
                 zIndex: 9999,
+                minHeight: "800px",
               }}
             >
               <CircularProgress />

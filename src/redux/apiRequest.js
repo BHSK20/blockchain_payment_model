@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { registerMerchantFailed, registerMerchantStart, registerMerchantSuccess } from "./reducer/merchantReducer";
 import { transferCurrencyFailed, transferCurrencyStart, transferCurrencySuccess } from "./reducer/transferReducer";
 import { makePaymentStart, makePaymentSuccess, makePaymentFailed } from "./reducer/paymentReducer"
+import { depositCurrencyFailed, depositCurrencyStart, depositCurrencySuccess } from "./reducer/depositReducer";
 
 export const loginUser = async (user, dispatch, navigate) => {
     dispatch(loginStart())
@@ -104,7 +105,8 @@ export const transferCurrency = async (data, dispatch) => {
         // ----------------------------------------------------
         Swal.fire({
             title: "Transfer successful",
-            html: `<p>You have successfully transferred <b class="text-primary">${data.amount} ${data.currency.toUpperCase()}</b> to <b class="text-primary">${data.email}</b>.</p>`,
+            html: `<p>You have successfully transferred <b class="text-primary">${data.amount} ${data.currency.toUpperCase()}</b> to <b class="text-primary">${data.email}</b>.</p>
+            <br><span>Transaction Hash: <a href="https://sepolia.etherscan.io/tx/${response.data.data}">${response.data.data}</a></span>`,
             icon: "success",
             confirmButtonColor: "#5a67d8",
         });
@@ -128,6 +130,7 @@ export const makePayment = async (orderid, dispatch) => {
         dispatch(makePaymentSuccess(paymentResponse.data.data))
         Swal.fire({
             title: "Make payment successful",
+            html: `<span>Transaction Hash: <a href="https://sepolia.etherscan.io/tx/${paymentResponse.data.data}">${paymentResponse.data.data}</a></span>`,
             icon: "success",
             confirmButtonColor: "#5a67d8",
         });
@@ -136,6 +139,30 @@ export const makePayment = async (orderid, dispatch) => {
         dispatch(makePaymentFailed())
         Swal.fire({
             title: "Make payment failed",
+            icon: "error",
+            confirmButtonColor: "#5a67d8",
+        });
+    }
+}
+
+export const depositCurrency = async (data, dispatch) => {
+    dispatch(depositCurrencyStart())
+    try {
+        const response = await axios.post("https://on-shop-blockchain.onrender.com/deposit", data, { headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}` } })
+        console.log("response", response.data.data)
+        dispatch(depositCurrencySuccess(response.data.data))
+        Swal.fire({
+            title: "Deposit successful",
+            html: `<p>You have successfully depositted <b class="text-primary">${data.amount} ${data.currency.toUpperCase()}</b>.</p><br><span>Transaction Hash: <a href="https://sepolia.etherscan.io/tx/${response.data.data}">${response.data.data}</a></span>`,
+            icon: "success",
+            confirmButtonColor: "#5a67d8",
+        });
+    }
+    catch (err) {
+        dispatch(depositCurrencyFailed())
+        Swal.fire({
+            title: "Deposit failed",
+            text: "Something went wrong with your deposit. Please try again.",
             icon: "error",
             confirmButtonColor: "#5a67d8",
         });
