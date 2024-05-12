@@ -97,7 +97,7 @@ export default function Header() {
   // ---------------------------------------------------------
 
   return (
-    <div className="bg-white h-16 flex justify-center sm:px-16 sm:justify-between items-center space-x-3">
+    <div className="bg-white h-16 flex px-16 justify-between items-center space-x-3">
       <div
         className="account-balance flex justify-center items-center gap-1"
         style={{ color: "#ffbb11" }}
