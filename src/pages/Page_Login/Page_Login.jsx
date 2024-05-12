@@ -110,180 +110,198 @@ export default function Page_Login() {
       <Navbar />
       <Box
         sx={{
-          height: "78vh",
-          width: "100%",
           display: "flex",
-          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          height: "78vh",
         }}
       >
-        <Container
+        <Box
           sx={{
-            width: "525px",
-            marginTop: 23,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
           }}
+          className="w-full md:w-1/2 lg:w-1/3"
         >
-          <Paper
+          <Container
             sx={{
-              boxShadow: 10,
-              borderRadius: 3,
-              width: "100%",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              padding: 4,
+              marginTop: 23,
             }}
           >
-            <Container>
-              <form onSubmit={handleLogin}>
-                <Box
-                  sx={{
-                    fontSize: 32,
-                    fontWeight: 700,
-                    marginBottom: 1,
-                    textAlign: "center",
-                    color: "#0284c7",
-                  }}
-                >
-                  BKpay
-                </Box>
-                <Box
-                  sx={{
-                    fontSize: 24,
-                    fontWeight: 700,
-                    marginBottom: 3,
-                    textAlign: "center",
-                  }}
-                >
-                  Login
-                </Box>
-                <Box>
-                  <h4 style={{ marginBottom: 5, fontWeight: 600 }}>
-                    Email Address
-                  </h4>
-                  <TextField
-                    label="Enter your email address"
-                    variant="outlined"
-                    type="text"
-                    // size="small"
-                    fullWidth
-                    required
-                    autoComplete="new-text"
-                    onChange={(e) => handleEmailChange(e)}
-                    error={emailError}
-                    helperText={emailError ? "Invalid email format" : ""}
-                    // onInvalid={(e) =>
-                    //   e.target.setCustomValidity("Please fill out this field.")
-                    // }
-                    // onInput={(e) => e.target.setCustomValidity("")}
-                  ></TextField>
-                  <h4
-                    style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}
+            <Paper
+              sx={{
+                boxShadow: 10,
+                borderRadius: 3,
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                padding: 4,
+              }}
+            >
+              <Container>
+                <form onSubmit={handleLogin}>
+                  <Box
+                    sx={{
+                      fontSize: 32,
+                      fontWeight: 700,
+                      marginBottom: 1,
+                      textAlign: "center",
+                      color: "#0284c7",
+                    }}
                   >
-                    Password
-                  </h4>
-                  <FormControl
-                    variant="outlined"
-                    // size="small"
-                    fullWidth
-                    required
-                    onChange={(e) => setPassword(e.target.value)}
-                    // onInvalid={(e) =>
-                    //   e.target.setCustomValidity("Please fill out this field.")
-                    // }
-                    // onInput={(e) => e.target.setCustomValidity("")}
+                    BKpay
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: 24,
+                      fontWeight: 700,
+                      marginBottom: 3,
+                      textAlign: "center",
+                    }}
                   >
-                    <InputLabel htmlFor="outlined-adornment-password">
-                      Enter your password
-                    </InputLabel>
-                    <OutlinedInput
-                      id="outlined-adornment-password"
-                      type={showPassword ? "text" : "password"}
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
-                            edge="end"
-                          >
-                            {showPassword ? <Visibility /> : <VisibilityOff />}
-                          </IconButton>
-                        </InputAdornment>
-                      }
-                      label="Enter your password"
-                    />
-                  </FormControl>
-
-                  <Box className="row">
-                    <Box
-                      className="col-6"
-                      sx={{
-                        width: "100%",
-                        display: "flex",
-                        justifyContent: "flex-end",
-                        paddingTop: 1,
+                    Login
+                  </Box>
+                  <Box>
+                    <h4 style={{ marginBottom: 5, fontWeight: 600 }}>
+                      Email Address
+                    </h4>
+                    <TextField
+                      label="Enter your email address"
+                      variant="outlined"
+                      type="text"
+                      // size="small"
+                      fullWidth
+                      required
+                      autoComplete="new-text"
+                      onChange={(e) => handleEmailChange(e)}
+                      error={emailError}
+                      helperText={emailError ? "Invalid email format" : ""}
+                      // onInvalid={(e) =>
+                      //   e.target.setCustomValidity("Please fill out this field.")
+                      // }
+                      // onInput={(e) => e.target.setCustomValidity("")}
+                    ></TextField>
+                    <h4
+                      style={{
+                        marginTop: 25,
+                        marginBottom: 5,
+                        fontWeight: 600,
                       }}
                     >
-                      <a href="/" style={{ color: "#0284c7", fontWeight: 500 }}>
-                        Forgot your password?
+                      Password
+                    </h4>
+                    <FormControl
+                      variant="outlined"
+                      // size="small"
+                      fullWidth
+                      required
+                      onChange={(e) => setPassword(e.target.value)}
+                      // onInvalid={(e) =>
+                      //   e.target.setCustomValidity("Please fill out this field.")
+                      // }
+                      // onInput={(e) => e.target.setCustomValidity("")}
+                    >
+                      <InputLabel htmlFor="outlined-adornment-password">
+                        Enter your password
+                      </InputLabel>
+                      <OutlinedInput
+                        id="outlined-adornment-password"
+                        type={showPassword ? "text" : "password"}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="toggle password visibility"
+                              onClick={handleClickShowPassword}
+                              onMouseDown={handleMouseDownPassword}
+                              edge="end"
+                            >
+                              {showPassword ? (
+                                <Visibility />
+                              ) : (
+                                <VisibilityOff />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        }
+                        label="Enter your password"
+                      />
+                    </FormControl>
+
+                    <Box className="row">
+                      <Box
+                        className="col-6"
+                        sx={{
+                          width: "100%",
+                          display: "flex",
+                          justifyContent: "flex-end",
+                          paddingTop: 1,
+                        }}
+                      >
+                        <a
+                          href="/"
+                          style={{ color: "#0284c7", fontWeight: 500 }}
+                        >
+                          Forgot your password?
+                        </a>
+                      </Box>
+                    </Box>
+
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      size="large"
+                      sx={{
+                        width: "100%",
+                        borderRadius: "4px",
+                        marginTop: 4,
+                        marginBottom: 2,
+                        textTransform: "none",
+                        backgroundColor: "#0284c7",
+                        fontSize: "16px",
+                      }}
+                    >
+                      Log In
+                    </Button>
+                    <Box sx={{ textAlign: "center" }}>
+                      Don't have an account?
+                      <a
+                        href="/signup"
+                        style={{
+                          color: "#0284c7",
+                          fontWeight: 600,
+                          marginLeft: 4,
+                        }}
+                      >
+                        Sign up here
                       </a>
                     </Box>
                   </Box>
-
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    size="large"
-                    sx={{
+                </form>
+                {loginStatus.isFetching && (
+                  <div
+                    style={{
+                      position: "fixed",
+                      top: 0,
+                      left: 0,
                       width: "100%",
-                      borderRadius: "4px",
-                      marginTop: 4,
-                      marginBottom: 2,
-                      textTransform: "none",
-                      backgroundColor: "#0284c7",
-                      fontSize: "16px",
+                      height: "100%",
+                      backgroundColor: "rgba(255, 255, 255, 0.5)",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      zIndex: 9999,
                     }}
                   >
-                    Log In
-                  </Button>
-                  <Box sx={{ textAlign: "center" }}>
-                    Don't have an account?
-                    <a
-                      href="/signup"
-                      style={{
-                        color: "#0284c7",
-                        fontWeight: 600,
-                        marginLeft: 4,
-                      }}
-                    >
-                      Sign up here
-                    </a>
-                  </Box>
-                </Box>
-              </form>
-              {loginStatus.isFetching && (
-                <div
-                  style={{
-                    position: "fixed",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    backgroundColor: "rgba(255, 255, 255, 0.5)",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    zIndex: 9999,
-                  }}
-                >
-                  <CircularProgress />
-                </div>
-              )}
-            </Container>
-          </Paper>
-        </Container>
+                    <CircularProgress />
+                  </div>
+                )}
+              </Container>
+            </Paper>
+          </Container>
+        </Box>
       </Box>
       <Footer />
     </>

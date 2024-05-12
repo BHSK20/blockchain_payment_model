@@ -88,184 +88,199 @@ export default function Page_Signup() {
       <Navbar />
       <Box
         sx={{
-          height: "78vh",
-          width: "100%",
           display: "flex",
-          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          height: "78vh",
         }}
       >
-        <Container
+        <Box
           sx={{
-            width: "525px",
-            marginTop: 23,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
           }}
+          className="w-full md:w-1/2 lg:w-1/3"
         >
-          <Paper
+          <Container
             sx={{
-              boxShadow: 10,
-              borderRadius: 3,
-              width: "100%",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              padding: 4,
+              marginTop: 23,
             }}
           >
-            <Container>
-              <form onSubmit={handleSignup}>
-                <Box
-                  sx={{
-                    fontSize: 32,
-                    fontWeight: 700,
-                    marginBottom: 1,
-                    textAlign: "center",
-                    color: "#0284c7",
-                  }}
-                >
-                  BKpay
-                </Box>
-                <Box
-                  sx={{
-                    fontSize: 24,
-                    fontWeight: 700,
-                    marginBottom: 3,
-                    textAlign: "center",
-                  }}
-                >
-                  Signup
-                </Box>
-                <Box>
-                  <h4 style={{ marginBottom: 5, fontWeight: 600 }}>Name</h4>
-                  <TextField
-                    label="Enter your name"
-                    variant="outlined"
-                    type="text"
-                    size="small"
-                    fullWidth
-                    required
-                    autoComplete="new-text"
-                    onChange={(e) => setName(e.target.value)}
-                    // onInvalid={(e) =>
-                    //   e.target.setCustomValidity("Please fill out this field.")
-                    // }
-                    // onInput={(e) => e.target.setCustomValidity("")}
-                  ></TextField>
-                  <h4
-                    style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}
-                  >
-                    Email Address
-                  </h4>
-                  <TextField
-                    label="Enter your email address"
-                    variant="outlined"
-                    type="text"
-                    size="small"
-                    fullWidth
-                    required
-                    autoComplete="new-text"
-                    onChange={(e) => handleEmailChange(e)}
-                    error={emailError}
-                    helperText={emailError ? "Invalid email format" : ""}
-                    // onInvalid={(e) =>
-                    //   e.target.setCustomValidity("Please fill out this field.")
-                    // }
-                    // onInput={(e) => e.target.setCustomValidity("")}
-                  ></TextField>
-                  <h4
-                    style={{ marginTop: 25, marginBottom: 5, fontWeight: 600 }}
-                  >
-                    Password
-                  </h4>
-                  <FormControl
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    required
-                    onChange={(e) => setPassword(e.target.value)}
-                    // onInvalid={(e) =>
-                    //   e.target.setCustomValidity("Please fill out this field.")
-                    // }
-                    // onInput={(e) => e.target.setCustomValidity("")}
-                  >
-                    <InputLabel htmlFor="outlined-adornment-password">
-                      Enter your password
-                    </InputLabel>
-                    <OutlinedInput
-                      id="outlined-adornment-password"
-                      type={showPassword ? "text" : "password"}
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
-                            edge="end"
-                          >
-                            {showPassword ? (
-                              <Visibility fontSize="small" />
-                            ) : (
-                              <VisibilityOff fontSize="small" />
-                            )}
-                          </IconButton>
-                        </InputAdornment>
-                      }
-                      label="Enter your password"
-                    />
-                  </FormControl>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    size="large"
+            <Paper
+              sx={{
+                boxShadow: 10,
+                borderRadius: 3,
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                padding: 4,
+              }}
+            >
+              <Container>
+                <form onSubmit={handleSignup}>
+                  <Box
                     sx={{
-                      width: "100%",
-                      borderRadius: "4px",
-                      marginTop: 4,
-                      marginBottom: 2,
-                      textTransform: "none",
-                      backgroundColor: "#0284c7",
-                      fontSize: "16px",
+                      fontSize: 32,
+                      fontWeight: 700,
+                      marginBottom: 1,
+                      textAlign: "center",
+                      color: "#0284c7",
                     }}
                   >
-                    Sign Up
-                  </Button>
-                  <Box sx={{ textAlign: "center" }}>
-                    Already have an account?
-                    <a
-                      href="/login"
+                    BKpay
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: 24,
+                      fontWeight: 700,
+                      marginBottom: 3,
+                      textAlign: "center",
+                    }}
+                  >
+                    Signup
+                  </Box>
+                  <Box>
+                    <h4 style={{ marginBottom: 5, fontWeight: 600 }}>Name</h4>
+                    <TextField
+                      label="Enter your name"
+                      variant="outlined"
+                      type="text"
+                      size="small"
+                      fullWidth
+                      required
+                      autoComplete="new-text"
+                      onChange={(e) => setName(e.target.value)}
+                      // onInvalid={(e) =>
+                      //   e.target.setCustomValidity("Please fill out this field.")
+                      // }
+                      // onInput={(e) => e.target.setCustomValidity("")}
+                    ></TextField>
+                    <h4
                       style={{
-                        color: "#0284c7",
+                        marginTop: 25,
+                        marginBottom: 5,
                         fontWeight: 600,
-                        marginLeft: 4,
                       }}
                     >
-                      Log in here
-                    </a>
+                      Email Address
+                    </h4>
+                    <TextField
+                      label="Enter your email address"
+                      variant="outlined"
+                      type="text"
+                      size="small"
+                      fullWidth
+                      required
+                      autoComplete="new-text"
+                      onChange={(e) => handleEmailChange(e)}
+                      error={emailError}
+                      helperText={emailError ? "Invalid email format" : ""}
+                      // onInvalid={(e) =>
+                      //   e.target.setCustomValidity("Please fill out this field.")
+                      // }
+                      // onInput={(e) => e.target.setCustomValidity("")}
+                    ></TextField>
+                    <h4
+                      style={{
+                        marginTop: 25,
+                        marginBottom: 5,
+                        fontWeight: 600,
+                      }}
+                    >
+                      Password
+                    </h4>
+                    <FormControl
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      required
+                      onChange={(e) => setPassword(e.target.value)}
+                      // onInvalid={(e) =>
+                      //   e.target.setCustomValidity("Please fill out this field.")
+                      // }
+                      // onInput={(e) => e.target.setCustomValidity("")}
+                    >
+                      <InputLabel htmlFor="outlined-adornment-password">
+                        Enter your password
+                      </InputLabel>
+                      <OutlinedInput
+                        id="outlined-adornment-password"
+                        type={showPassword ? "text" : "password"}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="toggle password visibility"
+                              onClick={handleClickShowPassword}
+                              onMouseDown={handleMouseDownPassword}
+                              edge="end"
+                            >
+                              {showPassword ? (
+                                <Visibility fontSize="small" />
+                              ) : (
+                                <VisibilityOff fontSize="small" />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        }
+                        label="Enter your password"
+                      />
+                    </FormControl>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      size="large"
+                      sx={{
+                        width: "100%",
+                        borderRadius: "4px",
+                        marginTop: 4,
+                        marginBottom: 2,
+                        textTransform: "none",
+                        backgroundColor: "#0284c7",
+                        fontSize: "16px",
+                      }}
+                    >
+                      Sign Up
+                    </Button>
+                    <Box sx={{ textAlign: "center" }}>
+                      Already have an account?
+                      <a
+                        href="/login"
+                        style={{
+                          color: "#0284c7",
+                          fontWeight: 600,
+                          marginLeft: 4,
+                        }}
+                      >
+                        Log in here
+                      </a>
+                    </Box>
                   </Box>
-                </Box>
-              </form>
-              {signupStatus.isFetching && (
-                <div
-                  style={{
-                    position: "fixed",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    backgroundColor: "rgba(255, 255, 255, 0.5)",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    zIndex: 9999,
-                  }}
-                >
-                  <CircularProgress />
-                </div>
-              )}
-            </Container>
-          </Paper>
-        </Container>
+                </form>
+                {signupStatus.isFetching && (
+                  <div
+                    style={{
+                      position: "fixed",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%",
+                      backgroundColor: "rgba(255, 255, 255, 0.5)",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      zIndex: 9999,
+                    }}
+                  >
+                    <CircularProgress />
+                  </div>
+                )}
+              </Container>
+            </Paper>
+          </Container>
+        </Box>
       </Box>
       <Footer />
     </>
