@@ -34,7 +34,7 @@ export default function Page_Email_Verification_Id() {
       return (
         <div
           style={{
-            position: "absolute",
+            position: "fixed",
             top: 0,
             left: 0,
             width: "100%",

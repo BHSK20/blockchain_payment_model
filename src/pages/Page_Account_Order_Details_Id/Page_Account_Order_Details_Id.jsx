@@ -133,7 +133,7 @@ export default function Page_Account_Order_Details_Id() {
           {makePaymentStatus && (
             <div
               style={{
-                position: "absolute",
+                position: "fixed",
                 top: 0,
                 left: 0,
                 width: "100%",
@@ -143,7 +143,6 @@ export default function Page_Account_Order_Details_Id() {
                 justifyContent: "center",
                 alignItems: "center",
                 zIndex: 9999,
-                minHeight: "800px",
               }}
             >
               <CircularProgress />

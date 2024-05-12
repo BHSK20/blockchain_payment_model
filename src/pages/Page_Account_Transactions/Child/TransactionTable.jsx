@@ -138,8 +138,13 @@ export default function TransactionTable() {
               //   cursor: "pointer",
               //   textDecoration: "underline",
               // },
-              // color: params.value === "Transfer" ? "#3949AB" : "#ff9100",
-              color: params.value === "Transfer" ? "#0c3c90" : "#f7743c",
+              // color: params.value === "Transfer" ? "#0c3c90" : "#f7743c",
+              color:
+                params.value === "Transfer"
+                  ? "#003f5a"
+                  : params.value === "Deposit"
+                  ? "#de6600"
+                  : "#007a7a",
             }}
           >
             {params.value}

@@ -188,7 +188,7 @@ export default function TransferForm() {
         {transferCurrencyStatus && (
           <div
             style={{
-              position: "absolute",
+              position: "fixed",
               top: 0,
               left: 0,
               width: "100%",
@@ -198,7 +198,6 @@ export default function TransferForm() {
               justifyContent: "center",
               alignItems: "center",
               zIndex: 9999,
-              minHeight: "800px",
             }}
           >
             <CircularProgress />

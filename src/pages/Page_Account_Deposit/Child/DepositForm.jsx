@@ -18,11 +18,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function DepositForm() {
   const dispatch = useDispatch();
+
   const [amount, setAmount] = useState(0);
   const [currency, setCurrency] = useState(null);
   const [calculatedAmount, setCalculatedAmount] = useState(0);
   const [calculatedPrice, setCalculatedPrice] = useState(0);
-  const [qrCodeData, setQrCodeData] = useState(""); // State for QR Code data
+  const [qrCodeData, setQrCodeData] = useState(""); // State for QR code data
 
   const calculateDepositDetails = () => {
     setCalculatedAmount(amount);
@@ -51,7 +52,11 @@ export default function DepositForm() {
     e.preventDefault();
     console.log("calculatedAmount", calculatedAmount);
     console.log("calculatedPrice", calculatedPrice);
-    depositCurrency({ amount: calculatedAmount, currency: currency }, dispatch);
+    const data = {
+      amount: calculatedAmount,
+      currency: currency,
+    };
+    depositCurrency(data, dispatch);
   };
 
   return (
@@ -241,7 +246,7 @@ export default function DepositForm() {
         {depositCurrencyStatus && (
           <div
             style={{
-              position: "absolute",
+              position: "fixed",
               top: 0,
               left: 0,
               width: "100%",
@@ -251,7 +256,6 @@ export default function DepositForm() {
               justifyContent: "center",
               alignItems: "center",
               zIndex: 9999,
-              minHeight: "800px",
             }}
           >
             <CircularProgress />

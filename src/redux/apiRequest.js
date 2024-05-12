@@ -3,7 +3,7 @@ import { loginFailed, loginStart, loginSuccess, logoutSuccess, signupFailed, sig
 import Swal from "sweetalert2";
 import { registerMerchantFailed, registerMerchantStart, registerMerchantSuccess } from "./reducer/merchantReducer";
 import { transferCurrencyFailed, transferCurrencyStart, transferCurrencySuccess } from "./reducer/transferReducer";
-import { makePaymentStart, makePaymentSuccess, makePaymentFailed } from "./reducer/paymentReducer"
+import { makePaymentFailed, makePaymentStart, makePaymentSuccess } from "./reducer/paymentReducer"
 import { depositCurrencyFailed, depositCurrencyStart, depositCurrencySuccess } from "./reducer/depositReducer";
 
 export const loginUser = async (user, dispatch, navigate) => {
@@ -59,9 +59,9 @@ export const logoutUser = async (dispatch, navigate) => {
 export const registerMerchant = async (merchant, dispatch) => {
     dispatch(registerMerchantStart())
     try {
-        const response = await axios.post("https://on-shop-blockchain.onrender.com/merchant_register", merchant, { headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}` } })
-        console.log("response", response.data.data)
-        dispatch(registerMerchantSuccess(response.data.data))
+        const registerResponse = await axios.post("https://on-shop-blockchain.onrender.com/merchant_register", merchant, { headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}` } })
+        console.log("registerResponse", registerResponse.data.data)
+        dispatch(registerMerchantSuccess(registerResponse.data.data))
         // ----------------------------------------------------
         // Update the the role of "user" object in localStorage
         const userString = localStorage.getItem("user");
@@ -74,7 +74,7 @@ export const registerMerchant = async (merchant, dispatch) => {
         // ----------------------------------------------------
         Swal.fire({
             title: "Registration successful",
-            html: `<p><b class="text-success">API Key: </b></p><p>${response.data.data.api_key}</p><br><hr><br><p><b class="text-success">Partner Code: </b></p><p>${response.data.data.partner_code}</p>`,
+            html: `<p><b class="text-success">API Key: </b></p><p>${registerResponse.data.data.api_key}</p><br><hr><br><p><b class="text-success">Partner Code: </b></p><p>${registerResponse.data.data.partner_code}</p>`,
             icon: "success",
             confirmButtonColor: "#5a67d8",
         });
@@ -92,12 +92,12 @@ export const registerMerchant = async (merchant, dispatch) => {
 export const transferCurrency = async (data, dispatch) => {
     dispatch(transferCurrencyStart())
     try {
-        const response = await axios.post("https://on-shop-blockchain.onrender.com/transfer", data, { headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}` } })
-        console.log("response", response.data.data)
-        dispatch(transferCurrencySuccess(response.data.data))
+        const transferResponse = await axios.post("https://on-shop-blockchain.onrender.com/transfer", data, { headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}` } })
+        console.log("transferResponse", transferResponse.data.data)
+        dispatch(transferCurrencySuccess(transferResponse.data.data))
         // ----------------------------------------------------
-        // localStorage.setItem("token", response.data.data[1])
-        // const userInformationResponse = await axios.get("https://on-shop-blockchain.onrender.com/user/payload", { headers: { Authorization: `Bearer ${response.data.data[1]}` } })
+        // localStorage.setItem("token", transferResponse.data.data[1])
+        // const userInformationResponse = await axios.get("https://on-shop-blockchain.onrender.com/user/payload", { headers: { Authorization: `Bearer ${transferResponse.data.data[1]}` } })
         // console.log("userInformationResponse", userInformationResponse.data.data)
         // if (userInformationResponse && userInformationResponse.data.data) {
         //     localStorage.setItem("user", JSON.stringify(userInformationResponse.data.data))
@@ -106,7 +106,7 @@ export const transferCurrency = async (data, dispatch) => {
         Swal.fire({
             title: "Transfer successful",
             html: `<p>You have successfully transferred <b class="text-primary">${data.amount} ${data.currency.toUpperCase()}</b> to <b class="text-primary">${data.email}</b>.</p>
-            <br><span>Transaction Hash: <a href="https://sepolia.etherscan.io/tx/${response.data.data}">${response.data.data}</a></span>`,
+            <br><span>Transaction Hash: <a href="https://sepolia.etherscan.io/tx/${transferResponse.data.data}">${transferResponse.data.data}</a></span>`,
             icon: "success",
             confirmButtonColor: "#5a67d8",
         });
@@ -148,12 +148,12 @@ export const makePayment = async (orderid, dispatch) => {
 export const depositCurrency = async (data, dispatch) => {
     dispatch(depositCurrencyStart())
     try {
-        const response = await axios.post("https://on-shop-blockchain.onrender.com/deposit", data, { headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}` } })
-        console.log("response", response.data.data)
-        dispatch(depositCurrencySuccess(response.data.data))
+        const depositResponse = await axios.post("https://on-shop-blockchain.onrender.com/deposit", data, { headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}` } })
+        console.log("depositResponse", depositResponse.data.data)
+        dispatch(depositCurrencySuccess(depositResponse.data.data))
         Swal.fire({
             title: "Deposit successful",
-            html: `<p>You have successfully depositted <b class="text-primary">${data.amount} ${data.currency.toUpperCase()}</b>.</p><br><span>Transaction Hash: <a href="https://sepolia.etherscan.io/tx/${response.data.data}">${response.data.data}</a></span>`,
+            html: `<p>You have successfully deposited <b class="text-primary">${data.amount} ${data.currency.toUpperCase()}</b>.</p><br><span>Transaction Hash: <a href="https://sepolia.etherscan.io/tx/${depositResponse.data.data}">${depositResponse.data.data}</a></span>`,
             icon: "success",
             confirmButtonColor: "#5a67d8",
         });
@@ -162,7 +162,7 @@ export const depositCurrency = async (data, dispatch) => {
         dispatch(depositCurrencyFailed())
         Swal.fire({
             title: "Deposit failed",
-            text: "Something went wrong with your deposit. Please try again.",
+            text: "Please try again. If you are still unable to make a deposit, please contact our customer support.",
             icon: "error",
             confirmButtonColor: "#5a67d8",
         });

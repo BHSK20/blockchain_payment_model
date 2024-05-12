@@ -248,7 +248,7 @@ export default function Page_Signup() {
               {signupStatus.isFetching && (
                 <div
                   style={{
-                    position: "absolute",
+                    position: "fixed",
                     top: 0,
                     left: 0,
                     width: "100%",
