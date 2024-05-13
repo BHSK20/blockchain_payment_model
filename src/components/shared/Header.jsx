@@ -19,7 +19,36 @@ export default function Header() {
   // const [userInformation, setUserInformation] = useState(
   //   JSON.parse(localStorage.getItem("user"))
   // );
-  const userInformation = JSON.parse(localStorage.getItem("user"));
+
+  // ---------------------------------------------------------
+  // const userInformation = JSON.parse(localStorage.getItem("user"));
+  // IMPORTANT: GET USER INFORMATION
+  const [userInformation, setUserInformation] = useState(null);
+  const fetchUserInformation = async () => {
+    try {
+      const informationResponse = await axios.get(
+        `https://on-shop-blockchain.onrender.com/user/payload?token=${
+          JSON.parse(localStorage.getItem("token")).token
+        }`,
+        {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("token")).token
+            }`,
+          },
+        }
+      );
+      console.log("informationResponse", informationResponse);
+      setUserInformation(informationResponse.data.data);
+    } catch (informationError) {
+      console.log("informationError", informationError);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserInformation();
+  }, []);
+  // ---------------------------------------------------------
 
   // useEffect(() => {
   //   // Function to update userInformation from localStorage
@@ -239,9 +268,9 @@ export default function Header() {
               fontWeight: 500,
             }}
           >
-            {userInformation.name}
+            {userInformation?.name}
           </p>
-          <p style={{ fontSize: "15px" }}>{userInformation.email}</p>
+          <p style={{ fontSize: "15px" }}>{userInformation?.email}</p>
         </div>
       </div>
     </div>

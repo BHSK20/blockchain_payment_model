@@ -64,9 +64,9 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     icon: <HiOutlineShoppingCart />,
   },
   {
-    key: "kycverification",
-    label: "KYC Verification",
-    path: "/account/kyc-verification",
+    key: "kyccheck",
+    label: "KYC Check",
+    path: "/account/kyc-check",
     icon: <HiOutlineIdentification />,
   },
 ];

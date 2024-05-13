@@ -12,7 +12,37 @@ export default function Page_Account_Profile() {
   const [value, setValue] = useState("1");
 
   // const userInformation = useSelector((state) => state.auth.login.currentUser);
-  const userInformation = JSON.parse(localStorage.getItem("user"));
+
+  // ---------------------------------------------------------
+  // const userInformation = JSON.parse(localStorage.getItem("user"));
+  // IMPORTANT: GET USER INFORMATION
+  const [userInformation, setUserInformation] = useState(null);
+  const fetchUserInformation = async () => {
+    try {
+      const informationResponse = await axios.get(
+        `https://on-shop-blockchain.onrender.com/user/payload?token=${
+          JSON.parse(localStorage.getItem("token")).token
+        }`,
+        {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("token")).token
+            }`,
+          },
+        }
+      );
+      console.log("informationResponse", informationResponse);
+      setUserInformation(informationResponse.data.data);
+    } catch (informationError) {
+      console.log("informationError", informationError);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserInformation();
+  }, []); // Call each time user updates the profile
+  // ---------------------------------------------------------
+
   const [merchantData, setMerchantData] = useState(null);
   useEffect(() => {
     const fetchMerchantData = async (email) => {
@@ -29,7 +59,7 @@ export default function Page_Account_Profile() {
     if (userInformation && userInformation.role === "MERCHANT") {
       fetchMerchantData(userInformation.email);
     }
-  }, [userInformation.email]);
+  }, [userInformation?.email]);
 
   return (
     <div className="container px-10 py-3">

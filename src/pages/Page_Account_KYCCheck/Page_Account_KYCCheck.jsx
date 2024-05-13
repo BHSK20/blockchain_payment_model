@@ -1,7 +1,7 @@
 import { Box, Paper } from "@mui/material";
 import React from "react";
 
-export default function Page_Account_KYCVerification() {
+export default function Page_Account_KYCCheck() {
   return (
     <div className="container px-10 py-3">
       <Box sx={{ marginTop: "10px", minHeight: 600 }}>
@@ -27,7 +27,7 @@ export default function Page_Account_KYCVerification() {
               justifyContent: "start",
             }}
           >
-            KYC Verification
+            KYC Check
           </Box>
         </Paper>
       </Box>

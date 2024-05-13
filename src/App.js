@@ -17,7 +17,7 @@ import Page_Signup from './pages/Page_Signup/Page_Signup';
 import Page_Missing from './pages/Page_Missing/Page_Missing';
 import Page_Account_Profile from './pages/Page_Account_Profile/Page_Account_Profile';
 import Page_Email_Verification_Id from './pages/Page_Email_Verification_Id/Page_Email_Verification_Id';
-import Page_Account_KYCVerification from './pages/Page_Account_KYCVerification/Page_Account_KYCVerification';
+import Page_Account_KYCCheck from './pages/Page_Account_KYCCheck/Page_Account_KYCCheck';
 
 function App() {
   return (
@@ -38,7 +38,7 @@ function App() {
           <Route path='orders' element={<Page_Account_Orders />}></Route>
           <Route path='order-details/:orderid' element={<Page_Account_Order_Details_Id />}></Route>
           <Route path='profile' element={<Page_Account_Profile />}></Route>
-          <Route path='kyc-verification' element={<Page_Account_KYCVerification />}></Route>
+          <Route path='kyc-check' element={<Page_Account_KYCCheck />}></Route>
         </Route>
         <Route path='/*' element={<Page_Missing />}></Route>
       </Routes>
