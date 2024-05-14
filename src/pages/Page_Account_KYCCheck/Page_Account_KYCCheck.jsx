@@ -1,12 +1,34 @@
-import { Box, Paper } from "@mui/material";
+import { Box, Button, Paper } from "@mui/material";
 import React, { useState } from "react";
 import CloudUploadRoundedIcon from "@mui/icons-material/CloudUploadRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
+import axios from "axios";
 
 export default function Page_Account_KYCCheck() {
   const [image, setImage] = useState(null);
   const [fileName, setFileName] = useState("No selected file");
   // console.log("image", image);
+
+  const [apiResponse, setApiResponse] = useState({});
+  const handleExtract = async (e) => {
+    e.preventDefault();
+    // Create a FormData object
+    let formData = new FormData();
+    formData.append('image', image);
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/predict/image', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      // Save the response to state
+      setApiResponse(response.data);
+      console.log('API response:', response.data);
+    } catch (error) {
+      console.error('Error making API request:', error);
+    }
+  };
+
   return (
     <div className="container px-10 py-3">
       <Box sx={{ marginTop: "10px", minHeight: 600 }}>
@@ -131,11 +153,27 @@ export default function Page_Account_KYCCheck() {
                   }}
                 ></DeleteRoundedIcon>
               </div>
+              <Button
+                className="px-8"
+                type="submit"
+                variant="contained"
+                size="large"
+                sx={{
+                  borderRadius: "4px",
+                  marginTop: 2,
+                  textTransform: "none",
+                  backgroundColor: "#0284c7",
+                  fontSize: "16px",
+                }}
+                onClick={handleExtract}
+              >
+                Extract
+              </Button>
             </Box>
           </Box>
           <Box
             sx={{
-              marginTop: "30px",
+              marginTop: "40px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -174,6 +212,21 @@ export default function Page_Account_KYCCheck() {
                 </tbody>
               </table>
             </div>
+            <Button
+              className="px-8"
+              type="submit"
+              variant="contained"
+              size="large"
+              sx={{
+                borderRadius: "4px",
+                marginTop: 2,
+                textTransform: "none",
+                backgroundColor: "#0284c7",
+                fontSize: "16px",
+              }}
+            >
+              Check KYC
+            </Button>
           </Box>
         </Paper>
       </Box>
