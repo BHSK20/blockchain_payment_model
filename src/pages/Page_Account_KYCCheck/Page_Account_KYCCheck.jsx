@@ -1,31 +1,47 @@
-import { Box, Button, Paper } from "@mui/material";
+import { Box, Button, CircularProgress, Paper } from "@mui/material";
 import React, { useState } from "react";
 import CloudUploadRoundedIcon from "@mui/icons-material/CloudUploadRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading } from "../../redux/reducer/loadingReducer";
 
 export default function Page_Account_KYCCheck() {
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.loading);
+
   const [image, setImage] = useState(null);
   const [fileName, setFileName] = useState("No selected file");
-  // console.log("image", image);
+  console.log("image", image);
 
-  const [apiResponse, setApiResponse] = useState({});
+  const [id, setId] = useState("N/A");
+  const [name, setName] = useState("N/A");
+  const [dob, setDob] = useState("N/A");
+  const [gen, setGen] = useState("N/A");
+  const [nat, setNat] = useState("N/A");
   const handleExtract = async (e) => {
     e.preventDefault();
     // Create a FormData object
     let formData = new FormData();
-    formData.append('image', image);
+    formData.append('f', image);
+    dispatch(setLoading(true)); // Start loading
     try {
       const response = await axios.post('http://127.0.0.1:8000/predict/image', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
-      // Save the response to state
-      setApiResponse(response.data);
       console.log('API response:', response.data);
+      // Save the response to state
+      setId(response.data.id);
+      setName(response.data.name);
+      setDob(response.data.birth);
+      setGen(response.data.sex);
+      setNat(response.data.nati);
     } catch (error) {
       console.error('Error making API request:', error);
+    } finally {
+      dispatch(setLoading(false)); // End loading
     }
   };
 
@@ -80,17 +96,33 @@ export default function Page_Account_KYCCheck() {
                   accept="image/*"
                   className="input-field"
                   hidden
-                  onChange={({ target: { files } }) => {
-                    // files[0] && setFileName(files[0].name)
-                    // if (files) {
-                    //     setImage(URL.createObjectURL(files[0]))
-                    // }
-                    if (files && files[0]) {
-                      setFileName(files[0].name);
-                      // Check browser support for URL.createObjectURL
+                  // onChange={({ target: { files } }) => {
+                  //   // files[0] && setFileName(files[0].name)
+                  //   // if (files) {
+                  //   //     setImage(URL.createObjectURL(files[0]))
+                  //   // }
+                  //   if (files && files[0]) {
+                  //     setFileName(files[0].name);
+                  //     // Check browser support for URL.createObjectURL
+                  //     if (typeof URL !== "undefined" && URL.createObjectURL) {
+                  //       try {
+                  //         setImage(files[0]);
+                  //       } catch (error) {
+                  //         console.error("Error creating object URL:", error);
+                  //       }
+                  //     } else {
+                  //       console.error(
+                  //         "URL.createObjectURL is not supported in this browser."
+                  //       );
+                  //     }
+                  //   }
+                  // }}
+                  onChange={({ target }) => {
+                    if (target.files && target.files[0]) {
+                      setFileName(target.files[0].name);
                       if (typeof URL !== "undefined" && URL.createObjectURL) {
                         try {
-                          setImage(URL.createObjectURL(files[0]));
+                          setImage(target.files[0]);
                         } catch (error) {
                           console.error("Error creating object URL:", error);
                         }
@@ -100,11 +132,13 @@ export default function Page_Account_KYCCheck() {
                         );
                       }
                     }
+                    // Reset the value of the input to allow uploading the same file
+                    target.value = null;
                   }}
                 />
                 {image ? (
                   <img
-                    src={image}
+                    src={URL.createObjectURL(image)}
                     alt="idcard"
                     style={{
                       width: "100%",
@@ -191,23 +225,23 @@ export default function Page_Account_KYCCheck() {
                 <tbody>
                   <tr>
                     <th>Identity Card Number</th>
-                    <td>N/A</td>
+                    <td>{id}</td>
                   </tr>
                   <tr>
                     <th>Name</th>
-                    <td>N/A</td>
+                    <td>{name}</td>
                   </tr>
                   <tr>
                     <th>Date of birth</th>
-                    <td>N/A</td>
+                    <td>{dob}</td>
                   </tr>
                   <tr>
                     <th>Gender</th>
-                    <td>N/A</td>
+                    <td>{gen}</td>
                   </tr>
                   <tr>
                     <th>Nationality</th>
-                    <td>N/A</td>
+                    <td>{nat}</td>
                   </tr>
                 </tbody>
               </table>
@@ -228,6 +262,23 @@ export default function Page_Account_KYCCheck() {
               Check KYC
             </Button>
           </Box>
+          {isLoading && (
+            <div
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                backgroundColor: "rgba(255, 255, 255, 0.5)",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                zIndex: 9999,
+              }}
+            >
+              <CircularProgress />
+            </div>)}
         </Paper>
       </Box>
     </div>
