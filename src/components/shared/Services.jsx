@@ -39,15 +39,19 @@ export default function Services() {
         </div>
         <div className="px-4 py-8 text-center md:w-[300px] mx-auto md:h-80 shadow-xl cursor-pointer hover:-translate-y-5 hover:border-b-4 hover:border-indigo-600 transition-all duration-300 flex flex-col items-center justify-center h-full">
           <div className="mb-4 mx-auto">
-            <HiMiniDevicePhoneMobile fontSize={100} className="text-indigo-600" />
+            <HiMiniDevicePhoneMobile
+              fontSize={100}
+              className="text-indigo-600"
+            />
           </div>
           <h4 className="text-2xl font-bold mb-2 px-2">
             Mobile and Tablet Convenience
           </h4>
           <p className="text-sm">
             Our mobile app is renowned for its security and user-friendliness.
-            It's available on both Android and iOS devices, supporting 10
-            different languages for a truly global experience.
+            Designed to meet global audience needs, it is available on both
+            Android and iOS devices and offers seamless functionality on
+            tablets.
           </p>
         </div>
         <div className="px-4 py-8 text-center md:w-[300px] mx-auto md:h-80 shadow-xl cursor-pointer hover:-translate-y-5 hover:border-b-4 hover:border-indigo-600 transition-all duration-300 flex flex-col items-center justify-center h-full">
@@ -71,7 +75,7 @@ export default function Services() {
             Multi-Currency Support
           </h4>
           <p className="text-sm">
-            ZixiPay is your secure and user-friendly wallet for a range of
+            BKpay is your secure and user-friendly wallet for a range of
             cryptocurrencies, including Bitcoin (BTC), Litecoin (LTC), Ethereum
             (ETH), Tether (USDT) TRC20/ERC20, USD Coin (USDC) TRC20/ERC20, and
             Tron (TRX).

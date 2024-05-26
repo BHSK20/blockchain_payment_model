@@ -34,7 +34,7 @@ export default function Page_Account_Orders() {
               justifyContent: "start",
             }}
           >
-            Order Transactions
+            Orders
           </Box>
           <Box sx={{ marginTop: "10px" }}>
             <TabContext value={value}>

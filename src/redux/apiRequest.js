@@ -106,7 +106,7 @@ export const transferCurrency = async (data, dispatch) => {
         Swal.fire({
             title: "Transfer successful",
             html: `<p>You have successfully transferred <b class="text-primary">${data.amount} ${data.currency.toUpperCase()}</b> to <b class="text-primary">${data.email}</b>.</p>
-            <br><span>Transaction Hash: <a href="https://sepolia.etherscan.io/tx/${transferResponse.data.data}">${transferResponse.data.data}</a></span>`,
+            <br><span>Transaction Hash: <a href="https://sepolia.etherscan.io/tx/${transferResponse.data.data}" target="_blank">${transferResponse.data.data}</a></span>`,
             icon: "success",
             confirmButtonColor: "#5a67d8",
         });
@@ -130,7 +130,7 @@ export const makePayment = async (orderid, dispatch) => {
         dispatch(makePaymentSuccess(paymentResponse.data.data))
         Swal.fire({
             title: "Make payment successful",
-            html: `<span>Transaction Hash: <a href="https://sepolia.etherscan.io/tx/${paymentResponse.data.data}">${paymentResponse.data.data}</a></span>`,
+            html: `<span>Transaction Hash: <a href="https://sepolia.etherscan.io/tx/${paymentResponse.data.data}" target="_blank">${paymentResponse.data.data}</a></span>`,
             icon: "success",
             confirmButtonColor: "#5a67d8",
         });
@@ -153,7 +153,7 @@ export const depositCurrency = async (data, dispatch) => {
         dispatch(depositCurrencySuccess(depositResponse.data.data))
         Swal.fire({
             title: "Deposit successful",
-            html: `<p>You have successfully deposited <b class="text-primary">${data.amount} ${data.currency.toUpperCase()}</b>.</p><br><span>Transaction Hash: <a href="https://sepolia.etherscan.io/tx/${depositResponse.data.data}">${depositResponse.data.data}</a></span>`,
+            html: `<p>You have successfully deposited <b class="text-primary">${data.amount} ${data.currency.toUpperCase()}</b>.</p><br><span>Transaction Hash: <a href="https://sepolia.etherscan.io/tx/${depositResponse.data.data}" target="_blank">${depositResponse.data.data}</a></span>`,
             icon: "success",
             confirmButtonColor: "#5a67d8",
         });
