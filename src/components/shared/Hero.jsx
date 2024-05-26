@@ -20,7 +20,7 @@ export default function Hero() {
           <p className="text-base md:text-lg lg:text-xl xl:text-2xl text-center md:text-left">
             Secure and Easy to Use
           </p>
-          <h1 className="py-3 text-[35px] md:text-5xl lg:text-6xl xl:text-7xl font-bold md:text-left">
+          <h1 className="py-3 text-[35px] md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center text-md-start">
             Blockchain Payment System
           </h1>
           <p className="text-base md:text-lg lg:text-xl xl:text-2xl text-center md:text-left">
