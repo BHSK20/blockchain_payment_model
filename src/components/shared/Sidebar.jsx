@@ -12,9 +12,18 @@ export default function Sidebar() {
   return (
     <div className="bg-neutral-900 w-60 p-3 text-white">
       <div className="flex items-center gap-2 px-1 py-3 justify-center">
-        {/* <FcBullish fontSize={24} /> */}
-        <FcMindMap fontSize={30} />
-        <span className="text-neutral-100 text-3xl font-bold">BKpay</span>
+        <Link
+          to="/"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {/* <FcBullish fontSize={24} /> */}
+          <FcMindMap fontSize={30} />
+          <span className="text-neutral-100 text-3xl font-bold">BKpay</span>
+        </Link>
       </div>
       <div className="flex-1 py-8 flex flex-col gap-0.5">
         {DASHBOARD_SIDEBAR_LINKS.map((item) => (

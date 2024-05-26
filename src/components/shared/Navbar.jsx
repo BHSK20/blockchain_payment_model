@@ -19,19 +19,39 @@ export default function Navbar() {
 
   return (
     <div className="w-screen h-[80px] z-10 bg-zinc-200 fixed drop-shadow-lg">
-      <div className="px-2 flex justify-between items-center w-full h-full">
+      <div className="px-1 flex justify-between items-center w-full h-full">
         <div className="flex items-center gap-2 xl:translate-x-36 translate-x-0">
           {/* <FcBullish className="text-3xl sm:text-4xl" /> */}
-          <FcMindMap className="text-3xl sm:text-4xl" />
-          <h1 className="text-3xl font-bold mr-4 sm:text-4xl">BKpay</h1>
+          <Link
+            to="/"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <FcMindMap className="text-3xl sm:text-4xl" />
+            <h1 className="text-3xl font-bold mr-4 sm:text-4xl">BKpay</h1>
+          </Link>
           <ul className="hidden md:flex">
             <li>
-              <Link to="/" smooth="true" duration={500}>
+              <Link
+                to="/"
+                smooth="true"
+                duration={500}
+                // title="Home"
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/about" smooth="true" offset={-200} duration={500}>
+              <Link
+                to="/about"
+                smooth="true"
+                offset={-200}
+                duration={500}
+                // title="About"
+              >
                 About
               </Link>
             </li>
@@ -92,10 +112,20 @@ export default function Navbar() {
       </div>
       <ul className={nav ? "absolute bg-zinc-200 w-full px-8" : "hidden"}>
         <li className="border-b-2 border-zinc-300 w-full">
-          <Link to="/">Home</Link>
+          <Link
+            to="/"
+            // title="Home"
+          >
+            Home
+          </Link>
         </li>
         <li className="border-b-2 border-zinc-300 w-full">
-          <Link to="/about">About</Link>
+          <Link
+            to="/about"
+            // title="About"
+          >
+            About
+          </Link>
         </li>
         <div className="flex flex-col my-4">
           {userInformation ? (
