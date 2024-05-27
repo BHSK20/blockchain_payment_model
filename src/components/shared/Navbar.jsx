@@ -46,7 +46,8 @@ export default function Navbar() {
             </li>
             <li>
               <Link
-                to="/about"
+                // THIS NAVIGATION IS FOR DEMO PURPOSES
+                to="/"
                 smooth="true"
                 offset={-200}
                 duration={500}
@@ -121,7 +122,8 @@ export default function Navbar() {
         </li>
         <li className="border-b-2 border-zinc-300 w-full">
           <Link
-            to="/about"
+            // THIS NAVIGATION IS FOR DEMO PURPOSES
+            to="/"
             // title="About"
           >
             About

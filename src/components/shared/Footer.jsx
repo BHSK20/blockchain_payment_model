@@ -107,7 +107,7 @@ export default function Footer() {
                   About
                 </a> */}
                 <Link
-                  to="/about"
+                  to="/"
                   // title="About"
                 >
                   About
@@ -141,14 +141,14 @@ export default function Footer() {
                 }}
               />
               <p className="mb-2">
-                <i className="fas fa-home mr-3"></i> 268 Ly Thuong Kiet Street
-                Ward 14, District 10 Ho Chi Minh City, Vietnam
+                <i class="fa fa-map-marker-alt mr-1"></i> 268 Ly Thuong Kiet
+                Street Ward 14, District 10 Ho Chi Minh City, Vietnam
               </p>
               <p className="mb-2">
-                <i className="fas fa-envelope mr-3"></i> bkpay@gmail.com
+                <i className="fas fa-envelope mr-1"></i> bkpay@gmail.com
               </p>
               <p>
-                <i className="fas fa-phone mr-3"></i> +01 234 567 89
+                <i className="fas fa-phone mr-1"></i> +01 234 567 89
               </p>
             </div>
             {/* Grid column */}
