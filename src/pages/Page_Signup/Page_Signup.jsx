@@ -9,7 +9,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signupUser } from "../../redux/apiRequest";
 import Swal from "sweetalert2";
@@ -84,9 +84,10 @@ export default function Page_Signup() {
   // ----------------------------------------------------------------------
 
   return (
-    <Box style={{ overflowX: "hidden" }}>
+    <Box sx={{ overflowX: "hidden" }}>
       <Navbar />
       <Box
+        className="overflow-y-scroll"
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -94,7 +95,7 @@ export default function Page_Signup() {
           height: "78vh",
           position: "relative",
           zIndex: 1,
-          overflowY: "scroll",
+          marginTop: 10,
         }}
       >
         <Box
@@ -108,7 +109,7 @@ export default function Page_Signup() {
         >
           <Container
             sx={{
-              marginY: 3,
+              marginY: 5,
             }}
           >
             <Paper
@@ -128,7 +129,7 @@ export default function Page_Signup() {
                     sx={{
                       fontSize: 32,
                       fontWeight: 700,
-                      marginBottom: 1,
+                      marginBottom: 0.5,
                       textAlign: "center",
                       color: "#0284c7",
                     }}
@@ -139,14 +140,14 @@ export default function Page_Signup() {
                     sx={{
                       fontSize: 24,
                       fontWeight: 700,
-                      marginBottom: 3,
+                      marginBottom: 2,
                       textAlign: "center",
                     }}
                   >
                     Signup
                   </Box>
                   <Box>
-                    <h4 style={{ marginBottom: 5, fontWeight: 600 }}>Name</h4>
+                    <h4 style={{ marginBottom: 4, fontWeight: 600 }}>Name</h4>
                     <TextField
                       label="Enter your name"
                       variant="outlined"
@@ -164,7 +165,7 @@ export default function Page_Signup() {
                     <h4
                       style={{
                         marginTop: 25,
-                        marginBottom: 5,
+                        marginBottom: 4,
                         fontWeight: 600,
                       }}
                     >
@@ -189,7 +190,7 @@ export default function Page_Signup() {
                     <h4
                       style={{
                         marginTop: 25,
-                        marginBottom: 5,
+                        marginBottom: 4,
                         fontWeight: 600,
                       }}
                     >
@@ -238,8 +239,8 @@ export default function Page_Signup() {
                       sx={{
                         width: "100%",
                         borderRadius: "4px",
-                        marginTop: 4,
-                        marginBottom: 2,
+                        marginTop: 3,
+                        marginBottom: 1,
                         textTransform: "none",
                         backgroundColor: "#0284c7",
                         fontSize: "16px",
@@ -249,8 +250,8 @@ export default function Page_Signup() {
                     </Button>
                     <Box sx={{ textAlign: "center" }}>
                       Already have an account?
-                      <a
-                        href="/login"
+                      <Link
+                        to="/login"
                         style={{
                           color: "#0284c7",
                           fontWeight: 600,
@@ -258,7 +259,7 @@ export default function Page_Signup() {
                         }}
                       >
                         Log in here
-                      </a>
+                      </Link>
                     </Box>
                   </Box>
                 </form>

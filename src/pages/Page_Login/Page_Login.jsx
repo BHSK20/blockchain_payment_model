@@ -9,7 +9,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/apiRequest";
 import Swal from "sweetalert2";
@@ -106,9 +106,10 @@ export default function Page_Login() {
   // ----------------------------------------------------------------------
 
   return (
-    <Box style={{ overflowX: "hidden" }}>
+    <Box sx={{ overflowX: "hidden" }}>
       <Navbar />
       <Box
+        className="overflow-y-scroll"
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -116,7 +117,7 @@ export default function Page_Login() {
           height: "78vh",
           position: "relative",
           zIndex: 1,
-          overflowY: "scroll",
+          marginTop: 10,
         }}
       >
         <Box
@@ -270,8 +271,8 @@ export default function Page_Login() {
                     </Button>
                     <Box sx={{ textAlign: "center" }}>
                       Don't have an account?
-                      <a
-                        href="/signup"
+                      <Link
+                        to="/signup"
                         style={{
                           color: "#0284c7",
                           fontWeight: 600,
@@ -279,7 +280,7 @@ export default function Page_Login() {
                         }}
                       >
                         Sign up here
-                      </a>
+                      </Link>
                     </Box>
                   </Box>
                 </form>

@@ -20,7 +20,7 @@ export default function Navbar() {
   return (
     <div
       className="w-screen h-[80px] z-10 bg-zinc-200 fixed drop-shadow-lg"
-      style={{ position: "relative", zIndex: 2 }}
+      style={{ position: "fixed", zIndex: 2 }}
     >
       <div className="px-1 flex justify-between items-center w-full h-full">
         <div className="flex items-center gap-2 xl:translate-x-36 translate-x-0">
