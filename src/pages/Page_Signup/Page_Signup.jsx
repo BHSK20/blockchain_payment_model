@@ -84,7 +84,7 @@ export default function Page_Signup() {
   // ----------------------------------------------------------------------
 
   return (
-    <>
+    <Box style={{ overflowX: "hidden" }}>
       <Navbar />
       <Box
         sx={{
@@ -92,6 +92,9 @@ export default function Page_Signup() {
           justifyContent: "center",
           alignItems: "center",
           height: "78vh",
+          position: "relative",
+          zIndex: 1,
+          overflowY: "scroll",
         }}
       >
         <Box
@@ -105,7 +108,7 @@ export default function Page_Signup() {
         >
           <Container
             sx={{
-              marginTop: 23,
+              marginY: 3,
             }}
           >
             <Paper
@@ -283,6 +286,6 @@ export default function Page_Signup() {
         </Box>
       </Box>
       <Footer />
-    </>
+    </Box>
   );
 }

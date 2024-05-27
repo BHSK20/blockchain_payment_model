@@ -23,7 +23,7 @@ export default function Services() {
       </div>
 
       {/* services cards */}
-      <div className="mt-14 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:w-11/12 mx-auto gap-12">
+      <div className="mt-14 mb-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:w-11/12 mx-auto gap-12">
         <div className="px-4 py-8 text-center md:w-[300px] mx-auto md:h-80 shadow-xl cursor-pointer hover:-translate-y-5 hover:border-b-4 hover:border-indigo-600 transition-all duration-300 flex flex-col items-center justify-center h-full">
           <div className="mb-4 mx-auto">
             <HiComputerDesktop fontSize={100} className="text-indigo-600" />

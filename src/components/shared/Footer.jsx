@@ -8,7 +8,10 @@ export default function Footer() {
     //   <div className="max-w-[1240px] mx-auto grid grid-cols-2 md:grid-cols-6 border-b-2 border-gray-600 py-8">
     //   </div>
     // </div>
-    <div className="footer mt-24">
+    <div
+      className="footer"
+      style={{ position: "relative", zIndex: 2, }}
+    >
       <footer className="bg-body-tertiary text-center text-lg-start">
         {/* Content */}
         <div

@@ -106,7 +106,7 @@ export default function Page_Login() {
   // ----------------------------------------------------------------------
 
   return (
-    <>
+    <Box style={{ overflowX: "hidden" }}>
       <Navbar />
       <Box
         sx={{
@@ -114,6 +114,9 @@ export default function Page_Login() {
           justifyContent: "center",
           alignItems: "center",
           height: "78vh",
+          position: "relative",
+          zIndex: 1,
+          overflowY: "scroll",
         }}
       >
         <Box
@@ -127,7 +130,7 @@ export default function Page_Login() {
         >
           <Container
             sx={{
-              marginTop: 23,
+              marginY: 5,
             }}
           >
             <Paper
@@ -304,6 +307,6 @@ export default function Page_Login() {
         </Box>
       </Box>
       <Footer />
-    </>
+    </Box>
   );
 }

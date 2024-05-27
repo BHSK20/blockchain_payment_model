@@ -18,7 +18,10 @@ export default function Navbar() {
   const userInformation = JSON.parse(localStorage.getItem("user"));
 
   return (
-    <div className="w-screen h-[80px] z-10 bg-zinc-200 fixed drop-shadow-lg">
+    <div
+      className="w-screen h-[80px] z-10 bg-zinc-200 fixed drop-shadow-lg"
+      style={{ position: "relative", zIndex: 2 }}
+    >
       <div className="px-1 flex justify-between items-center w-full h-full">
         <div className="flex items-center gap-2 xl:translate-x-36 translate-x-0">
           {/* <FcBullish className="text-3xl sm:text-4xl" /> */}
