@@ -10,29 +10,31 @@ export default function MerchantProfile({ merchantData }) {
   const [address2, setAddress2] = useState(null);
   const [phone, setPhone] = useState(null);
 
-  const handleUpdate = (e) => {
-    e.preventDefault();
-    const updatedMerchant = {
-      merchant_name: merchantName,
-      country: country,
-      zipcode: zipCode,
-      city: city,
-      phone: phone,
-      address1: address1,
-      address2: address2,
-    };
-    console.log("updatedMerchant", updatedMerchant);
-  };
+  // const handleUpdate = (e) => {
+  //   e.preventDefault();
+  //   const updatedMerchant = {
+  //     merchant_name: merchantName,
+  //     country: country,
+  //     zipcode: zipCode,
+  //     city: city,
+  //     phone: phone,
+  //     address1: address1,
+  //     address2: address2,
+  //   };
+  //   console.log("updatedMerchant", updatedMerchant);
+  // };
 
-  useEffect(() => {
-    setMerchantName(merchantData?.merchant_name);
-    setCountry(merchantData?.country);
-    setZipCode(merchantData?.zipcode);
-    setCity(merchantData?.city);
-    setAddress1(merchantData?.address1);
-    setAddress2(merchantData?.address2);
-    setPhone(merchantData?.phone);
-  }, [merchantData]);
+  // useEffect(() => {
+  //   setMerchantName(merchantData?.merchant_name);
+  //   setCountry(merchantData?.country);
+  //   setZipCode(merchantData?.zipcode);
+  //   setCity(merchantData?.city);
+  //   setAddress1(merchantData?.address1);
+  //   setAddress2(merchantData?.address2);
+  //   setPhone(merchantData?.phone);
+  // }, [merchantData]);
+
+  console.log("ABC", merchantData)
 
   return (
     <Box>
@@ -73,7 +75,7 @@ export default function MerchantProfile({ merchantData }) {
           Partner Code: {merchantData.partner_code}
         </h4> */}
       </Box>
-      <form onSubmit={handleUpdate}>
+      {/* <form onSubmit={handleUpdate}> */}
         <Box className="row">
           <Box className="col-12 col-md-6">
             <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
@@ -88,7 +90,8 @@ export default function MerchantProfile({ merchantData }) {
               required
               autoComplete="new-text"
               onChange={(e) => setMerchantName(e.target.value)}
-              value={merchantName}
+              // value={merchantName}
+              value={merchantData?.merchant_name}
               InputLabelProps={{ shrink: true }}
             ></TextField>
           </Box>
@@ -105,7 +108,8 @@ export default function MerchantProfile({ merchantData }) {
               required
               autoComplete="new-text"
               onChange={(e) => setCountry(e.target.value)}
-              value={country}
+              // value={country}
+              value={merchantData?.country}
               InputLabelProps={{ shrink: true }}
             ></TextField>
           </Box>
@@ -122,7 +126,8 @@ export default function MerchantProfile({ merchantData }) {
               required
               autoComplete="new-text"
               onChange={(e) => setZipCode(e.target.value)}
-              value={zipCode}
+              // value={zipCode}
+              value={merchantData?.zipcode}
               InputLabelProps={{ shrink: true }}
               InputProps={{
                 inputProps: { min: 0 },
@@ -142,7 +147,8 @@ export default function MerchantProfile({ merchantData }) {
               required
               autoComplete="new-text"
               onChange={(e) => setCity(e.target.value)}
-              value={city}
+              // value={city}
+              value={merchantData?.city}
               InputLabelProps={{ shrink: true }}
             ></TextField>
           </Box>
@@ -159,7 +165,8 @@ export default function MerchantProfile({ merchantData }) {
               required
               autoComplete="new-text"
               onChange={(e) => setAddress1(e.target.value)}
-              value={address1}
+              // value={address1}
+              value={merchantData?.address1}
               InputLabelProps={{ shrink: true }}
             ></TextField>
           </Box>
@@ -176,7 +183,8 @@ export default function MerchantProfile({ merchantData }) {
               required
               autoComplete="new-text"
               onChange={(e) => setAddress2(e.target.value)}
-              value={address2}
+              // value={address2}
+              value={merchantData?.address2}
               InputLabelProps={{ shrink: true }}
             ></TextField>
           </Box>
@@ -193,7 +201,8 @@ export default function MerchantProfile({ merchantData }) {
               required
               autoComplete="new-text"
               onChange={(e) => setPhone(e.target.value)}
-              value={phone}
+              // value={phone}
+              value={merchantData?.phone}
               InputLabelProps={{ shrink: true }}
               InputProps={{
                 inputProps: { min: 0 },
@@ -218,7 +227,7 @@ export default function MerchantProfile({ merchantData }) {
             Update
           </Button>
         </Box>
-      </form>
+      {/* </form> */}
     </Box>
   );
 }

@@ -56,9 +56,10 @@ export default function Page_Account_Profile() {
         console.log("merchantError", merchantError);
       }
     };
-    if (userInformation && userInformation.role === "MERCHANT") {
-      fetchMerchantData(userInformation.email);
-    }
+    fetchMerchantData(userInformation?.email);
+    // if (userInformation && userInformation.role === "MERCHANT") {
+    //   fetchMerchantData(userInformation.email);
+    // }
   }, [userInformation]);
 
   return (
