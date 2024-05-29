@@ -99,6 +99,9 @@ export default function MerchantProfile({ merchantData }) {
             // onChange={(e) => setZipCode(e.target.value)}
             value={merchantData?.zipcode}
             InputLabelProps={{ shrink: true }}
+            InputProps={{
+              inputProps: { min: 0 },
+            }}
           ></TextField>
         </Box>
         <Box className="col-12 col-md-6">
@@ -167,6 +170,9 @@ export default function MerchantProfile({ merchantData }) {
             // onChange={(e) => setPhone(e.target.value)}
             value={merchantData?.phone}
             InputLabelProps={{ shrink: true }}
+            InputProps={{
+              inputProps: { min: 0 },
+            }}
           ></TextField>
         </Box>
       </Box>

@@ -106,6 +106,9 @@ export default function TransferForm() {
                 required
                 autoComplete="new-text"
                 onChange={(e) => setAmount(e.target.value)}
+                InputProps={{
+                  inputProps: { min: 0 },
+                }}
               ></TextField>
             </Box>
             <Box className="col-12 col-sm-6 col-md-4">

@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 export default function DepositForm() {
   const dispatch = useDispatch();
 
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(null);
   const [currency, setCurrency] = useState(null);
   const [calculatedAmount, setCalculatedAmount] = useState(0);
   const [calculatedPrice, setCalculatedPrice] = useState(0);
@@ -48,7 +48,7 @@ export default function DepositForm() {
   const depositCurrencyStatus = useSelector(
     (state) => state.deposit?.isFetching
   );
-  const handleAcceptDeposit = (e) => {
+  const handleAcceptDeposit = async (e) => {
     e.preventDefault();
     console.log("calculatedAmount", calculatedAmount);
     console.log("calculatedPrice", calculatedPrice);
@@ -56,7 +56,16 @@ export default function DepositForm() {
       amount: calculatedAmount,
       currency: currency,
     };
-    depositCurrency(data, dispatch);
+    try {
+      await depositCurrency(data, dispatch);
+      setQrCodeData("");
+      setCalculatedPrice(0);
+      setCalculatedAmount(0);
+      setCurrency(null);
+      setAmount(null);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -101,6 +110,10 @@ export default function DepositForm() {
                 required
                 autoComplete="new-text"
                 onChange={(e) => setAmount(e.target.value)}
+                value={amount || ""}
+                InputProps={{
+                  inputProps: { min: 0 },
+                }}
               ></TextField>
             </Box>
             <Box className="col-12 col-md-3">
@@ -112,11 +125,11 @@ export default function DepositForm() {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={currency}
                   label="Currency"
                   onChange={(newValue) => {
                     setCurrency(newValue.target.value);
                   }}
+                  value={currency || ""}
                 >
                   <MenuItem value={"ltc"}>LTC</MenuItem>
                   <MenuItem value={"btc"}>BTC</MenuItem>

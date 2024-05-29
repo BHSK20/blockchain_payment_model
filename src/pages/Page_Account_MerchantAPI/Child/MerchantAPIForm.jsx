@@ -111,6 +111,9 @@ export default function MerchantAPIForm() {
                 required
                 autoComplete="new-text"
                 onChange={(e) => setZipCode(e.target.value)}
+                InputProps={{
+                  inputProps: { min: 0 },
+                }}
               ></TextField>
             </Box>
             <Box className="col-12 col-md-6">
@@ -171,6 +174,9 @@ export default function MerchantAPIForm() {
                 required
                 autoComplete="new-text"
                 onChange={(e) => setPhone(e.target.value)}
+                InputProps={{
+                  inputProps: { min: 0 },
+                }}
               ></TextField>
             </Box>
           </Box>
