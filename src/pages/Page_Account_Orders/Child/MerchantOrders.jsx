@@ -24,7 +24,9 @@ export default function MerchantOrders() {
         }
       );
       console.log("merchantOrdersResponse", merchantOrdersResponse);
-      setRows(merchantOrdersResponse.data.data);
+      setRows(
+        merchantOrdersResponse.data.data ? merchantOrdersResponse.data.data : []
+      );
       setLoading(false);
     } catch (merchantOrdersError) {
       console.log("merchantOrdersError", merchantOrdersError);

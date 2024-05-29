@@ -24,7 +24,9 @@ export default function CustomerOrders() {
         }
       );
       console.log("customerOrdersResponse", customerOrdersResponse);
-      setRows(customerOrdersResponse.data.data);
+      setRows(
+        customerOrdersResponse.data.data ? customerOrdersResponse.data.data : []
+      );
       setLoading(false);
     } catch (customerOrdersError) {
       console.log("customerOrdersError", customerOrdersError);

@@ -35,7 +35,9 @@ export default function TransactionTable() {
         }
       );
       console.log("transactionsResponse", transactionsResponse);
-      setRows(transactionsResponse.data.data);
+      setRows(
+        transactionsResponse.data.data ? transactionsResponse.data.data : []
+      );
       setLoading(false);
     } catch (transactionsError) {
       console.log("transactionsError", transactionsError);

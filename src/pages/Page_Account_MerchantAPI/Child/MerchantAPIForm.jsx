@@ -73,7 +73,7 @@ export default function MerchantAPIForm() {
                 Merchant Name
               </h4>
               <TextField
-                label="Enter the company name"
+                label="Enter the merchant name"
                 variant="outlined"
                 type="text"
                 size="small"
