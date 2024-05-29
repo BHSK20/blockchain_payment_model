@@ -59,7 +59,7 @@ export default function Page_Account_Profile() {
     if (userInformation && userInformation.role === "MERCHANT") {
       fetchMerchantData(userInformation.email);
     }
-  }, [userInformation?.email]);
+  }, [userInformation]);
 
   return (
     <div className="container px-10 py-3">
