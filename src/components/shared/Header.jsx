@@ -97,9 +97,6 @@ export default function Header() {
   const transferStatus = useSelector((state) => state.transfer.isFetching);
   const paymentStatus = useSelector((state) => state.payment.isFetching);
   const depositStatus = useSelector((state) => state.deposit.isFetching);
-  console.log("transferStatus", transferStatus);
-  console.log("paymentStatus", paymentStatus);
-  console.log("depositStatus", depositStatus);
   const fetchUserBalance = async () => {
     try {
       const balanceResponse = await axios.get(
