@@ -9,7 +9,7 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { transferCurrency } from "../../../redux/apiRequest";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +26,19 @@ export default function TransferForm() {
   const transferCurrencyStatus = useSelector(
     (state) => state.transfer?.isFetching
   );
+
+  const transferCurrencyIsSuccess = useSelector(
+    (state) => state.transfer?.transactionHash
+  );
+  useEffect(() => {
+    if (transferCurrencyIsSuccess) {
+      setNote(null);
+      setEmail(null);
+      setCurrency(null);
+      setAmount(null);
+    }
+  }, [transferCurrencyIsSuccess]);
+
   const handleTransfer = (e) => {
     e.preventDefault();
     if (emailError) {
@@ -106,6 +119,7 @@ export default function TransferForm() {
                 required
                 autoComplete="new-text"
                 onChange={(e) => setAmount(e.target.value)}
+                value={amount || ""}
                 InputProps={{
                   inputProps: { min: 0 },
                 }}
@@ -120,11 +134,11 @@ export default function TransferForm() {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={currency}
                   label="Currency"
                   onChange={(newValue) => {
                     setCurrency(newValue.target.value);
                   }}
+                  value={currency || ""}
                 >
                   <MenuItem value={"ltc"}>LTC</MenuItem>
                   <MenuItem value={"btc"}>BTC</MenuItem>
@@ -150,6 +164,7 @@ export default function TransferForm() {
                 onChange={(e) => handleEmailChange(e)}
                 error={emailError}
                 helperText={emailError ? "Invalid email format" : ""}
+                value={email || ""}
               ></TextField>
             </Box>
             <Box className="col-12">
@@ -167,6 +182,7 @@ export default function TransferForm() {
                 multiline
                 rows={4}
                 onChange={(e) => setNote(e.target.value)}
+                value={note || ""}
               ></TextField>
             </Box>
           </Box>

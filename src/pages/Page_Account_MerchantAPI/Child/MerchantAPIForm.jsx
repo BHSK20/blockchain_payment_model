@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Paper, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { registerMerchant } from "../../../redux/apiRequest";
 import { useDispatch, useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -21,6 +21,23 @@ export default function MerchantAPIForm() {
   const merchantRegisterStatus = useSelector(
     (state) => state.merchant?.isFetching
   );
+
+  const merchantRegisterIsSuccess = useSelector(
+    (state) => state.merchant?.merchantKeys
+  );
+  useEffect(() => {
+    if (merchantRegisterIsSuccess) {
+      setPhone(null);
+      setAddress2(null);
+      setAddress1(null);
+      setCity(null);
+      setZipCode(null);
+      setCountry(null);
+      setCountryCode(null);
+      setMerchantName(null);
+    }
+  }, [merchantRegisterIsSuccess]);
+
   const handleMerchantRegister = (e) => {
     e.preventDefault();
     console.log("merchantName", merchantName);
@@ -85,6 +102,7 @@ export default function MerchantAPIForm() {
                 required
                 autoComplete="new-text"
                 onChange={(e) => setMerchantName(e.target.value)}
+                value={merchantName || ""}
               ></TextField>
             </Box>
             <Box className="col-12 col-md-6">
@@ -102,7 +120,7 @@ export default function MerchantAPIForm() {
                 onChange={(e) => setCountry(e.target.value)}
               ></TextField> */}
               <ReactFlagsSelect
-                selected={countryCode}
+                selected={countryCode || ""}
                 onSelect={(code) => {
                   setCountryCode(code);
                   setCountry(countries[code]);
@@ -125,6 +143,7 @@ export default function MerchantAPIForm() {
                 required
                 autoComplete="new-text"
                 onChange={(e) => setZipCode(e.target.value)}
+                value={zipCode || ""}
                 InputProps={{
                   inputProps: { min: 0 },
                 }}
@@ -143,6 +162,7 @@ export default function MerchantAPIForm() {
                 required
                 autoComplete="new-text"
                 onChange={(e) => setCity(e.target.value)}
+                value={city || ""}
               ></TextField>
             </Box>
             <Box className="col-12">
@@ -158,6 +178,7 @@ export default function MerchantAPIForm() {
                 required
                 autoComplete="new-text"
                 onChange={(e) => setAddress1(e.target.value)}
+                value={address1 || ""}
               ></TextField>
             </Box>
             <Box className="col-12 col-md-6">
@@ -173,6 +194,7 @@ export default function MerchantAPIForm() {
                 required
                 autoComplete="new-text"
                 onChange={(e) => setAddress2(e.target.value)}
+                value={address2 || ""}
               ></TextField>
             </Box>
             <Box className="col-12 col-md-6">
@@ -188,6 +210,7 @@ export default function MerchantAPIForm() {
                 required
                 autoComplete="new-text"
                 onChange={(e) => setPhone(e.target.value)}
+                value={phone || ""}
                 InputProps={{
                   inputProps: { min: 0 },
                 }}
