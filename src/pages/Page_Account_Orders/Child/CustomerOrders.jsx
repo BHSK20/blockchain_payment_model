@@ -313,6 +313,9 @@ export default function CustomerOrders() {
           }}
           getRowId={(row) => row.id}
           disableRowSelectionOnClick
+          getRowClassName={(params) =>
+            params.indexRelativeToCurrentPage % 2 === 0 ? "even-row" : "odd-row"
+          }
         />
       )}
     </Box>

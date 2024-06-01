@@ -3,11 +3,14 @@ import React, { useState } from "react";
 import { registerMerchant } from "../../../redux/apiRequest";
 import { useDispatch, useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
+import ReactFlagsSelect from "react-flags-select";
+import { countries } from "../../../data/countries";
 
 export default function MerchantAPIForm() {
   const dispatch = useDispatch();
 
   const [merchantName, setMerchantName] = useState(null);
+  const [countryCode, setCountryCode] = useState(null);
   const [country, setCountry] = useState(null);
   const [zipCode, setZipCode] = useState(null);
   const [city, setCity] = useState(null);
@@ -20,13 +23,14 @@ export default function MerchantAPIForm() {
   );
   const handleMerchantRegister = (e) => {
     e.preventDefault();
-    // console.log("merchantName", merchantName);
-    // console.log("country", country);
-    // console.log("zipCode", zipCode);
-    // console.log("city", city);
-    // console.log("address1", address1);
-    // console.log("address2", address2);
-    // console.log("phone", phone);
+    console.log("merchantName", merchantName);
+    console.log("countryCode", countryCode);
+    console.log("country", country);
+    console.log("zipCode", zipCode);
+    console.log("city", city);
+    console.log("address1", address1);
+    console.log("address2", address2);
+    console.log("phone", phone);
     const newMerchant = {
       merchant_name: merchantName,
       country: country,
@@ -87,7 +91,7 @@ export default function MerchantAPIForm() {
               <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
                 Country
               </h4>
-              <TextField
+              {/* <TextField
                 label="Enter the country"
                 variant="outlined"
                 type="text"
@@ -96,7 +100,17 @@ export default function MerchantAPIForm() {
                 required
                 autoComplete="new-text"
                 onChange={(e) => setCountry(e.target.value)}
-              ></TextField>
+              ></TextField> */}
+              <ReactFlagsSelect
+                selected={countryCode}
+                onSelect={(code) => {
+                  setCountryCode(code);
+                  setCountry(countries[code]);
+                }}
+                placeholder="Select the country"
+                searchable
+                searchPlaceholder="Search countries"
+              />
             </Box>
             <Box className="col-12 col-md-6">
               <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>

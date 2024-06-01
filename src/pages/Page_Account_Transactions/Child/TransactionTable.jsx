@@ -143,7 +143,7 @@ export default function TransactionTable() {
               // color: params.value === "Transfer" ? "#0c3c90" : "#f7743c",
               color:
                 params.value === "Transfer"
-                  ? "#003f5a"
+                  ? "#2258A5"
                   : params.value === "Deposit"
                   ? "#de6600"
                   : "#007a7a",
@@ -348,6 +348,11 @@ export default function TransactionTable() {
               }}
               getRowId={(row) => row.id}
               disableRowSelectionOnClick
+              getRowClassName={(params) =>
+                params.indexRelativeToCurrentPage % 2 === 0
+                  ? "even-row"
+                  : "odd-row"
+              }
             />
           )}
         </Box>
