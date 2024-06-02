@@ -144,7 +144,7 @@ export default function Footer() {
                 }}
               />
               <p className="mb-2">
-                <i class="fas fa-map-marker-alt mr-1"></i> 268 Ly Thuong Kiet
+                <i className="fas fa-map-marker-alt mr-1"></i> 268 Ly Thuong Kiet
                 Street Ward 14, District 10 Ho Chi Minh City, Vietnam
               </p>
               <p className="mb-2">
@@ -162,7 +162,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div
-          class="text-center p-3"
+          className="text-center p-3"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
         >
           © 2024 Copyright:{" "}

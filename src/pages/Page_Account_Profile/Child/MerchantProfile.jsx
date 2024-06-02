@@ -34,7 +34,7 @@ export default function MerchantProfile({ merchantData }) {
   //   setPhone(merchantData?.phone);
   // }, [merchantData]);
 
-  console.log("ABC", merchantData)
+  console.log("merchantData", merchantData);
 
   return (
     <Box>
@@ -76,157 +76,157 @@ export default function MerchantProfile({ merchantData }) {
         </h4> */}
       </Box>
       {/* <form onSubmit={handleUpdate}> */}
-        <Box className="row">
-          <Box className="col-12 col-md-6">
-            <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
-              Merchant Name
-            </h4>
-            <TextField
-              label="Enter the merchant name"
-              variant="outlined"
-              type="text"
-              size="small"
-              fullWidth
-              required
-              autoComplete="new-text"
-              onChange={(e) => setMerchantName(e.target.value)}
-              // value={merchantName}
-              value={merchantData?.merchant_name}
-              InputLabelProps={{ shrink: true }}
-            ></TextField>
-          </Box>
-          <Box className="col-12 col-md-6">
-            <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
-              Country
-            </h4>
-            <TextField
-              label="Enter the country"
-              variant="outlined"
-              type="text"
-              size="small"
-              fullWidth
-              required
-              autoComplete="new-text"
-              onChange={(e) => setCountry(e.target.value)}
-              // value={country}
-              value={merchantData?.country}
-              InputLabelProps={{ shrink: true }}
-            ></TextField>
-          </Box>
-          <Box className="col-12 col-md-6">
-            <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
-              ZIP Code/Postal Code
-            </h4>
-            <TextField
-              label="Enter the code"
-              variant="outlined"
-              type="number"
-              size="small"
-              fullWidth
-              required
-              autoComplete="new-text"
-              onChange={(e) => setZipCode(e.target.value)}
-              // value={zipCode}
-              value={merchantData?.zipcode}
-              InputLabelProps={{ shrink: true }}
-              InputProps={{
-                inputProps: { min: 0 },
-              }}
-            ></TextField>
-          </Box>
-          <Box className="col-12 col-md-6">
-            <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
-              City
-            </h4>
-            <TextField
-              label="Enter the city"
-              variant="outlined"
-              type="text"
-              size="small"
-              fullWidth
-              required
-              autoComplete="new-text"
-              onChange={(e) => setCity(e.target.value)}
-              // value={city}
-              value={merchantData?.city}
-              InputLabelProps={{ shrink: true }}
-            ></TextField>
-          </Box>
-          <Box className="col-12">
-            <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
-              Address Line 1
-            </h4>
-            <TextField
-              label="Enter the address line 1"
-              variant="outlined"
-              type="text"
-              size="small"
-              fullWidth
-              required
-              autoComplete="new-text"
-              onChange={(e) => setAddress1(e.target.value)}
-              // value={address1}
-              value={merchantData?.address1}
-              InputLabelProps={{ shrink: true }}
-            ></TextField>
-          </Box>
-          <Box className="col-12 col-md-6">
-            <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
-              Address Line 2
-            </h4>
-            <TextField
-              label="Enter the address line 2"
-              variant="outlined"
-              type="text"
-              size="small"
-              fullWidth
-              required
-              autoComplete="new-text"
-              onChange={(e) => setAddress2(e.target.value)}
-              // value={address2}
-              value={merchantData?.address2}
-              InputLabelProps={{ shrink: true }}
-            ></TextField>
-          </Box>
-          <Box className="col-12 col-md-6">
-            <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
-              Phone
-            </h4>
-            <TextField
-              label="Enter the phone"
-              variant="outlined"
-              type="number"
-              size="small"
-              fullWidth
-              required
-              autoComplete="new-text"
-              onChange={(e) => setPhone(e.target.value)}
-              // value={phone}
-              value={merchantData?.phone}
-              InputLabelProps={{ shrink: true }}
-              InputProps={{
-                inputProps: { min: 0 },
-              }}
-            ></TextField>
-          </Box>
+      <Box className="row">
+        <Box className="col-12 col-md-6">
+          <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
+            Merchant Name
+          </h4>
+          <TextField
+            label="Enter the merchant name"
+            variant="outlined"
+            type="text"
+            size="small"
+            fullWidth
+            required
+            autoComplete="new-text"
+            onChange={(e) => setMerchantName(e.target.value)}
+            // value={merchantName}
+            value={merchantData?.merchant_name}
+            InputLabelProps={{ shrink: true }}
+          ></TextField>
         </Box>
-        <Box sx={{ textAlign: "center", marginTop: 3 }}>
-          <Button
-            className="px-8"
-            type="submit"
-            variant="contained"
-            size="large"
-            sx={{
-              borderRadius: "4px",
-              marginTop: 1,
-              textTransform: "none",
-              backgroundColor: "#0284c7",
-              fontSize: "16px",
+        <Box className="col-12 col-md-6">
+          <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
+            Country
+          </h4>
+          <TextField
+            label="Enter the country"
+            variant="outlined"
+            type="text"
+            size="small"
+            fullWidth
+            required
+            autoComplete="new-text"
+            onChange={(e) => setCountry(e.target.value)}
+            // value={country}
+            value={merchantData?.country}
+            InputLabelProps={{ shrink: true }}
+          ></TextField>
+        </Box>
+        <Box className="col-12 col-md-6">
+          <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
+            ZIP Code/Postal Code
+          </h4>
+          <TextField
+            label="Enter the code"
+            variant="outlined"
+            type="number"
+            size="small"
+            fullWidth
+            required
+            autoComplete="new-text"
+            onChange={(e) => setZipCode(e.target.value)}
+            // value={zipCode}
+            value={merchantData?.zipcode}
+            InputLabelProps={{ shrink: true }}
+            InputProps={{
+              inputProps: { min: 0 },
             }}
-          >
-            Update
-          </Button>
+          ></TextField>
         </Box>
+        <Box className="col-12 col-md-6">
+          <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
+            City
+          </h4>
+          <TextField
+            label="Enter the city"
+            variant="outlined"
+            type="text"
+            size="small"
+            fullWidth
+            required
+            autoComplete="new-text"
+            onChange={(e) => setCity(e.target.value)}
+            // value={city}
+            value={merchantData?.city}
+            InputLabelProps={{ shrink: true }}
+          ></TextField>
+        </Box>
+        <Box className="col-12">
+          <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
+            Address Line 1
+          </h4>
+          <TextField
+            label="Enter the address line 1"
+            variant="outlined"
+            type="text"
+            size="small"
+            fullWidth
+            required
+            autoComplete="new-text"
+            onChange={(e) => setAddress1(e.target.value)}
+            // value={address1}
+            value={merchantData?.address1}
+            InputLabelProps={{ shrink: true }}
+          ></TextField>
+        </Box>
+        <Box className="col-12 col-md-6">
+          <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
+            Address Line 2
+          </h4>
+          <TextField
+            label="Enter the address line 2"
+            variant="outlined"
+            type="text"
+            size="small"
+            fullWidth
+            required
+            autoComplete="new-text"
+            onChange={(e) => setAddress2(e.target.value)}
+            // value={address2}
+            value={merchantData?.address2}
+            InputLabelProps={{ shrink: true }}
+          ></TextField>
+        </Box>
+        <Box className="col-12 col-md-6">
+          <h4 style={{ marginTop: 30, marginBottom: 8, fontWeight: 600 }}>
+            Phone
+          </h4>
+          <TextField
+            label="Enter the phone"
+            variant="outlined"
+            type="number"
+            size="small"
+            fullWidth
+            required
+            autoComplete="new-text"
+            onChange={(e) => setPhone(e.target.value)}
+            // value={phone}
+            value={merchantData?.phone}
+            InputLabelProps={{ shrink: true }}
+            InputProps={{
+              inputProps: { min: 0 },
+            }}
+          ></TextField>
+        </Box>
+      </Box>
+      <Box sx={{ textAlign: "center", marginTop: 3 }}>
+        <Button
+          className="px-8"
+          type="submit"
+          variant="contained"
+          size="large"
+          sx={{
+            borderRadius: "4px",
+            marginTop: 1,
+            textTransform: "none",
+            backgroundColor: "#0284c7",
+            fontSize: "16px",
+          }}
+        >
+          Update
+        </Button>
+      </Box>
       {/* </form> */}
     </Box>
   );
