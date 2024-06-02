@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { makePayment } from "../../redux/apiRequest";
 import CircularProgress from "@mui/material/CircularProgress";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 export default function Page_Account_Order_Details_Id() {
   const dispatch = useDispatch();
@@ -71,7 +72,51 @@ export default function Page_Account_Order_Details_Id() {
               Order Details
             </Box>
             <Box sx={{ marginTop: "25px" }}>
-              <div className="table-responsive">
+              <div className="row">
+                <div className="col-12 col-md-6">
+                  <img src={orderDetails?.image} alt="Order" />
+                </div>
+                <div className="col-12 col-md-6">
+                  <Box
+                    sx={{
+                      fontSize: "50px",
+                      fontWeight: 600,
+                      color: "rgb(57, 73, 171)",
+                      display: "flex",
+                      justifyContent: "start",
+                    }}
+                  >
+                    {orderDetails?.order_name}
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "35px",
+                      fontWeight: 400,
+                      color: "rgba(0, 0, 0, 0.6)",
+                      display: "flex",
+                      justifyContent: "start",
+                      marginTop: "20px",
+                    }}
+                  >
+                    {/* <span style={{ color: "black" }}>Merchant:</span>{" "}
+                    {orderDetails?.merchant} */}
+                    Merchant: {orderDetails?.merchant}
+                  </Box>
+                  <Box
+                    sx={{
+                      fontSize: "40px",
+                      fontWeight: 500,
+                      color: "#2E7D32",
+                      display: "flex",
+                      justifyContent: "start",
+                      marginTop: "20px",
+                    }}
+                  >
+                    {orderDetails?.currency} {orderDetails?.amount}
+                  </Box>
+                </div>
+              </div>
+              {/* <div className="table-responsive">
                 <table className="table">
                   <tbody>
                     <tr>
@@ -104,7 +149,7 @@ export default function Page_Account_Order_Details_Id() {
                     </tr>
                   </tbody>
                 </table>
-              </div>
+              </div> */}
             </Box>
             <Box sx={{ textAlign: "left", marginTop: 1 }}>
               {isPaid === null ? (
@@ -124,8 +169,21 @@ export default function Page_Account_Order_Details_Id() {
                   Make Payment
                 </Button>
               ) : (
-                <h4 className="text-success text-3xl">
-                  Your order has been paid
+                <h4
+                  className="text-success text-3xl"
+                  style={{
+                    marginTop: "30px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <CheckCircleIcon
+                    fontSize="inherit"
+                    sx={{ color: "inherit", display: "inline-block" }}
+                  />
+                  <span style={{ display: "inline-block" }}>
+                    Your order has been paid
+                  </span>
                 </h4>
               )}
             </Box>
